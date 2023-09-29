@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "121124258169",
+    "firebase_url": "https://acolhe-6a3dc-default-rtdb.firebaseio.com",
+    "project_id": "acolhe-6a3dc",
+    "storage_bucket": "acolhe-6a3dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121124258169:android:bcc6431b049e7f1f6defa8",
+        "android_client_info": {
+          "package_name": "com.example.acolhe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ4UrwLRA0DVRYLQVVz_-lqWWNLszF5Wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121124258169:android:841f0f2f308528bd6defa8",
+        "android_client_info": {
+          "package_name": "com.example.acolhe_api"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ4UrwLRA0DVRYLQVVz_-lqWWNLszF5Wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
