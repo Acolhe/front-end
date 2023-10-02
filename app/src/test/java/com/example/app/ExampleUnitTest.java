@@ -1,4 +1,4 @@
-package com.example.acolhe_api;
+package com.example.app;
 
 import org.junit.Test;
 
