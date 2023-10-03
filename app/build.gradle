@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.acolhe_api'
+    namespace 'com.acolhe.acolhe_api'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.acolhe_api"
+        applicationId "com.acolhe.acolhe_api"
         minSdk 26
         targetSdk 33
         versionCode 1

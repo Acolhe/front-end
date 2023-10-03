@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:121124258169:android:bcc6431b049e7f1f6defa8",
+        "mobilesdk_app_id": "1:121124258169:android:92603630426c81f46defa8",
         "android_client_info": {
-          "package_name": "com.example.acolhe"
+          "package_name": "com.acolhe.acolhe_api"
         }
       },
       "oauth_client": [],
@@ -27,9 +27,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:121124258169:android:841f0f2f308528bd6defa8",
+        "mobilesdk_app_id": "1:121124258169:android:715d05aded20804c6defa8",
         "android_client_info": {
-          "package_name": "com.example.acolhe_api"
+          "package_name": "com.acolhe.app"
         }
       },
       "oauth_client": [],

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Acolhe</string>
+
+    <string name="login">Login</string>
+    <string name="cadastro">Cadastre-se</string>
+    <string name="imagemDescriptionLogo">ImagemLogo</string>
+    <string name="buttonLoginText">Login</string>
+    <string name="buttonCadastrarText">Cadastre-se</string>
+
 </resources>
