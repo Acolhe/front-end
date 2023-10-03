@@ -1,2 +1,4 @@
-package com.acolhe.app;public class Teste {
+package com.acolhe.app;
+
+public class Teste {
 }
