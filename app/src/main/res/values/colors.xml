@@ -15,4 +15,7 @@
     <color name="green">#0D7575</color>
     <color name="text_color">#F5F5F5</color>
     <color name="border_color">#002839</color>
+    <color name="background_colorInicial">#07384D</color>
+    <color name="text_color_login">#AAAAAA</color>
+    <color name="header_color">#004C6D</color>
 </resources>
