@@ -30,6 +30,6 @@ public class PaginaInicialActivity extends AppCompatActivity {
     }
 
     public void abrirCadastro(){
-
+        //aaaa
     }
 }
