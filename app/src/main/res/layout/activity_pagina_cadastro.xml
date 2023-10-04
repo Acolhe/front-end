@@ -1,9 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.acolhe.app.PaginaCadastroActivity">
+    android:background="#E0FCFE"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:id="@+id/square"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_edittext_bg"
+        android:layout_width="370dp"
+        android:layout_height="330dp"
+
+        android:backgroundTint="@color/medium_blue"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginEnd="50dp"
+                android:backgroundTint="@color/medium_blue"
+                android:src="@drawable/setabranca"
+                android:text="aaaaaa" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:elegantTextHeight="false"
+                android:fontFamily="@font/paytone_one"
+                android:text="Cadastre-se"
+                android:textColor="@color/white"
+                android:textSize="24dp" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="297dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="29dp"
+            android:src="@drawable/meumanoursocomgirassol" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/rounded_edittext_bg"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icone_pessoa" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="Nome completo"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_edittext_bg"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icone_email" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="Email"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_edittext_bg"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icone_senha" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="Senha"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="Eu concordo com os termos e condições"
+        android:textColor="#E1878787"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_width="370dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/primary_color"
+        android:fontFamily="@font/paytone_one"
+        android:text="Cadastre-se"
+        android:textSize="22sp"
+        app:cornerRadius="10dp" />
+</LinearLayout>
