@@ -92,11 +92,8 @@ public class PaginaInicialActivity extends AppCompatActivity {
 
     }
 
-    public void abrirHome(View view){
+    public void abrirHome(View view) {
         Intent intent = new Intent(PaginaInicialActivity.this, MainActivity.class);
         startActivity(intent);
-
     }
-
-
 }
