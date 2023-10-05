@@ -59,7 +59,8 @@
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="1dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/loginho" />
 
@@ -111,6 +112,13 @@
             app:srcCompat="@drawable/subs" />
     </LinearLayout>
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment"
+        android:name="com.acolhe.app.fragments.Home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -155,11 +163,6 @@
             app:srcCompat="@drawable/mochila" />
     </LinearLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment"
-        android:name="com.acolhe.app.fragments.Home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
