@@ -12,6 +12,9 @@
         android:theme="@style/Theme.AcolheAPI"
         tools:targetApi="31">
         <activity
+            android:name="com.acolhe.app.PaginaCadastroActivity"
+            android:exported="false" />
+        <activity
             android:name="com.acolhe.app.MainActivity"
             android:exported="false" />
         <activity
