@@ -1,5 +1,7 @@
 package com.acolhe.app;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -13,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.acolhe.acolhe_api.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -25,6 +28,12 @@ public class PaginaCadastroActivity extends AppCompatActivity {
     private Button cadastrarButton;
     private CheckBox concordoCheckBox;
     private boolean senhaVisivel = false;
+    private boolean checkBoxMarcado = false;
+
+    public void voltarCadastro(View view) {
+        Intent intent = new Intent(this, PaginaInicialActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,49 +52,57 @@ public class PaginaCadastroActivity extends AppCompatActivity {
         TextInputLayout nomeTextInputLayout = findViewById(R.id.nomeTextInputLayout);
         TextInputLayout emailTextInputLayout = findViewById(R.id.emailTextInputLayout);
         TextInputLayout senhaTextInputLayout = findViewById(R.id.senhaTextInputLayout);
-
-
-        // Desative o botão "Cadastrar" inicialmente
         cadastrarButton.setEnabled(false);
-
         cadastrarButton.setOnClickListener(new View.OnClickListener() {
+            private boolean contemApenasLetras(String texto) {
+                return texto.matches("[a-zA-Z\\s]+");
+            }
+            private boolean emailValido(String email) {
+                return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+            }
             @Override
             public void onClick(View v) {
-                // Obter os valores dos campos
                 String senha = senhaEditText.getText().toString();
                 String nome = nomeEditText.getText().toString();
                 String email = emailEditText.getText().toString();
 
-                // Verificar se algum campo está vazio
                 boolean camposVazios = false;
 
                 if (senha.isEmpty()) {
                     senhaTextInputLayout.setError("Esse campo é obrigatório");
                     camposVazios = true;
                 } else {
-                    senhaTextInputLayout.setError(null); // Limpar mensagem de erro se não estiver vazio
+                    senhaTextInputLayout.setError(null);
                 }
 
                 if (nome.isEmpty()) {
                     nomeTextInputLayout.setError("Esse campo é obrigatório");
                     camposVazios = true;
                 } else {
-                    nomeTextInputLayout.setError(null); // Limpar mensagem de erro se não estiver vazio
+                    nomeTextInputLayout.setError(null);
                 }
 
                 if (email.isEmpty()) {
                     emailTextInputLayout.setError("Esse campo é obrigatório");
                     camposVazios = true;
                 } else {
-                    emailTextInputLayout.setError(null); // Limpar mensagem de erro se não estiver vazio
+                    emailTextInputLayout.setError(null);
                 }
-
-                // Se algum campo estiver vazio, não prossiga com o cadastro
+                if (!contemApenasLetras(nome)) {
+                    nomeTextInputLayout.setError("O nome deve conter apenas letras");
+                    camposVazios = true;
+                } else {
+                    nomeTextInputLayout.setError(null);
+                }
+                if (!emailValido(email)) {
+                    emailTextInputLayout.setError("Email inválido");
+                    camposVazios = true;
+                } else {
+                    emailTextInputLayout.setError(null);
+                }
                 if (camposVazios) {
                     return;
                 }
-
-                // Se todos os campos estiverem preenchidos, faça o que for necessário com os dados
                 Log.d("Senha", senha);
                 Log.d("Nome", nome);
                 Log.d("Email", email);
@@ -95,10 +112,17 @@ public class PaginaCadastroActivity extends AppCompatActivity {
         concordoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // Ative ou desative o botão "Cadastrar" com base no estado do CheckBox
                 cadastrarButton.setEnabled(isChecked);
+                if (isChecked) {
+                    cadastrarButton.setTextColor(Color.WHITE);
+                } else {
+                    int corPadrao = ContextCompat.getColor(getApplicationContext(), R.color.gray);
+                    cadastrarButton.setTextColor(corPadrao);
+                }
             }
         });
+
+
 
         Button visualizarSenhaButton = findViewById(R.id.visualizarSenhaButton);
         visualizarSenhaButton.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +152,25 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                     senhaEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
                     senhaEditText.setSelection(senhaEditText.getText().length());
                     senhaEditText.addTextChangedListener(this);
+                }
+            }
+        });
+
+        concordoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkBoxMarcado = isChecked;
+                atualizarBotaoCadastro();
+            }
+
+            private void atualizarBotaoCadastro() {
+                if (checkBoxMarcado) {
+                    cadastrarButton.setEnabled(true);
+                    cadastrarButton.setTextColor(Color.WHITE);
+                } else {
+                    cadastrarButton.setEnabled(false);
+                    int corPadrao = ContextCompat.getColor(getApplicationContext(), R.color.gray);
+                    cadastrarButton.setTextColor(corPadrao);
                 }
             }
         });
