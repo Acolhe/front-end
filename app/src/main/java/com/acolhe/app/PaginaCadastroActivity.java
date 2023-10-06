@@ -28,6 +28,7 @@ public class PaginaCadastroActivity extends AppCompatActivity {
     private Button cadastrarButton;
     private CheckBox concordoCheckBox;
     private boolean senhaVisivel = false;
+    private boolean checkBoxMarcado = false;
 
     public void voltarCadastro(View view) {
         Intent intent = new Intent(this, PaginaInicialActivity.class);
@@ -54,7 +55,7 @@ public class PaginaCadastroActivity extends AppCompatActivity {
         cadastrarButton.setEnabled(false);
         cadastrarButton.setOnClickListener(new View.OnClickListener() {
             private boolean contemApenasLetras(String texto) {
-                return texto.matches("[a-zA-Z]+");
+                return texto.matches("[a-zA-Z\\s]+");
             }
             private boolean emailValido(String email) {
                 return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
@@ -151,6 +152,25 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                     senhaEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
                     senhaEditText.setSelection(senhaEditText.getText().length());
                     senhaEditText.addTextChangedListener(this);
+                }
+            }
+        });
+
+        concordoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkBoxMarcado = isChecked;
+                atualizarBotaoCadastro();
+            }
+
+            private void atualizarBotaoCadastro() {
+                if (checkBoxMarcado) {
+                    cadastrarButton.setEnabled(true);
+                    cadastrarButton.setTextColor(Color.WHITE);
+                } else {
+                    cadastrarButton.setEnabled(false);
+                    int corPadrao = ContextCompat.getColor(getApplicationContext(), R.color.gray);
+                    cadastrarButton.setTextColor(corPadrao);
                 }
             }
         });
