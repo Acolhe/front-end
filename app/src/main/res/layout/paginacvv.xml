@@ -49,7 +49,7 @@
                 android:clickable="true"
                 android:fontFamily="@font/paytone_one"
                 android:onClick="irParaPerfil"
-                android:text="@string/store"
+                android:text="@string/ajuda"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -120,11 +120,7 @@
             app:srcCompat="@drawable/subs" />
     </LinearLayout>
 
-    <!-- Subtítulo -->
 
-    <!-- Título "Faça uma ligação!" -->
-
-    <!-- Botão "Ligar para o CVV" com largura responsiva -->
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -178,6 +174,7 @@
         android:height="90dp"
         android:backgroundTint="@color/primary_color"
         android:fontFamily="@font/paytone_one"
+        android:onClick="ligarCvv"
         android:text="Ligar para o CVV"
         android:textColor="#FFFFFF"
         android:textSize="27.2dp"
@@ -217,7 +214,7 @@
         android:background="@drawable/borda_cvv"
         android:backgroundTint="#000000"
         android:fontFamily="@font/paytone_one"
-        android:text="Ligar para o CVV"
+        android:text="Chat com o CVV"
         android:textColor="@color/primary_color"
         android:textSize="27.2dp"
         app:cornerRadius="14dp"
