@@ -22,13 +22,13 @@
             android:textColor="@color/secondary_color"
             android:textSize="48sp"
             android:textStyle="bold"
-            app:lineHeight="40dp" />
+            app:lineHeight="45sp" />
 
         <TextView
             android:id="@+id/txtVwSubtituloMissoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
+            android:layout_marginVertical="18dp"
             android:fontFamily="sans-serif"
             android:text="@string/subtituloMissoesDiaria"
             android:textColor="@color/background_colorInicial"
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="15dp">
+                android:padding="18dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/nomeMissao1"
                         android:textColor="@color/text_color"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/descricaoMissao1"
                         android:textColor="@color/text_color"
-                        android:textSize="16sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bordaarredondadamissoes"
                 android:orientation="horizontal"
-                android:padding="15dp">
+                android:padding="18dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/nomeMissao1"
                         android:textColor="@color/text_color"
-                        android:textSize="16sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -117,7 +117,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/descricaoMissao1"
                         android:textColor="@color/text_color"
-                        android:textSize="16sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -134,15 +134,25 @@
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="30dp"
             android:layout_weight="1"
-            android:src="@tools:sample/avatars"
-            tools:srcCompat="@drawable/personagens" />
+            android:src="@drawable/personagens" />
+
+        <!--        <ImageView-->
+<!--            android:id="@+id/imageView5"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@tools:sample/avatars" />-->
+
     </LinearLayout>
 </FrameLayout>
