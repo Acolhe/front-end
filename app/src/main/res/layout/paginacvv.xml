@@ -212,7 +212,6 @@
         android:layout_height="wrap_content"
         android:height="90dp"
         android:background="@drawable/borda_cvv"
-        android:backgroundTint="#000000"
         android:fontFamily="@font/paytone_one"
         android:text="Chat com o CVV"
         android:textColor="@color/primary_color"
