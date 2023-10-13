@@ -174,7 +174,7 @@
         android:height="90dp"
         android:backgroundTint="@color/primary_color"
         android:fontFamily="@font/paytone_one"
-        android:onClick="ligarCvv"
+        android:onClick="ligarCVV"
         android:text="Ligar para o CVV"
         android:textColor="#FFFFFF"
         android:textSize="27.2dp"
@@ -182,7 +182,8 @@
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="OnClick" />
 
     <!-- Título "Ou mande uma mensagem!" -->
 
@@ -220,7 +221,8 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:rippleColor="#612B2B" />
 
 
     <ImageView

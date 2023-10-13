@@ -17,7 +17,7 @@
             android:name="com.acolhe.app.PaginaCadastroActivity"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.PaginaCvvActivity"
+            android:name="com.acolhe.app.PaginaInicialActivity"
             android:exported="false" />
         <activity
             android:name="com.acolhe.app.PaginaAcolhePlus"
@@ -26,7 +26,7 @@
             android:name="com.acolhe.app.MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.PaginaInicialActivity"
+            android:name="com.acolhe.app.PaginaCvvActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
