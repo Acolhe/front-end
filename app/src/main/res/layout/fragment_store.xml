@@ -26,7 +26,8 @@
                 android:fontFamily="@font/paytone_one"
                 android:text="@string/acolheStore"
                 android:textColor="@color/header_color"
-                android:textSize="50sp" />
+                android:textSize="50sp"
+                app:lineHeight="45sp" />
 
             <TextView
                 android:id="@+id/descricaoAcolheStore"
