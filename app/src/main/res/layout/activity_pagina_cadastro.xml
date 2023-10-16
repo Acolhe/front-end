@@ -1,9 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.acolhe.app.PaginaCadastroActivity">
+    android:background="#E0FCFE"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:id="@+id/square"
+        android:layout_width="match_parent"
+        android:layout_height="343dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_weight="1"
+        android:background="@drawable/rounded_edittext_bg"
+        android:backgroundTint="@color/medium_blue"
+        android:minWidth="10999dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/medium_blue"
+                android:onClick="voltarCadastro"
+                android:src="@drawable/setabranca"
+                android:text="aaaaaa" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:elegantTextHeight="false"
+                android:fontFamily="@font/paytone_one"
+                android:text="Cadastre-se"
+                android:textColor="@color/white"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/meumanoursocomgirassol" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_edittext_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/icone_pessoa" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nomeTextInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Nome completo"
+            android:textColorHint="#2A000000"
+            app:boxBackgroundMode="none"
+            app:hintTextColor="@color/primary_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nomeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="#000000"
+                android:textColorHint="#BC000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_edittext_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/icone_email" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTextInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Email"
+            android:textColorHint="#2A000000"
+            app:boxBackgroundMode="none"
+            app:hintTextColor="@color/primary_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textColor="#000000"
+                android:textColorHint="#2A000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded_edittext_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/icone_senha" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/senhaTextInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Senha"
+            android:textColorHint="#2A000000"
+            app:boxBackgroundMode="none"
+            app:hintTextColor="@color/primary_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/senhaEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="#000000"
+                android:textColorHint="#BC000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/visualizarSenhaButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/olhinho"
+            android:backgroundTint="#00000000"
+            android:drawableTint="#000000"
+            android:foregroundTint="#000000"
+            android:tint="@android:color/black"
+            app:iconTint="#000000" />
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/concordoCheckBox"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="Eu concordo com os termos e condições"
+        android:textColor="#E1878787"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cadastrarButton"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/primary_color"
+        android:fontFamily="@font/paytone_one"
+        android:text="Cadastre-se"
+        android:textSize="22sp"
+        app:cornerRadius="10dp" />
+</LinearLayout>

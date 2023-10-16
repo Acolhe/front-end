@@ -5,8 +5,8 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#07384D"
-    tools:context=".MainActivity">
+    android:background="@color/background_colorInicial"
+    tools:context="com.acolhe.app.PaginaInicialActivity">
 
     <ImageView
         android:id="@+id/imgVwLogo"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/primary_color"
             android:fontFamily="@font/paytone_one"
-            android:onClick="abrirLogin"
+            android:onClick="abrirCadastro"
             android:paddingStart="45dp"
             android:paddingTop="10dp"
             android:paddingEnd="45dp"
@@ -53,9 +53,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="41dp"
-            android:backgroundTint="#00FFFFFF"
+            android:backgroundTint="#07384D"
             android:fontFamily="@font/paytone_one"
-            android:onClick="abrirCadastro"
+            android:onClick="abrirLogin"
             android:paddingStart="45dp"
             android:paddingEnd="45dp"
             android:paddingBottom="10dp"
@@ -69,15 +69,5 @@
     </LinearLayout>
 
 
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="#009C27B0"-->
-    <!--        android:fontFamily="@font/paytone_one"-->
-    <!--        android:padding="50dp"-->
-    <!--        android:text="Login"-->
-    <!--        android:textSize="27sp"-->
-    <!--        app:cornerRadius="20dp"-->
-    <!--        app:strokeColor="@color/primary_color"-->
-    <!--        app:strokeWidth="2dp"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
