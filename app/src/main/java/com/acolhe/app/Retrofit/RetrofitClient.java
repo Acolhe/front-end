@@ -8,7 +8,7 @@ public class RetrofitClient {
     private static Retrofit retrofit;
 
 //    private static String BASE_URL = "http://localhost:8080/acolhe/";
-private static String BASE_URL = "https://localhost:8080/acolhe/";
+private static String BASE_URL = "https://acolhe-api.onrender.com/";
 
     public static Retrofit getRetrofitInstance(){
         if(retrofit == null){

@@ -52,11 +52,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<Model> call, Response<Model> response) {
                         Log.e(TAG, "onResponse: code: " + response.code());
 
-//                        ArrayList<Model.data> data = response.body().getData();
-//
-//                        for(Model.data data1: data){
-//                            Log.e(TAG, "onResponse: emails: " + data1.getEmail());
-//                        }
+                        String data = response.body().getMessage();
+
+                        Log.e(TAG, "onResponse: emails: " + data);
 
 
                     }

@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 
 public interface Methods {
 
-    @GET("usuario/vertodos2/4")
+    @GET("acolhe/usuario/ofensiva/1")
     Call<Model> getAllData();
 }
