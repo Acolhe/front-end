@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical"
+    tools:context="com.acolhe.app.ClinicasActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtVwTituloClinicas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tituloClinicas"
+                    android:textColor="@color/secondary_color"
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    app:lineHeight="45sp" />
+
+                <TextView
+                    android:id="@+id/txtVwSubtituloClinicas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="18dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/subtituloClinicas"
+                    android:textColor="@color/background_colorInicial"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ListView
+                    android:id="@+id/lstVwClinicas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+</LinearLayout>

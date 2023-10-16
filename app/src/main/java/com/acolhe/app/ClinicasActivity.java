@@ -1,0 +1,44 @@
+package com.acolhe.app;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.acolhe.acolhe_api.R;
+import com.acolhe.app.adapters.ClinicaAdapter;
+
+public class ClinicasActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_clinicas);
+
+        ListView lista = findViewById(R.id.lstVwClinicas);
+        ClinicaAdapter clinicaAdapter = new ClinicaAdapter(this);
+        lista.setAdapter(clinicaAdapter);
+
+
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int posVetor, long l){
+                Toast.makeText(getApplicationContext(), "fndsj", Toast.LENGTH_LONG).show();
+                LinearLayout bloco = view.findViewById(R.id.lnrLytInformacaoExtra);
+
+                if (bloco.getVisibility() == View.VISIBLE){
+                    bloco.setVisibility(View.GONE);
+                }
+                else{
+                    bloco.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+    }
+}

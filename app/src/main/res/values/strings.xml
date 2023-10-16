@@ -18,4 +18,19 @@
     <string name="descricaoMissao2">descricao</string>
     <string name="descricaoImgPersonagens">Personagens Acolhe</string>
 
+    <string name="tituloClinicas">Clínicas de Suporte</string>
+    <string name="subtituloClinicas">Aqui temos as melhores recomendações clínicas de São Paulo!</string>
+    <string name="nomeClinica">nmClinica</string>
+    <string name="localClinica">Bairro, Cidade - SP</string>
+    <string name="bairroClinica">Bairro</string>
+    <string name="cidadeClinica">Cidade</string>
+    <string name="sgEstadoClinica">SP</string>
+    
+    <string name="tituloDescricaoClinicas">Descrição: </string>
+    <string name="conteudoDescricaoClinicas">WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</string>
+    <string name="tituloContatoClinicas">Contatos: </string>
+
+
+
+
 </resources>
