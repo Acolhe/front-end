@@ -52,17 +52,17 @@ public class PaginaInicialActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        auth = ConfigFirebase.getFirebaseAuth();
-//
-//        FirebaseUser actual_user = auth.getCurrentUser();
-//        if(actual_user != null){
-//            Intent intent = new Intent(PaginaInicialActivity.this, MainActivity.class);
-//            startActivity(intent);
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth = ConfigFirebase.getFirebaseAuth();
+
+        FirebaseUser actual_user = auth.getCurrentUser();
+        if(actual_user != null){
+            Intent intent = new Intent(PaginaInicialActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
 
 //    private View  CreatePopUpWindow() {
 //        LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);

@@ -4,18 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.Retrofit.Methods;
+import com.acolhe.app.Retrofit.Model;
+import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.fragments.Cvv;
 import com.acolhe.app.fragments.Home;
 import com.acolhe.app.fragments.Missoes;
 import com.acolhe.app.fragments.Perfil;
 import com.acolhe.app.fragments.Store;
 import com.acolhe.app.fragments.Videos;
+import com.google.android.gms.common.util.JsonUtils;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +45,27 @@ public class MainActivity extends AppCompatActivity {
         btnVideos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
+                Call<Model> call = methods.getAllData();
+                call.enqueue(new Callback<Model>() {
+                    @Override
+                    public void onResponse(Call<Model> call, Response<Model> response) {
+                        Log.e(TAG, "onResponse: code: " + response.code());
+
+//                        ArrayList<Model.data> data = response.body().getData();
+//
+//                        for(Model.data data1: data){
+//                            Log.e(TAG, "onResponse: emails: " + data1.getEmail());
+//                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Model> call, Throwable t) {
+                        Log.e(TAG, "onFailure: code: " + t.getMessage());
+                    }
+                });
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, Videos.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
             }

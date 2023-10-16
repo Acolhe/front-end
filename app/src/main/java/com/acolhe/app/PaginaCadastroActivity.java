@@ -116,22 +116,10 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                 Log.d("Senha", senha);
                 Log.d("Nome", nome);
                 Log.d("Email", email);
-                auth.createUserWithEmailAndPassword(email, senha)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                if(task.isSuccessful()){
-                                    Toast.makeText(PaginaCadastroActivity.this, "Usuario cadastrado", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(PaginaCadastroActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(PaginaCadastroActivity.this, "Erro ao cadastrar, verifique os dados", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                cadastrarFirebase(email,senha);
             }
         });
+
 
         concordoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -198,5 +186,22 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void cadastrarFirebase(String email, String senha){
+        auth.createUserWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if(task.isSuccessful()){
+                            Toast.makeText(PaginaCadastroActivity.this, "Usuario cadastrado", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(PaginaCadastroActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(PaginaCadastroActivity.this, "Erro ao cadastrar, verifique os dados", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

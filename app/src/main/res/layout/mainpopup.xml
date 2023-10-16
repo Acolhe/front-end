@@ -24,7 +24,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/paytone_one"
-            android:text="Login"
+            android:text="@string/Login"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -97,6 +97,7 @@
                 android:layout_width="50dp"
                 android:layout_height="15dp"
                 android:layout_gravity="center_vertical"
+                android:contentDescription="email"
                 android:src="@drawable/vector" />
 
             <EditText
@@ -106,7 +107,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_edittext_background"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="@string/Email"
                 android:inputType="textEmailAddress"
                 android:padding="13dp"
                 android:textColor="@color/black"
@@ -127,6 +128,7 @@
                 android:layout_width="50dp"
                 android:layout_height="15dp"
                 android:layout_gravity="center_vertical"
+                android:contentDescription="senha"
                 android:src="@drawable/vctor2" />
 
             <!--            <EditText-->
@@ -144,7 +146,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rounded_edittext_background"
                 android:ems="10"
-                android:hint="Senha"
+                android:hint="@string/Senha"
                 android:inputType="textPassword"
                 android:padding="13dp"
                 android:textColor="@color/black"
@@ -165,7 +167,7 @@
             android:layout_marginTop="15dp"
             android:clickable="true"
             android:onClick="abrirCadastro"
-            android:text="Não tem cadastro? Clique Aqui"
+            android:text="@string/naoTemLogin"
             android:textColor="@color/text_color_login"
             android:textSize="15sp" />
 
@@ -188,7 +190,7 @@
                 android:paddingTop="10dp"
                 android:paddingEnd="45dp"
                 android:paddingBottom="10dp"
-                android:text="Entrar"
+                android:text="@string/Entrar"
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 app:cornerRadius="8dp" />
