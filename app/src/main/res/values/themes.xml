@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.AcolheAPI" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <itemPlus name="colorPrimary">@color/purple_500</itemPlus>
-        <itemPlus name="colorPrimaryVariant">@color/purple_700</itemPlus>
-        <itemPlus name="colorOnPrimary">@color/white</itemPlus>
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <itemPlus name="colorSecondary">@color/teal_200</itemPlus>
-        <itemPlus name="colorSecondaryVariant">@color/teal_700</itemPlus>
-        <itemPlus name="colorOnSecondary">@color/black</itemPlus>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <itemPlus name="android:statusBarColor">?attr/colorPrimaryVariant</itemPlus>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

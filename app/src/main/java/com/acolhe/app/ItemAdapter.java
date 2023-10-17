@@ -14,12 +14,12 @@ import com.acolhe.acolhe_api.R;
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
-    private List<ItemPlus> itemPlusList;
+    private List<Item> itemList;
     private Context context; // Adicione o contexto
 
-    public ItemAdapter(Context context, List<ItemPlus> itemPlusList) {
+    public ItemAdapter(Context context, List<Item> itemList) {
         this.context = context; // Atribua o contexto
-        this.itemPlusList = itemPlusList;
+        this.itemList = itemList;
     }
 
     @NonNull
@@ -31,15 +31,15 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        ItemPlus itemPlus = itemPlusList.get(position);
-        holder.titleTextView.setText(itemPlus.getTitle());
-        holder.subtitleTextView.setText(itemPlus.getSubtitle());
-        holder.itemImageView.setImageResource(itemPlus.getImageResourceId());
+        Item item = itemList.get(position);
+        holder.titleTextView.setText(item.getTitle());
+        holder.subtitleTextView.setText(item.getSubtitle());
+        holder.itemImageView.setImageResource(item.getImageResourceId());
     }
 
     @Override
     public int getItemCount() {
-        return itemPlusList.size();
+        return itemList.size();
     }
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
