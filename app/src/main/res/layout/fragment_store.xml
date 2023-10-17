@@ -1,15 +1,109 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/store_bg"
+    android:contentDescription="@string/CanecaAcolhe"
     tools:context="com.acolhe.app.fragments.Store">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="store"
-        android:textSize="20sp" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tituloAcolheStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/paytone_one"
+                android:text="@string/acolheStore"
+                android:textColor="@color/header_color"
+                android:textSize="50sp"
+                app:lineHeight="45sp" />
+
+            <TextView
+                android:id="@+id/descricaoAcolheStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/paytone_one"
+                android:text="@string/AdquiraProdutosAcolhe"
+                android:textColor="@color/background_colorInicial"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/camisetaAcolhe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/paytone_one"
+                android:text="@string/CamisetaAcolhe"
+                android:textColor="@color/header_color"
+                android:textSize="40sp" />
+
+            <ImageView
+                android:id="@+id/imgCamisteAcolhe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="20sp"
+                android:contentDescription="@string/SkinDeVerao"
+                android:src="@drawable/camisetaacolhe"
+                app:srcCompat="@drawable/camisetaacolhe" />
+
+            <TextView
+                android:id="@+id/skinDeVerao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="-50dp"
+                android:fontFamily="@font/paytone_one"
+                android:text="@string/SkinDeVerao"
+                android:textColor="@color/header_color"
+                android:textSize="40sp" />
+
+            <ImageView
+                android:id="@+id/imgSkinDeVerao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20sp"
+                android:contentDescription="@string/SkinDeVerao"
+                android:src="@drawable/skinverao"
+                app:srcCompat="@drawable/skinverao" />
+
+            <TextView
+                android:id="@+id/canecaAcolhe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="-40dp"
+                android:fontFamily="@font/paytone_one"
+                android:text="@string/CanecaAcolhe"
+                android:textColor="@color/header_color"
+                android:textSize="40sp" />
+
+            <ImageView
+                android:id="@+id/imgCanecaAcolhe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="20sp"
+                android:contentDescription="@string/CanecaAcolhe"
+                android:src="@drawable/canecaacolhe"
+                app:srcCompat="@drawable/canecaacolhe" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
