@@ -1,6 +1,5 @@
 package com.acolhe.app;
 
-import android.content.ClipData;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,13 +17,13 @@ public class PaginaAcolhePlus extends AppCompatActivity {
         setContentView(R.layout.activity_acolhe_plus);
 
         RecyclerView recyclerView = findViewById(R.id.itemList);
-        List<Item> itemList = new ArrayList<>();
-        itemList.add(new Item("Conteúdos ilimitados", "Tenha acesso a conteúdos ilimitados selecionados pelos nossos especialistas!", R.drawable.cadeado));
-        itemList.add(new Item("Sem nenhum anúncio", "Acesse todos os conteúdos, respirações e audios sem nenhum anúncio!", R.drawable.block));
-        itemList.add(new Item("Ganhe mais moedas", "Ganhe mais moedas completando missões diárias!", R.drawable.coracaoplus));
-        itemList.add(new Item("Mais missões", "Se divirta fazendo mais missões e missões cada vez mais difíceis!", R.drawable.alvoeflecha));
+        List<ItemPlus> itemPlusList = new ArrayList<>();
+        itemPlusList.add(new ItemPlus("Conteúdos ilimitados", "Tenha acesso a conteúdos ilimitados selecionados pelos nossos especialistas!", R.drawable.cadeado));
+        itemPlusList.add(new ItemPlus("Sem nenhum anúncio", "Acesse todos os conteúdos, respirações e audios sem nenhum anúncio!", R.drawable.block));
+        itemPlusList.add(new ItemPlus("Ganhe mais moedas", "Ganhe mais moedas completando missões diárias!", R.drawable.coracaoplus));
+        itemPlusList.add(new ItemPlus("Mais missões", "Se divirta fazendo mais missões e missões cada vez mais difíceis!", R.drawable.alvoeflecha));
 
-        ItemAdapter adapter = new ItemAdapter(this, itemList);
+        ItemAdapter adapter = new ItemAdapter(this, itemPlusList);
         recyclerView.setAdapter(adapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
