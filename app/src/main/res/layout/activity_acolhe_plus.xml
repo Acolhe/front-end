@@ -49,7 +49,7 @@
                 android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/itemPlusList"
+                android:id="@+id/itemList"
                 android:layout_width="333dp"
                 android:layout_height="356dp"
                 android:background="#306A83">

@@ -1,11 +1,11 @@
 package com.acolhe.app;
 
-public class ItemPlus {
+public class Item {
     private String title;
     private String subtitle;
     private int imageResourceId;
 
-    public ItemPlus(String title, String subtitle, int imageResourceId) {
+    public Item(String title, String subtitle, int imageResourceId) {
         this.title = title;
         this.subtitle = subtitle;
         this.imageResourceId = imageResourceId;

@@ -8,7 +8,7 @@
     android:background="@color/back_color"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.acolhe.app.MainActivity">
+    tools:context="com.acolhe.app.fragments.Cvv">
 
     <!-- Título "Busque Ajuda!" -->
     <LinearLayout
@@ -80,7 +80,7 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/bordaarredondadabotao"
             android:fontFamily="@font/paytone_one"
-            android:onClick="ligarCVV"
+            android:onClick="ligarParaCvv"
             android:text="Ligar para o CVV"
             android:textColor="#FFFFFF"
             android:textSize="28sp"
