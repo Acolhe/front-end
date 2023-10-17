@@ -30,7 +30,8 @@
     <string name="conteudoDescricaoClinicas">WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</string>
     <string name="tituloContatoClinicas">Contatos: </string>
 
-
-
-
+    <string name="telefone">Telefone: </string>
+    <string name="telefoneDefault">(11) 95555-8888</string>
+    <string name="email">Email: </string>
+    <string name="emailDefault">email.empresa@email.com</string>
 </resources>

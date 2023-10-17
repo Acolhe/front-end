@@ -18,10 +18,10 @@
             android:name="com.acolhe.app.PaginaCadastroActivity"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.ClinicasActivity"
+            android:name="com.acolhe.app.MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.MainActivity"
+            android:name="com.acolhe.app.ClinicasActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

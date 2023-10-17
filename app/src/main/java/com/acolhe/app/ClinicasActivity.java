@@ -28,7 +28,6 @@ public class ClinicasActivity extends AppCompatActivity {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posVetor, long l){
-                Toast.makeText(getApplicationContext(), "fndsj", Toast.LENGTH_LONG).show();
                 LinearLayout bloco = view.findViewById(R.id.lnrLytInformacaoExtra);
 
                 if (bloco.getVisibility() == View.VISIBLE){
