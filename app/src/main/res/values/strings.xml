@@ -7,6 +7,13 @@
     <string name="buttonLoginText">Login</string>
     <string name="buttonCadastrarText">Cadastre-se</string>
     <string name="store">Store</string>
+
+    <string name="ajuda">Ajuda</string>
+    <string name="naoObrigado">Não, obrigado</string>
+    <string name="assineja">Assine já!</string>
+    <string name="canceleAssinaturaTitulo">Cancele a qualquer momento</string>
+    <string name="canceleAssinatura">Cancele sua assinatura a qualquer momento - sem taxas nem penalidades</string>
+    <string name="acolhe_plus">Seja acolhe plus!\nAssine por apenas R$14,99 por mês\nSe ajude cada vez MAIS</string>
     <string name="acolheStore">ACOLHE\nSTORE</string>
     <string name="AdquiraProdutosAcolhe">Adquira já os diversos produtos\nacolhe!</string>
     <string name="CamisetaAcolhe">Camiseta Acolhe</string>

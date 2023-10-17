@@ -11,7 +11,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="9"
         android:background="@color/header_color"
         android:orientation="horizontal"
         android:padding="15dp">
@@ -50,9 +51,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:clickable="true"
-            android:gravity="center_vertical"
             android:onClick="irParaVoce"
             android:orientation="horizontal">
 
@@ -60,6 +61,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
+                android:layout_gravity="center_vertical"
                 android:layout_marginTop="1dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/loginho" />
@@ -68,6 +70,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:fontFamily="@font/paytone_one"
                 android:text="21"
@@ -78,9 +81,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:clickable="true"
-            android:gravity="center_vertical"
             android:onClick="irParaLoja"
             android:orientation="horizontal">
 
@@ -95,6 +98,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:fontFamily="@font/paytone_one"
                 android:text="42"
@@ -116,12 +120,14 @@
         android:id="@+id/fragment"
         android:name="com.acolhe.app.fragments.Home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_weight="2" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="9"
         android:background="@color/header_color"
         android:gravity="center"
         android:orientation="horizontal"
@@ -162,7 +168,6 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/mochila" />
     </LinearLayout>
-
 
 
 </LinearLayout>
