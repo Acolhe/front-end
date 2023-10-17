@@ -21,6 +21,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.Retrofit.CreateuserModel;
+import com.acolhe.app.Retrofit.Methods;
+import com.acolhe.app.Retrofit.Model;
+import com.acolhe.app.Retrofit.RetrofitClient;
+import com.acolhe.app.Retrofit.User;
 import com.acolhe.app.config.ConfigFirebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,6 +33,10 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.acolhe.app.PaginaInicialActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PaginaCadastroActivity extends AppCompatActivity {
     FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
@@ -117,6 +126,7 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                 Log.d("Nome", nome);
                 Log.d("Email", email);
                 cadastrarFirebase(email,senha);
+                cadastrarPostgres(nome, email, senha);
             }
         });
 
@@ -203,5 +213,20 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void cadastrarPostgres(String nome, String email, String senha){
+        Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
+        methods.postUser(new User(nome, email, senha)).enqueue(new Callback<CreateuserModel>() {
+            @Override
+            public void onResponse(Call<CreateuserModel> call, Response<CreateuserModel> response) {
+                System.out.println("Usuario cadastrado no postgres");
+            }
+
+            @Override
+            public void onFailure(Call<CreateuserModel> call, Throwable t) {
+                System.out.println("Erro ao cadastrar usuario cadastrado no postgres");
+            }
+        });
     }
 }
