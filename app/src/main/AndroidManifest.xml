@@ -23,9 +23,6 @@
             android:name="com.acolhe.app.PaginaAcolhePlus"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.PaginaCvvActivity"
-            android:exported="false" />
-        <activity
             android:name="com.acolhe.app.MainActivity"
             android:exported="true">
             <intent-filter>
