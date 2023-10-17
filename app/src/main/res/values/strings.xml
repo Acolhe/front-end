@@ -27,4 +27,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="tituloMissoesDiaria">Missões\nDiárias</string>
+    <string name="subtituloMissoesDiaria">Complete as suas missões diárias e ganhe recompensas!</string>
+    <string name="nomeMissao1">nmMissao</string>
+    <string name="descricaoMissao1">descricao</string>
+    <string name="nomeMissao2">nmMissao</string>
+    <string name="descricaoMissao2">descricao</string>
+    <string name="descricaoImgPersonagens">Personagens Acolhe</string>
+
 </resources>
