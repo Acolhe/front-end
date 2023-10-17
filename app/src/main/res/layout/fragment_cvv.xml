@@ -46,7 +46,7 @@
             android:gravity="center_vertical|end"
             android:text="Ou mande uma mensagem!"
             android:textColor="@color/header_color"
-            android:textSize="28dp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <Button
@@ -58,7 +58,7 @@
             android:fontFamily="@font/paytone_one"
             android:text="Chat com o CVV"
             android:textColor="@color/primary_color"
-            android:textSize="28dp"
+            android:textSize="28sp"
             app:backgroundTint="@color/primary_color" />
 
         <TextView
@@ -78,13 +78,13 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="12dp"
-            app:backgroundTint="@color/primary_color"
             android:background="@drawable/bordaarredondadabotao"
             android:fontFamily="@font/paytone_one"
             android:onClick="ligarCVV"
             android:text="Ligar para o CVV"
             android:textColor="#FFFFFF"
-            android:textSize="28dp" />
+            android:textSize="28sp"
+            app:backgroundTint="@color/primary_color" />
 
         <ImageView
             android:id="@+id/imageView5"
