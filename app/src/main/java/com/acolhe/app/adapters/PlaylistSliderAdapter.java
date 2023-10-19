@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.PaginaAcolhePlus;
 import com.acolhe.app.PlaylistActivity;
 import com.acolhe.app.model.Playlist;
 import com.acolhe.app.model.Respiracao;
@@ -54,7 +55,7 @@ public class PlaylistSliderAdapter extends CardSliderAdapter<PlaylistSliderAdapt
                 intent.putExtra("respiracao", (Serializable) respiracao);
                 view.getContext().startActivity(intent);
             }else {
-//                view.getContext().startActivity();
+                view.getContext().startActivity(new Intent(view.getContext(), PaginaAcolhePlus.class));
             }
         });
     }
