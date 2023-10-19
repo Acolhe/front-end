@@ -14,13 +14,23 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.config.ConfigFirebase;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.acolhe.app.PaginaInicialActivity;
 
 public class PaginaCadastroActivity extends AppCompatActivity {
+    FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
 
     private EditText nomeEditText;
     private EditText emailEditText;
@@ -106,8 +116,10 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                 Log.d("Senha", senha);
                 Log.d("Nome", nome);
                 Log.d("Email", email);
+                cadastrarFirebase(email,senha);
             }
         });
+
 
         concordoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -174,5 +186,22 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void cadastrarFirebase(String email, String senha){
+        auth.createUserWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if(task.isSuccessful()){
+                            Toast.makeText(PaginaCadastroActivity.this, "Usuario cadastrado", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(PaginaCadastroActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(PaginaCadastroActivity.this, "Erro ao cadastrar, verifique os dados", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
