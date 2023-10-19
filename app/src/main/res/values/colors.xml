@@ -20,4 +20,11 @@
     <color name="text_color_login">#AAAAAA</color>
     <color name="header_color">#004C6D</color>
     <color name="store_bg">#E0FCFE</color>
+
+
+    <color name="nada_bem_bg">#A18FFF</color>
+    <color name="triste_bg">#FF844E</color>
+    <color name="normal_bg">#926247</color>
+    <color name="bem_bg">#FFCE5C</color>
+    <color name="muito_bem_bg">#9BB068</color>
 </resources>
