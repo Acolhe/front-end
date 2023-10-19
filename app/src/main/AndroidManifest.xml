@@ -17,6 +17,9 @@
         android:enableOnBackInvokedCallback="true"
         tools:targetApi="31">
         <activity
+            android:name="com.acolhe.app.MeditacaoHome"
+            android:exported="false" />
+        <activity
             android:name="com.acolhe.app.ClinicasActivity"
             android:exported="false" />
         <activity
@@ -27,6 +30,12 @@
             android:exported="false" />
         <activity
             android:name="com.acolhe.app.PaginaInicialActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.acolhe.app.PaginaAcolhePlus"
+            android:exported="false" />
+        <activity
+            android:name="com.acolhe.app.PlaylistActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
