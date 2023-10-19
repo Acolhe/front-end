@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.acolhe.acolhe_api.R;
 import com.acolhe.app.adapters.ClinicaAdapter;
@@ -19,11 +18,14 @@ public class ClinicasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinicas);
 
+        iniciarLista();
+        fecharPagina();
+    }
+
+    private void iniciarLista(){
         ListView lista = findViewById(R.id.lstVwClinicas);
         ClinicaAdapter clinicaAdapter = new ClinicaAdapter(this);
         lista.setAdapter(clinicaAdapter);
-
-
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -38,6 +40,17 @@ public class ClinicasActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
+
+    private void fecharPagina(){
+        LinearLayout voltar = findViewById(R.id.lnrLytVoltar);
+
+        voltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
 }

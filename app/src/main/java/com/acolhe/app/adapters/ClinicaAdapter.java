@@ -22,7 +22,7 @@ public class ClinicaAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 10;
     }
 
     @Override
