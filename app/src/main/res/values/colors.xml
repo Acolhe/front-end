@@ -11,7 +11,7 @@
 
     <color name="primary_color">#00B6FC</color>
     <color name="back_color">#E0FCFE</color>
-    <color name="background_color">#CEF5F8</color>
+    <color name="background_color">#E0FCFE</color>
     <color name="secondary_color">#004C6D</color>
     <color name="medium_blue">#33AAD8</color>
     <color name="green">#0D7575</color>

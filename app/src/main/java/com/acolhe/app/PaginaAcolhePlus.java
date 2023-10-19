@@ -1,6 +1,8 @@
 package com.acolhe.app;
 
 import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +20,7 @@ public class PaginaAcolhePlus extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.itemList);
         List<Item> itemList = new ArrayList<>();
+        TextView noThanks = findViewById(R.id.noThanksButton);
         itemList.add(new Item("Conteúdos ilimitados", "Tenha acesso a conteúdos ilimitados selecionados pelos nossos especialistas!", R.drawable.cadeado));
         itemList.add(new Item("Sem nenhum anúncio", "Acesse todos os conteúdos, respirações e audios sem nenhum anúncio!", R.drawable.block));
         itemList.add(new Item("Ganhe mais moedas", "Ganhe mais moedas completando missões diárias!", R.drawable.coracaoplus));
@@ -27,5 +30,9 @@ public class PaginaAcolhePlus extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        noThanks.setOnClickListener(view -> {
+            finish();
+        });
     }
 }
