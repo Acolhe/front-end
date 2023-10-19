@@ -1,5 +1,7 @@
 package com.acolhe.app.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,60 +9,62 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.acolhe.acolhe_api.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Cvv#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Cvv extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Cvv() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Cvv.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Cvv newInstance(String param1, String param2) {
-        Cvv fragment = new Cvv();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cvv, container, false);
+        super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_cvv, container, false);
+
+
+        Button ligarCvvButton = view.findViewById(R.id.button3);
+        Button chatCvvButton = view.findViewById(R.id.button2);
+
+        ligarCvvButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ligarParaCvv();
+            }
+        });
+
+        chatCvvButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirChatComCvv();
+            }
+        });
+
+
+        return view;
+    }
+
+    private void ligarParaCvv() {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:188"));
+        startActivity(intent);
+    }
+
+    private void abrirChatComCvv() {
+        String url = "http://cvvweb.mysuite1.com.br/client/chatan.php?h=&inf=&lfa=";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Erro ao abrir o navegador.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
