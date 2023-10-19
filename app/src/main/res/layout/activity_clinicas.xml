@@ -2,20 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayoutPrincipal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color"
     android:orientation="vertical"
-    tools:context="com.acolhe.app.MainActivity">
-
+    tools:context="com.acolhe.app.ClinicasActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="9"
+        android:layout_height="wrap_content"
         android:background="@color/header_color"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="15dp">
 
 
         <LinearLayout
@@ -32,7 +30,7 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_weight="1"
                 android:contentDescription="@string/descricaoImagemPerfil"
-                app:srcCompat="@drawable/carinha" />
+                app:srcCompat="@drawable/setabranca" />
         </LinearLayout>
 
         <TextView
@@ -44,7 +42,7 @@
             android:clickable="true"
             android:fontFamily="@font/paytone_one"
             android:gravity="center_vertical"
-            android:text="@string/store"
+            android:text="@string/nomePaginaClinica"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -56,7 +54,8 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="10"
             android:clickable="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/imgVwOfensiva"
@@ -89,7 +88,8 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="10"
             android:clickable="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="invisible">
 
             <ImageView
                 android:id="@+id/imgVwMoeda"
@@ -134,107 +134,47 @@
 
     </LinearLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment"
-        android:name="com.acolhe.app.fragments.Home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="9"
-        android:background="@color/header_color"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:baselineAligned="false">
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="10">-->
 
         <LinearLayout
-            android:id="@+id/lnrLytHome"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:gravity="center"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imgVwHome"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtVwTituloClinicas"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/descricaoImagemHome"
-                app:srcCompat="@drawable/home" />
-        </LinearLayout>
+                android:text="@string/tituloClinicas"
+                android:textColor="@color/secondary_color"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                app:lineHeight="45sp" />
 
-        <LinearLayout
-            android:id="@+id/lnrLytConteudo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imgVwConteudo"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtVwSubtituloClinicas"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/descricaoImagemConteudo"
-                app:srcCompat="@drawable/play" />
+                android:layout_marginVertical="18dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/subtituloClinicas"
+                android:textColor="@color/background_colorInicial"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <ListView
+                android:id="@+id/lstVwClinicas"
+                android:layout_width="match_parent"
+                android:layout_height="3000dp" />
+
         </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/lnrLytCvv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imgVwCvv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/descricaoImagemCvv"
-                app:srcCompat="@drawable/acolhegrande" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/lnrLytMissao"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imgVwMissao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/descricaoImagemMissoes"
-                app:srcCompat="@drawable/lista" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/lnrLytLoja"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imgVwLoja"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/descricaoImagemLoja"
-                app:srcCompat="@drawable/mochila" />
-        </LinearLayout>
-
-    </LinearLayout>
+<!--    </ScrollView>-->
 
 
 </LinearLayout>

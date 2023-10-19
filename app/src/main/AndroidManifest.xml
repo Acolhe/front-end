@@ -20,7 +20,7 @@
             android:name="com.acolhe.app.MeditacaoHome"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.PaginaInicialActivity"
+            android:name="com.acolhe.app.ClinicasActivity"
             android:exported="false" />
         <activity
             android:name="com.acolhe.app.PaginaCadastroActivity"
@@ -29,10 +29,13 @@
             android:name="com.acolhe.app.MainActivity"
             android:exported="false" />
         <activity
+            android:name="com.acolhe.app.PlaylistActivity"
+            android:exported="false" />
+        <activity
             android:name="com.acolhe.app.PaginaAcolhePlus"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.PlaylistActivity"
+            android:name="com.acolhe.app.PaginaInicialActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
