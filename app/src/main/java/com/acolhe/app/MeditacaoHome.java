@@ -56,7 +56,7 @@ public class MeditacaoHome extends AppCompatActivity {
         respiracao2.add(new Respiracao("Titulo da respiracao","Descricao completa da respiracao", "Técnica descritiva da respiracao", 3));
 
         playlist1.setRespiracoes(respiracao);
-        playlist2.setRespiracoes(respiracao2);
+        playlist3.setRespiracoes(respiracao2);
         playlists.add(playlist1);
         playlists.add(playlist2);
         playlists2.add(playlist3);
