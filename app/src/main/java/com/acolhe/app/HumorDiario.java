@@ -2,13 +2,19 @@ package com.acolhe.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
+
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.utils.verifyInternet;
 
 public class HumorDiario extends AppCompatActivity {
 
@@ -17,6 +23,10 @@ public class HumorDiario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_humor_diario);
+        if (!verifyInternet.isNetworkAvailable(this)) {
+            Intent intent = new Intent(this, SemInternet.class);
+            startActivity(intent);
+        }
     }
 
 

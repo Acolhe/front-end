@@ -25,7 +25,10 @@
     <string name="EstouBem">Estou bem!</string>
     <string name="NaoBem">Não me sinto nada bem</string>
     <string name="Triste">Estou meio triste</string>
-    <string name="MuitoBem">Me sinto muito bem!x</string>
+    <string name="MuitoBem">Me sinto muito bem!</string>
+
+    <string name="semInternet">Você está sem internet!</string>
+    <string name="semInternetDesc">Esteja conecta na internet para entrar no app!</string>
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
