@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.adapters.ItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.acolhe.app;
+package com.acolhe.app.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.Item;
 
 import java.util.List;
 

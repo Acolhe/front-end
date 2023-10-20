@@ -53,6 +53,7 @@ public class PlaylistSliderAdapter extends CardSliderAdapter<PlaylistSliderAdapt
                 ArrayList<Respiracao> respiracao = playlist.getRespiracoes();
                 Intent intent = new Intent(view.getContext(), PlaylistActivity.class);
                 intent.putExtra("respiracao", (Serializable) respiracao);
+                intent.putExtra("titulo", playlist.getTitulo());
                 view.getContext().startActivity(intent);
             }else {
                 view.getContext().startActivity(new Intent(view.getContext(), PaginaAcolhePlus.class));
