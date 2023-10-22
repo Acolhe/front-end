@@ -134,11 +134,6 @@
 
     </LinearLayout>
 
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_weight="10">-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -171,10 +166,8 @@
             <ListView
                 android:id="@+id/lstVwClinicas"
                 android:layout_width="match_parent"
-                android:layout_height="3000dp" />
+                android:layout_height="match_parent"  />
 
         </LinearLayout>
-<!--    </ScrollView>-->
-
 
 </LinearLayout>

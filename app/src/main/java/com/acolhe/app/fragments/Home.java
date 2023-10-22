@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.ClinicasActivity;
 import com.acolhe.app.MeditacaoHome;
 
 public class Home extends Fragment {
@@ -27,6 +28,11 @@ public class Home extends Fragment {
 
         view.findViewById(R.id.open_meditacao).setOnClickListener(view1 -> {
             startActivity(new Intent(getContext(), MeditacaoHome.class));
+        });
+
+
+        view.findViewById(R.id.open_clinicas).setOnClickListener(view1 -> {
+            startActivity(new Intent(getContext(), ClinicasActivity.class));
         });
 
         return view;

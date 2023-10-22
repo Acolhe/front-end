@@ -67,6 +67,8 @@
 
     <string name="nomePaginaClinica">Clinicas</string>
 
+    <string name="tituloConteudos">Vídeos\nde Apoio</string>
+    <string name="subtituloConteudos">Assista vídeos selcionados pelos nossos especialistas!</string>
 
 
 </resources>

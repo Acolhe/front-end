@@ -17,7 +17,7 @@
             android:id="@+id/txtVwTituloMissoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tituloMissoesDiaria"
+            android:text="@string/tituloConteudos"
             android:textColor="@color/secondary_color"
             android:textSize="48sp"
             android:textStyle="bold"
@@ -29,10 +29,15 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="18dp"
             android:fontFamily="sans-serif"
-            android:text="@string/subtituloMissoesDiaria"
+            android:text="@string/subtituloConteudos"
             android:textColor="@color/background_colorInicial"
             android:textSize="16sp"
             android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/lstVwVideos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>
