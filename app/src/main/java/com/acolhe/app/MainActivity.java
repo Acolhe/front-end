@@ -3,10 +3,11 @@ package com.acolhe.app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.acolhe.acolhe_api.R;
 import com.acolhe.app.Retrofit.Methods;
@@ -36,15 +37,56 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        ImageView btnHome = findViewById(R.id.btnHome);
-        ImageView btnVideos = findViewById(R.id.btnVideos);
-        ImageView btnCvv = findViewById(R.id.btnCvv);
-        ImageView btnMissoes = findViewById(R.id.btnMissoes);
-        ImageView btnStore = findViewById(R.id.btnStore);
+        adicionarEventosClickCabecalho();
+        adicionaEventosCLickRodape();
+    }
+
+    private void adicionarEventosClickCabecalho() {
+        LinearLayout btnPerfil = findViewById(R.id.lnrLytVoltar);
+        LinearLayout btnOfensiva = findViewById(R.id.lnrLytOfensiva);
+        LinearLayout btnMedalha = findViewById(R.id.lnrLytMedalha);
+        LinearLayout btnAcolhePlus = findViewById(R.id.lnrLytAcolhePlus);
+
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abreFragmento(Perfil.class);
+            }
+        });
+
+        btnOfensiva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abreFragmento(Home.class);
+            }
+        });
+
+        btnMedalha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abreFragmento(Store.class);
+            }
+        });
+
+        btnAcolhePlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
+    }
+
+    private void adicionaEventosCLickRodape() {
+        LinearLayout btnHome = findViewById(R.id.lnrLytHome);
+        LinearLayout btnVideos = findViewById(R.id.lnrLytConteudo);
+        LinearLayout btnCvv = findViewById(R.id.lnrLytCvv);
+        LinearLayout btnMissoes = findViewById(R.id.lnrLytMissao);
+        LinearLayout btnStore = findViewById(R.id.lnrLytLoja);
 
         btnVideos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                abreFragmento(Videos.class);
                 Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
                 Call<Model> call = methods.getAllData();
                 call.enqueue(new Callback<Model>() {
@@ -69,56 +111,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         btnCvv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment, Cvv.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                abreFragmento(Cvv.class);
             }
         });
 
         btnMissoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment, Missoes.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                abreFragmento(Missoes.class);
             }
         });
 
         btnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment, Store.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                abreFragmento(Store.class);
             }
         });
-
-
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment, Home.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                abreFragmento(Home.class);
             }
         });
-
     }
 
-
-    public void irParaPerfil(View view){
+    private void abreFragmento(Class target){
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment, Perfil.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
-    }
-
-    public void irParaVoce(View view){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment, Home.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
-    }
-
-    public void irParaLoja(View view){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment, Store.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+        fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }
 }
