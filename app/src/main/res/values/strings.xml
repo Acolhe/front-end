@@ -24,6 +24,7 @@
     <string name="Email">Email</string>
     <string name="Senha">Senha</string>
     <string name="Entrar">Entrar</string>
+    <string name="nomeUsuario">UserTeste</string>
     <string name="naoTemLogin">Não tem cadastro? Clique Aqui</string>
 
     <string name="eiNome">👋 Ei {{nome}}!</string>
@@ -58,9 +59,10 @@
     <string name="nomeMissao1">nmMissao</string>
     <string name="descricaoMissao1">descricao</string>
     <string name="nomeMissao2">nmMissao</string>
+    <string name="perfil">Perfil</string>
+    <string name="editar">Editar</string>
     <string name="descricaoMissao2">descricao</string>
     <string name="descricaoImgPersonagens">Personagens Acolhe</string>
-
     <string name="tituloClinicas">Clínicas de Suporte</string>
     <string name="subtituloClinicas">Aqui temos as melhores recomendações clínicas de São Paulo!</string>
     <string name="nomeClinica">nmClinica</string>
@@ -70,7 +72,7 @@
     <string name="sgEstadoClinica">SP</string>
 
     <string name="tituloDescricaoClinicas">Descrição: </string>
-    <string name="conteudoDescricaoClinicas">WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</string>
+    <string name="conteudoDescricaoClinicas">wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</string>
     <string name="tituloContatoClinicas">Contatos: </string>
 
     <string name="telefone">Telefone: </string>
@@ -80,6 +82,10 @@
 
     <string name="nomePaginaClinica">Clinicas</string>
 
-
+    <string name="page_name_home">Home</string>
+    <string name="page_name_videos">Vídeos</string>
+    <string name="page_name_cvv">CVV</string>
+    <string name="page_name_missoes">Missões</string>
+    <string name="page_name_store">Store</string>
 
 </resources>

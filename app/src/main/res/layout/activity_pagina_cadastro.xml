@@ -8,7 +8,6 @@
     android:background="#E0FCFE"
     android:clickable="true"
     android:gravity="center_horizontal"
-    android:onClick="abrirHome"
     android:orientation="vertical">
 
     <FrameLayout
