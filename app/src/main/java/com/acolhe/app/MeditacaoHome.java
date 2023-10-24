@@ -50,7 +50,7 @@ public class MeditacaoHome extends AppCompatActivity {
         Playlist playlist2 = new Playlist("Acalmando a  ansiedade", "Exercícios de respiração", R.drawable.background_playlist_2, true, null);
         Playlist playlist3 = new Playlist("Sons da natureza", "Durma melhor com a natureza", R.drawable.background_playlist_3, false, null);
         Playlist playlist4 = new Playlist("Sons de chuva", "Durma melhor com sons de chuva", R.drawable.background_playlist_4, true, null);
-        respiracao.add(new Respiracao("Relaxamento", "Acalme sua mente e alivie o estresse", "Expiração prolongada (4 - 6)", 0));
+        respiracao.add(new Respiracao("Relaxamento", "Acalme sua mente e alivie o estresse", "Expiração prolongada (4 - 6)", R.raw.atencao_plena));
         respiracao.add(new Respiracao("Aliviando o estresse", "Alivie o estresse", "Inspire pela esquerda (5 min)", 1));
         respiracao2.add(new Respiracao("Relaxar: Som do Mar","Relaxe ouvindo sons do mar", "Inspire profundamente", 2));
         respiracao2.add(new Respiracao("Titulo da respiracao","Descricao completa da respiracao", "Técnica descritiva da respiracao", 3));
