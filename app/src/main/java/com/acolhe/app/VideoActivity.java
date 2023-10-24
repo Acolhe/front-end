@@ -2,6 +2,7 @@ package com.acolhe.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ public class VideoActivity extends AppCompatActivity {
         String link = enveloper.getString("url");
 
         videoView.setMediaController(new MediaController(getApplicationContext()));
-        videoView.setVideoPath("link");
+        videoView.setVideoURI(Uri.parse(link));
         videoView.start();
     }
 }
