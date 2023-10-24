@@ -21,9 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.acolhe.acolhe_api.R;
-import com.acolhe.app.Retrofit.CreateuserModel;
+import com.acolhe.app.Retrofit.StringModel;
 import com.acolhe.app.Retrofit.Methods;
-import com.acolhe.app.Retrofit.Model;
 import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.Retrofit.User;
 import com.acolhe.app.config.ConfigFirebase;
@@ -32,7 +31,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.acolhe.app.PaginaInicialActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -217,16 +215,16 @@ public class PaginaCadastroActivity extends AppCompatActivity {
 
     public void cadastrarPostgres(String nome, String email, String senha){
         Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
-        methods.postUser(new User(nome, email, senha)).enqueue(new Callback<CreateuserModel>() {
+        methods.postUser(new User(nome, email, senha)).enqueue(new Callback<StringModel>() {
             @Override
-            public void onResponse(Call<CreateuserModel> call, Response<CreateuserModel> response) {
+            public void onResponse(Call<StringModel> call, Response<StringModel> response) {
                 System.out.println("Usuario cadastrado no postgres");
                 System.out.println(response.body());
                 System.out.println(response);
             }
 
             @Override
-            public void onFailure(Call<CreateuserModel> call, Throwable t) {
+            public void onFailure(Call<StringModel> call, Throwable t) {
                 System.out.println("Erro ao cadastrar usuario cadastrado no postgres");
             }
         });

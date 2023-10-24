@@ -3,9 +3,11 @@ package com.acolhe.app;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +21,6 @@ import com.acolhe.app.fragments.Missoes;
 import com.acolhe.app.fragments.Perfil;
 import com.acolhe.app.fragments.Store;
 import com.acolhe.app.fragments.Videos;
-import com.google.android.gms.common.util.JsonUtils;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,28 +50,77 @@ public class MainActivity extends AppCompatActivity {
         TextView saldoLayout = findViewById(R.id.valorSaldo);
         saldoLayout.setText(stringSaldo);
 
+        adicionarEventosClickCabecalho();
+        adicionaEventosCLickRodape();
+    }
 
-        ImageView btnHome = findViewById(R.id.btnHome);
-        ImageView btnVideos = findViewById(R.id.btnVideos);
-        ImageView btnCvv = findViewById(R.id.btnCvv);
-        ImageView btnMissoes = findViewById(R.id.btnMissoes);
-        ImageView btnStore = findViewById(R.id.btnStore);
+    private void adicionarEventosClickCabecalho() {
+        LinearLayout btnPerfil = findViewById(R.id.lnrLytVoltar);
+        LinearLayout btnOfensiva = findViewById(R.id.lnrLytOfensiva);
+        LinearLayout btnMedalha = findViewById(R.id.lnrLytMedalha);
+        LinearLayout btnAcolhePlus = findViewById(R.id.lnrLytAcolhePlus);
+        ImageView imageAcolhePlus = findViewById(R.id.imgVwAcolhePlus);
+
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), PaginaProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnOfensiva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abreFragmento(Home.class);
+            }
+        });
+
+        btnMedalha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abreFragmento(Store.class);
+            }
+        });
+
+        btnAcolhePlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+            }
+        });
+        imageAcolhePlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+            }
+        });
+    }
+    private void updatePageName(String pageName) {
+        TextView textView = findViewById(R.id.txtVwNomePagina);
+        textView.setText(pageName);
+    }
+
+
+    private void adicionaEventosCLickRodape() {
+        LinearLayout btnHome = findViewById(R.id.lnrLytHome);
+        LinearLayout btnVideos = findViewById(R.id.lnrLytConteudo);
+        LinearLayout btnCvv = findViewById(R.id.lnrLytCvv);
+        LinearLayout btnMissoes = findViewById(R.id.lnrLytMissao);
+        LinearLayout btnStore = findViewById(R.id.lnrLytLoja);
 
         btnVideos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                abreFragmento(Videos.class);
                 Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
                 Call<Model> call = methods.getAllData();
                 call.enqueue(new Callback<Model>() {
                     @Override
                     public void onResponse(Call<Model> call, Response<Model> response) {
                         Log.e(TAG, "onResponse: code: " + response.code());
-
                         String data = response.body().getMessage();
-
                         Log.e(TAG, "onResponse: emails: " + data);
-
-
                     }
 
                     @Override
@@ -83,41 +130,39 @@ public class MainActivity extends AppCompatActivity {
                 });
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, Videos.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                updatePageName(getString(R.string.page_name_videos));
             }
         });
-
 
         btnCvv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment, Cvv.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                abreFragmento(Cvv.class);
+                updatePageName(getString(R.string.page_name_cvv));
             }
         });
 
         btnMissoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment, Missoes.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                abreFragmento(Missoes.class);
+                updatePageName(getString(R.string.page_name_missoes));
             }
         });
 
         btnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment, Store.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                abreFragmento(Store.class);
+                updatePageName(getString(R.string.page_name_store));
             }
         });
-
-
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment, Home.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+                abreFragmento(Home.class);
+                updatePageName(getString(R.string.page_name_home));
             }
         });
 
@@ -129,13 +174,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().replace(R.id.fragment, Perfil.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }
 
-    public void irParaVoce(View view){
+    private void abreFragmento(Class target){
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment, Home.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
-    }
-
-    public void irParaLoja(View view){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment, Store.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
+        fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }
 }

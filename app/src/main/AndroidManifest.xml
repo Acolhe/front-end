@@ -23,10 +23,31 @@
             android:name="com.acolhe.app.HumorDiario"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.MainActivity"
+            android:name="com.acolhe.app.MeditacaoMusicaActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.acolhe.app.PaginaAcolhePlus"
+            android:exported="false" />
+        <activity
+            android:name="com.acolhe.app.MeditacaoHome"
+            android:exported="false" />
+        <activity
+            android:name="com.acolhe.app.ClinicasActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.acolhe.app.PaginaProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.acolhe.app.PaginaEditarUser"
             android:exported="false" />
         <activity
             android:name="com.acolhe.app.PaginaCadastroActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.acolhe.app.PlaylistActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.acolhe.app.MainActivity"
             android:exported="false" />
         <activity
             android:name="com.acolhe.app.PaginaInicialActivity"

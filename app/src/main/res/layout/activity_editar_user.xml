@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayoutPrincipal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#004C6D"
+    android:orientation="vertical"
+    tools:context="com.acolhe.app.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/header_color"
+        android:orientation="horizontal"
+        android:paddingVertical="15dp">
+
+
+        <LinearLayout
+            android:id="@+id/lnrLytVoltar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/setinhavoltarmenuprincipal"
+                android:layout_width="35dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_weight="1"
+                android:contentDescription="@string/descricaoImagemPerfil"
+                app:srcCompat="@drawable/setabranca" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtVwNomePagina"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="9"
+            android:clickable="true"
+            android:fontFamily="@font/paytone_one"
+            android:gravity="center_vertical"
+            android:text="@string/editar"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/lnrLytOfensiva"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="10"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/imgVwOfensiva"
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/descricaoImagemOfensiva"
+                app:srcCompat="@drawable/loginho" />
+
+            <TextView
+                android:id="@+id/valorOfensiva"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/paytone_one"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:text="@string/valorDefaultOfensiva"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnrLytMedalha"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="10"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/imgVwMoeda"
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1.1"
+                android:contentDescription="@string/descricaoImagemMedalha"
+                app:srcCompat="@drawable/medal" />
+
+            <TextView
+                android:id="@+id/valorSaldo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/paytone_one"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:text="@string/valorDefaultOfensiva"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnrLytAcolhePlus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgVwAcolhePlus"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:contentDescription="@string/descricaoImagemAcolhePlus"
+                app:srcCompat="@drawable/subs" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bordabaixoarredondadabotao"
+            android:gravity="center|center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/fotoperfil" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/paytone_one"
+                android:gravity="center"
+                android:hint="UserTeste"
+                android:inputType="textPersonName"
+                android:textColor="#487B91"
+                android:textColorHint="#544D568C"
+                android:textSize="32sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/editaremail"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="#004C6D"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/paytone_one"
+                    android:text="Editar perfil"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/gray"
+                    android:ems="10"
+                    android:fontFamily="@font/paytone_one"
+                    android:hint="email@email.com"
+                    android:inputType="textPersonName"
+                    android:textColor="#66F5F5F5"
+                    android:textColorHint="#6AFDFDFD" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/paytone_one"
+                    android:text="Salvar"
+                    app:backgroundTint="@color/primary_color" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
