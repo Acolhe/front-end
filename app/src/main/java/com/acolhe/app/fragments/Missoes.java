@@ -7,61 +7,57 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.acolhe.acolhe_api.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Missoes#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.w3c.dom.Text;
+
 public class Missoes extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Missoes() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Missoes.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Missoes newInstance(String param1, String param2) {
-        Missoes fragment = new Missoes();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_missoes, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_missoes, container, false);
+
+        preencheMissao(view);
+
+        validaCheckbox(view.findViewById(R.id.chckBxCheckBox1));
+        validaCheckbox(view.findViewById(R.id.chckBxCheckBox2));
+
+        return view;
+    }
+
+    private void preencheMissao(View view){
+        String nomeMissao1 = "Exemplo Missão 1";
+        String nomeMissao2 = "Exemplo Missão 2";
+        String descricaoMissao1 = "Faz ae a missão";
+        String descricaoMissao2 = "Exemplo de descrição da missão";
+
+        TextView txtVwNmMissao1 = view.findViewById(R.id.txtVwNmMissao1);
+        TextView txtVwNmMissao2 = view.findViewById(R.id.txtVwNmMissao2);
+        TextView txtVwDescricao1 = view.findViewById(R.id.txtVwDescricao1);
+        TextView txtVwDescricao2 = view.findViewById(R.id.txtVwDescricao2);
+
+        txtVwNmMissao1.setText(nomeMissao1);
+        txtVwNmMissao2.setText(nomeMissao2);
+        txtVwDescricao1.setText(descricaoMissao1);
+        txtVwDescricao2.setText(descricaoMissao2);
+    }
+
+    private void validaCheckbox(CheckBox checkBox){
+        checkBox.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (checkBox.isChecked()){
+                checkBox.setClickable(false);
+            }
+        });
     }
 
 }

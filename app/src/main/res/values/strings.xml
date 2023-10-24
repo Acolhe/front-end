@@ -7,6 +7,14 @@
     <string name="buttonLoginText">Login</string>
     <string name="buttonCadastrarText">Cadastre-se</string>
     <string name="store">Store</string>
+    <string name="valorDefaultOfensiva">21</string>
+
+    <string name="ajuda">Ajuda</string>
+    <string name="naoObrigado">Não, obrigado</string>
+    <string name="assineja">Assine já!</string>
+    <string name="canceleAssinaturaTitulo">Cancele a qualquer momento</string>
+    <string name="canceleAssinatura">Cancele sua assinatura a qualquer momento - sem taxas nem penalidades</string>
+    <string name="acolhe_plus">Seja acolhe plus!\nAssine por apenas R$14,99 por mês\nSe ajude cada vez MAIS</string>
     <string name="acolheStore">ACOLHE\nSTORE</string>
     <string name="AdquiraProdutosAcolhe">Adquira já os diversos produtos\nacolhe!</string>
     <string name="CamisetaAcolhe">Camiseta Acolhe</string>
@@ -32,5 +40,46 @@
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="descricaoImagemPerfil">Logo de Perfil</string>
+    <string name="descricaoImagemOfensiva">Pequeno logo do Acolhe</string>
+    <string name="descricaoImagemMedalha">Medalhão Acolhe</string>
+    <string name="descricaoImagemAcolhePlus">Logo Acolhe Plus</string>
+
+    <string name="descricaoImagemHome">Ícone Casa simples</string>
+    <string name="descricaoImagemConteudo">Ícone de play de vídeos</string>
+    <string name="descricaoImagemCvv">Logo Acolhe</string>
+    <string name="descricaoImagemMissoes">Ícone de tarefas</string>
+    <string name="descricaoImagemLoja">Ícone de Bolsa</string>
+
+
+    <string name="tituloMissoesDiaria">Missões\nDiárias</string>
+    <string name="subtituloMissoesDiaria">Complete as suas missões diárias e ganhe recompensas!</string>
+    <string name="nomeMissao1">nmMissao</string>
+    <string name="descricaoMissao1">descricao</string>
+    <string name="nomeMissao2">nmMissao</string>
+    <string name="descricaoMissao2">descricao</string>
+    <string name="descricaoImgPersonagens">Personagens Acolhe</string>
+
+    <string name="tituloClinicas">Clínicas de Suporte</string>
+    <string name="subtituloClinicas">Aqui temos as melhores recomendações clínicas de São Paulo!</string>
+    <string name="nomeClinica">nmClinica</string>
+    <string name="localClinica">Bairro, Cidade - SP</string>
+    <string name="bairroClinica">Bairro</string>
+    <string name="cidadeClinica">Cidade</string>
+    <string name="sgEstadoClinica">SP</string>
+
+    <string name="tituloDescricaoClinicas">Descrição: </string>
+    <string name="conteudoDescricaoClinicas">WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</string>
+    <string name="tituloContatoClinicas">Contatos: </string>
+
+    <string name="telefone">Telefone: </string>
+    <string name="telefoneDefault">(11) 95555-8888</string>
+    <string name="email">Email: </string>
+    <string name="emailDefault">email.empresa@email.com</string>
+
+    <string name="nomePaginaClinica">Clinicas</string>
+
+
 
 </resources>
