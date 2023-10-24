@@ -19,6 +19,10 @@ import android.widget.Toast;
 
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.Retrofit.CreateuserModel;
+import com.acolhe.app.Retrofit.Methods;
+import com.acolhe.app.Retrofit.RetrofitClient;
+import com.acolhe.app.Retrofit.User;
 import com.acolhe.app.config.ConfigFirebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +33,10 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PaginaInicialActivity extends AppCompatActivity {
     ConstraintLayout layout;
@@ -52,17 +60,17 @@ public class PaginaInicialActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        auth = ConfigFirebase.getFirebaseAuth();
-
-        FirebaseUser actual_user = auth.getCurrentUser();
-        if(actual_user != null){
-            Intent intent = new Intent(PaginaInicialActivity.this, MainActivity.class);
-            startActivity(intent);
-        }
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        auth = ConfigFirebase.getFirebaseAuth();
+//
+//        FirebaseUser actual_user = auth.getCurrentUser();
+//        if(actual_user != null){
+//            Intent intent = new Intent(PaginaInicialActivity.this, MainActivity.class);
+//            startActivity(intent);
+//        }
+//    }
 
 //    private View  CreatePopUpWindow() {
 //        LayoutInflater inflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -145,7 +153,19 @@ private View CreatePopUpWindow() {
         String emailString = emailPopup.getText().toString();
         String senhaString = senhaPopup.getText().toString();
 
+        Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
+        methods.loginUser(emailString, senhaString).enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                System.out.println("Usuario Logado");
+                System.out.println(response.body());
+            }
 
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                System.out.println("Erro ao logar usuário");
+            }
+        });
 
         auth = ConfigFirebase.getFirebaseAuth();
         auth.signInWithEmailAndPassword(emailString, senhaString).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

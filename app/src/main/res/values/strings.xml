@@ -26,6 +26,20 @@
     <string name="Entrar">Entrar</string>
     <string name="nomeUsuario">UserTeste</string>
     <string name="naoTemLogin">Não tem cadastro? Clique Aqui</string>
+
+    <string name="eiNome">👋 Ei {{nome}}!</string>
+    <string name="ComoEstaSeSentindo">Como você esta se sentindo hoje?</string>
+    <string name="Confirma">Confirmar</string>
+    <string name="Normal">Normal</string>
+    <string name="EstouBem">Estou bem!</string>
+    <string name="NaoBem">Não me sinto nada bem</string>
+    <string name="Triste">Estou meio triste</string>
+    <string name="MuitoBem">Me sinto muito bem!</string>
+
+    <string name="semInternet">Você está sem internet!</string>
+    <string name="semInternetDesc">Esteja conecta na internet para entrar no app!</string>
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="descricaoImagemPerfil">Logo de Perfil</string>
