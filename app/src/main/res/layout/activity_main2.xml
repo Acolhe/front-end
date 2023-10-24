@@ -69,7 +69,7 @@
                 app:srcCompat="@drawable/loginho" />
 
             <TextView
-                android:id="@+id/txtVwOfensiva"
+                android:id="@+id/valorOfensiva"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -102,7 +102,7 @@
                 app:srcCompat="@drawable/medal" />
 
             <TextView
-                android:id="@+id/txtVwMedalha"
+                android:id="@+id/valorSaldo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

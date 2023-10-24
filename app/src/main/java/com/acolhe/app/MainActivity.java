@@ -18,6 +18,7 @@ import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.fragments.Cvv;
 import com.acolhe.app.fragments.Home;
 import com.acolhe.app.fragments.Missoes;
+import com.acolhe.app.fragments.Perfil;
 import com.acolhe.app.fragments.Store;
 import com.acolhe.app.fragments.Videos;
 
@@ -33,6 +34,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        Bundle enveloper = getIntent().getExtras();
+        Integer saldo = enveloper.getInt("saldo");
+        Integer ofensiva = enveloper.getInt("diasConsecutivos");
+        String stringSaldo = String.valueOf(saldo);
+        String stirngofensiva = String.valueOf(ofensiva);
+
+        System.out.println(saldo);
+        System.out.println(ofensiva);
+
+        TextView ofensivaLayout = findViewById(R.id.valorOfensiva);
+        ofensivaLayout.setText(stirngofensiva);
+
+        TextView saldoLayout = findViewById(R.id.valorSaldo);
+        saldoLayout.setText(stringSaldo);
 
         adicionarEventosClickCabecalho();
         adicionaEventosCLickRodape();
@@ -149,6 +165,13 @@ public class MainActivity extends AppCompatActivity {
                 updatePageName(getString(R.string.page_name_home));
             }
         });
+
+    }
+
+
+    public void irParaPerfil(View view){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fragment, Perfil.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }
 
     private void abreFragmento(Class target){

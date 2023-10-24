@@ -1,6 +1,6 @@
 package com.acolhe.app.Retrofit;
 
-public class CreateuserModel {
+public class StringModel {
     String message;
 
     public String getMessage() {

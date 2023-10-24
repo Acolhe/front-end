@@ -1,6 +1,7 @@
 package com.acolhe.app;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.Retrofit.Methods;
+import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.adapters.ItemAdapter;
 
 import java.util.ArrayList;
@@ -36,4 +39,5 @@ public class PaginaAcolhePlus extends AppCompatActivity {
             finish();
         });
     }
+
 }
