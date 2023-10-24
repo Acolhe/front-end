@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.service.autofill.UserData;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.acolhe.acolhe_api.R;
 import com.acolhe.app.Retrofit.CreateuserModel;
+import com.acolhe.app.Retrofit.LoginModel;
 import com.acolhe.app.Retrofit.Methods;
 import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.Retrofit.User;
@@ -39,6 +41,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PaginaInicialActivity extends AppCompatActivity {
+
+    private Bundle bundle = new Bundle();
     ConstraintLayout layout;
     FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
     EditText email;
@@ -146,23 +150,27 @@ private View CreatePopUpWindow() {
 
 
     public void logarUsuario(View view) {
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         EditText emailPopup = popupView.findViewById(R.id.emailinput);
         EditText senhaPopup = popupView.findViewById(R.id.senhainput);
 
         String emailString = emailPopup.getText().toString();
         String senhaString = senhaPopup.getText().toString();
 
+
         Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
-        methods.loginUser(emailString, senhaString).enqueue(new Callback() {
+
+        methods.loginUser(emailString, senhaString).enqueue(new Callback<LoginModel>() {
             @Override
-            public void onResponse(Call call, Response response) {
+            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
                 System.out.println("Usuario Logado");
-                System.out.println(response.body());
+                System.out.println(response.body().getSaldo());
+                System.out.println(response.body().getDiasConsecutivos());
+                bundle.putInt("saldo", response.body().getSaldo());
+                bundle.putInt("diasConsecutivos", response.body().getDiasConsecutivos());
             }
 
             @Override
-            public void onFailure(Call call, Throwable t) {
+            public void onFailure(Call<LoginModel> call, Throwable t) {
                 System.out.println("Erro ao logar usuário");
             }
         });
@@ -173,6 +181,7 @@ private View CreatePopUpWindow() {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Intent intent = new Intent(PaginaInicialActivity.this, MainActivity.class);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                 } else {
                     String msg = "";

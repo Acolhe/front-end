@@ -98,4 +98,22 @@ public class LoginModel {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+
+    @Override
+    public String toString() {
+        return "LoginModel{" +
+                "dataultimologin='" + dataultimologin + '\'' +
+                ", saldo=" + saldo +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", data_cadastro='" + data_cadastro + '\'' +
+                ", premium=" + premium +
+                ", id=" + id +
+                ", diasConsecutivos=" + diasConsecutivos +
+                ", codSkinPrincipal=" + codSkinPrincipal +
+                ", dataCadastro='" + dataCadastro + '\'' +
+                ", nome='" + nome + '\'' +
+                '}';
+    }
 }

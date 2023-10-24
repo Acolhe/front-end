@@ -20,7 +20,7 @@
             android:name="com.acolhe.app.SemInternet"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.PaginaInicialActivity"
+            android:name="com.acolhe.app.HumorDiario"
             android:exported="false" />
         <activity
             android:name="com.acolhe.app.MainActivity"
@@ -29,7 +29,7 @@
             android:name="com.acolhe.app.PaginaCadastroActivity"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.HumorDiario"
+            android:name="com.acolhe.app.PaginaInicialActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

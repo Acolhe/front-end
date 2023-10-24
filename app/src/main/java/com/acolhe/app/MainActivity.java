@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.acolhe.acolhe_api.R;
 import com.acolhe.app.Retrofit.Methods;
@@ -35,6 +36,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        Bundle enveloper = getIntent().getExtras();
+        Integer saldo = enveloper.getInt("saldo");
+        Integer ofensiva = enveloper.getInt("diasConsecutivos");
+        String stringSaldo = String.valueOf(saldo);
+        String stirngofensiva = String.valueOf(ofensiva);
+
+        System.out.println(saldo);
+        System.out.println(ofensiva);
+
+        TextView ofensivaLayout = findViewById(R.id.valorOfensiva);
+        ofensivaLayout.setText(stirngofensiva);
+
+        TextView saldoLayout = findViewById(R.id.valorSaldo);
+        saldoLayout.setText(stringSaldo);
+
 
         ImageView btnHome = findViewById(R.id.btnHome);
         ImageView btnVideos = findViewById(R.id.btnVideos);

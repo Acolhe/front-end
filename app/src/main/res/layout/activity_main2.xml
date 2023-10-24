@@ -65,7 +65,7 @@
                 app:srcCompat="@drawable/loginho" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/valorOfensiva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -92,7 +92,7 @@
                 app:srcCompat="@drawable/medal" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/valorSaldo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

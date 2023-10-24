@@ -125,8 +125,7 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                 Log.d("Senha", senha);
                 Log.d("Nome", nome);
                 Log.d("Email", email);
-                cadastrarFirebase(email,senha);
-                cadastrarPostgres(nome, email, senha);
+                cadastrarFirebase(nome, email,senha);
             }
         });
 
@@ -198,15 +197,16 @@ public class PaginaCadastroActivity extends AppCompatActivity {
         });
     }
 
-    public void cadastrarFirebase(String email, String senha){
+    public void cadastrarFirebase(String nome, String email, String senha){
         auth.createUserWithEmailAndPassword(email, senha)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
+                            cadastrarPostgres(nome, email, senha);
                             Toast.makeText(PaginaCadastroActivity.this, "Usuario cadastrado", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(PaginaCadastroActivity.this, MainActivity.class);
+                            Intent intent = new Intent(PaginaCadastroActivity.this, PaginaInicialActivity.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(PaginaCadastroActivity.this, "Erro ao cadastrar, verifique os dados", Toast.LENGTH_SHORT).show();
@@ -221,6 +221,8 @@ public class PaginaCadastroActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CreateuserModel> call, Response<CreateuserModel> response) {
                 System.out.println("Usuario cadastrado no postgres");
+                System.out.println(response.body());
+                System.out.println(response);
             }
 
             @Override
