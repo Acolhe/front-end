@@ -28,21 +28,25 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private static final String TAG = "MainActivity";
+
+    private int id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        Intent intent = getIntent();
 
-        Bundle enveloper = getIntent().getExtras();
-        Integer saldo = enveloper.getInt("saldo");
-        Integer ofensiva = enveloper.getInt("diasConsecutivos");
+        int saldo = intent.getIntExtra("saldo", 0);
+        int ofensiva = intent.getIntExtra("ofensiva", 0);
+        id = intent.getIntExtra("id", 0);
+
+
         String stringSaldo = String.valueOf(saldo);
         String stirngofensiva = String.valueOf(ofensiva);
-
-        System.out.println(saldo);
-        System.out.println(ofensiva);
 
         TextView ofensivaLayout = findViewById(R.id.valorOfensiva);
         ofensivaLayout.setText(stirngofensiva);
@@ -60,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout btnMedalha = findViewById(R.id.lnrLytMedalha);
         LinearLayout btnAcolhePlus = findViewById(R.id.lnrLytAcolhePlus);
         ImageView imageAcolhePlus = findViewById(R.id.imgVwAcolhePlus);
-
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,17 +85,21 @@ public class MainActivity extends AppCompatActivity {
                 abreFragmento(Store.class);
             }
         });
-
         btnAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+
+                startActivity(intent);
             }
         });
+
         imageAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
     }

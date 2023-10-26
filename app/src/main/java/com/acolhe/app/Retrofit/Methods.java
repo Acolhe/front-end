@@ -19,6 +19,7 @@ public interface Methods {
     @GET("acolhe/usuario/byEmailSenha/{email}/{senha}")
     Call<LoginModel> loginUser(@Path("email") String email, @Path("senha") String senha);
 
-
+    @PUT("acolhe/usuario/assinarPlano/{id}")
+    Call<StringModel> becomePremium(@Path("id") Integer id);
 
 }
