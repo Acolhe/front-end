@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-//        getBundles();
+        getBundles();
         adicionarEventosClickCabecalho();
         adicionaEventosCLickRodape();
     }
