@@ -28,7 +28,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private static final String TAG = "MainActivity";
 
     private int id;
@@ -38,12 +37,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        getBundles();
+        adicionarEventosClickCabecalho();
+        adicionaEventosCLickRodape();
+    }
+
+    private void getBundles() {
         Intent intent = getIntent();
 
         int saldo = intent.getIntExtra("saldo", 0);
         int ofensiva = intent.getIntExtra("ofensiva", 0);
         id = intent.getIntExtra("id", 0);
-
 
         String stringSaldo = String.valueOf(saldo);
         String stirngofensiva = String.valueOf(ofensiva);
@@ -53,9 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView saldoLayout = findViewById(R.id.valorSaldo);
         saldoLayout.setText(stringSaldo);
-
-        adicionarEventosClickCabecalho();
-        adicionaEventosCLickRodape();
     }
 
     private void adicionarEventosClickCabecalho() {
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout btnMedalha = findViewById(R.id.lnrLytMedalha);
         LinearLayout btnAcolhePlus = findViewById(R.id.lnrLytAcolhePlus);
         ImageView imageAcolhePlus = findViewById(R.id.imgVwAcolhePlus);
+
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 abreFragmento(Store.class);
             }
         });
+
         btnAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,9 +120,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout btnMissoes = findViewById(R.id.lnrLytMissao);
         LinearLayout btnStore = findViewById(R.id.lnrLytLoja);
 
-        btnVideos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnVideos.setOnClickListener(view -> {
                 abreFragmento(Videos.class);
                 Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
                 Call<Model> call = methods.getAllData();
@@ -138,50 +140,36 @@ public class MainActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, Videos.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
                 updatePageName(getString(R.string.page_name_videos));
-            }
-        });
+            });
 
-        btnCvv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnCvv.setOnClickListener(view ->{
                 abreFragmento(Cvv.class);
                 updatePageName(getString(R.string.page_name_cvv));
-            }
         });
 
-        btnMissoes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnMissoes.setOnClickListener(view -> {
                 abreFragmento(Missoes.class);
                 updatePageName(getString(R.string.page_name_missoes));
-            }
         });
 
-        btnStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnStore.setOnClickListener(view -> {
                 abreFragmento(Store.class);
                 updatePageName(getString(R.string.page_name_store));
-            }
         });
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnHome.setOnClickListener(view -> {
                 abreFragmento(Home.class);
                 updatePageName(getString(R.string.page_name_home));
-            }
         });
-
     }
 
-
-    public void irParaPerfil(View view){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment, Perfil.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
-    }
 
     private void abreFragmento(Class target){
+        if (target == Home.class) {
+            findViewById(R.id.header).setVisibility(View.GONE);
+        }else {
+            findViewById(R.id.header).setVisibility(View.VISIBLE);
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }
