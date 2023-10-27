@@ -21,7 +21,6 @@ import com.acolhe.app.fragments.Missoes;
 import com.acolhe.app.fragments.Perfil;
 import com.acolhe.app.fragments.Store;
 import com.acolhe.app.fragments.Videos;
-import com.github.islamkhsh.CardSliderViewPager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +29,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+
+    private int id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getBundles() {
-        Bundle enveloper = getIntent().getExtras();
-        Integer saldo = enveloper.getInt("saldo");
-        Integer ofensiva = enveloper.getInt("diasConsecutivos");
+        Intent intent = getIntent();
+
+        int saldo = intent.getIntExtra("saldo", 0);
+        int ofensiva = intent.getIntExtra("ofensiva", 0);
+        id = intent.getIntExtra("id", 0);
+
         String stringSaldo = String.valueOf(saldo);
         String stirngofensiva = String.valueOf(ofensiva);
-
-        System.out.println(saldo);
-        System.out.println(ofensiva);
 
         TextView ofensivaLayout = findViewById(R.id.valorOfensiva);
         ofensivaLayout.setText(stirngofensiva);
@@ -90,13 +92,18 @@ public class MainActivity extends AppCompatActivity {
         btnAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+
+                startActivity(intent);
             }
         });
+
         imageAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
     }
