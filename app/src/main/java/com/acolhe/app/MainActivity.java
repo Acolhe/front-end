@@ -21,6 +21,7 @@ import com.acolhe.app.fragments.Missoes;
 import com.acolhe.app.fragments.Perfil;
 import com.acolhe.app.fragments.Store;
 import com.acolhe.app.fragments.Videos;
+import com.github.islamkhsh.CardSliderViewPager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        getBundles();
+        adicionarEventosClickCabecalho();
+        adicionaEventosCLickRodape();
+    }
+
+    private void getBundles() {
         Bundle enveloper = getIntent().getExtras();
         Integer saldo = enveloper.getInt("saldo");
         Integer ofensiva = enveloper.getInt("diasConsecutivos");
@@ -49,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView saldoLayout = findViewById(R.id.valorSaldo);
         saldoLayout.setText(stringSaldo);
-
-        adicionarEventosClickCabecalho();
-        adicionaEventosCLickRodape();
     }
 
     private void adicionarEventosClickCabecalho() {
@@ -109,9 +113,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout btnMissoes = findViewById(R.id.lnrLytMissao);
         LinearLayout btnStore = findViewById(R.id.lnrLytLoja);
 
-        btnVideos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnVideos.setOnClickListener(view -> {
                 abreFragmento(Videos.class);
                 Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
                 Call<Model> call = methods.getAllData();
@@ -131,50 +133,36 @@ public class MainActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, Videos.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
                 updatePageName(getString(R.string.page_name_videos));
-            }
-        });
+            });
 
-        btnCvv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnCvv.setOnClickListener(view ->{
                 abreFragmento(Cvv.class);
                 updatePageName(getString(R.string.page_name_cvv));
-            }
         });
 
-        btnMissoes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnMissoes.setOnClickListener(view -> {
                 abreFragmento(Missoes.class);
                 updatePageName(getString(R.string.page_name_missoes));
-            }
         });
 
-        btnStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnStore.setOnClickListener(view -> {
                 abreFragmento(Store.class);
                 updatePageName(getString(R.string.page_name_store));
-            }
         });
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnHome.setOnClickListener(view -> {
                 abreFragmento(Home.class);
                 updatePageName(getString(R.string.page_name_home));
-            }
         });
-
     }
 
-
-    public void irParaPerfil(View view){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment, Perfil.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
-    }
 
     private void abreFragmento(Class target){
+        if (target == Home.class) {
+            findViewById(R.id.header).setVisibility(View.GONE);
+        }else {
+            findViewById(R.id.header).setVisibility(View.VISIBLE);
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }
