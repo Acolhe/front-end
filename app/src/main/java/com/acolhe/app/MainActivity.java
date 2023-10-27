@@ -18,6 +18,7 @@ import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.fragments.Cvv;
 import com.acolhe.app.fragments.Home;
 import com.acolhe.app.fragments.Missoes;
+import com.acolhe.app.fragments.Perfil;
 import com.acolhe.app.fragments.Store;
 import com.acolhe.app.fragments.Videos;
 
@@ -29,13 +30,34 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    private int id;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        getBundles();
         adicionarEventosClickCabecalho();
         adicionaEventosCLickRodape();
+    }
+
+    private void getBundles() {
+        Intent intent = getIntent();
+
+        int saldo = intent.getIntExtra("saldo", 0);
+        int ofensiva = intent.getIntExtra("ofensiva", 0);
+        id = intent.getIntExtra("id", 0);
+
+        String stringSaldo = String.valueOf(saldo);
+        String stirngofensiva = String.valueOf(ofensiva);
+
+        TextView ofensivaLayout = findViewById(R.id.valorOfensiva);
+        ofensivaLayout.setText(stirngofensiva);
+
+        TextView saldoLayout = findViewById(R.id.valorSaldo);
+        saldoLayout.setText(stringSaldo);
     }
 
     private void adicionarEventosClickCabecalho() {
@@ -70,13 +92,18 @@ public class MainActivity extends AppCompatActivity {
         btnAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+
+                startActivity(intent);
             }
         });
+
         imageAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
     }
@@ -93,9 +120,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout btnMissoes = findViewById(R.id.lnrLytMissao);
         LinearLayout btnStore = findViewById(R.id.lnrLytLoja);
 
-        btnVideos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnVideos.setOnClickListener(view -> {
                 abreFragmento(Videos.class);
                 Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
                 Call<Model> call = methods.getAllData();
@@ -115,43 +140,36 @@ public class MainActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, Videos.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
                 updatePageName(getString(R.string.page_name_videos));
-            }
-        });
+            });
 
-        btnCvv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnCvv.setOnClickListener(view ->{
                 abreFragmento(Cvv.class);
                 updatePageName(getString(R.string.page_name_cvv));
-            }
         });
 
-        btnMissoes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnMissoes.setOnClickListener(view -> {
                 abreFragmento(Missoes.class);
                 updatePageName(getString(R.string.page_name_missoes));
-            }
         });
 
-        btnStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnStore.setOnClickListener(view -> {
                 abreFragmento(Store.class);
                 updatePageName(getString(R.string.page_name_store));
-            }
         });
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnHome.setOnClickListener(view -> {
                 abreFragmento(Home.class);
                 updatePageName(getString(R.string.page_name_home));
-            }
         });
     }
 
+
     private void abreFragmento(Class target){
+        if (target == Home.class) {
+            findViewById(R.id.header).setVisibility(View.GONE);
+        }else {
+            findViewById(R.id.header).setVisibility(View.VISIBLE);
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }
