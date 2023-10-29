@@ -5,25 +5,29 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.acolhe.acolhe_api.R;
 import com.acolhe.app.ClinicasActivity;
 import com.acolhe.app.MeditacaoHome;
 import com.acolhe.app.adapters.ClinicaSliderAdapter;
 import com.acolhe.app.adapters.PlaylistSliderAdapter;
+import com.acolhe.app.config.ConfigFirebase;
 import com.acolhe.app.model.Clinica;
+import com.acolhe.app.model.Frase;
 import com.acolhe.app.model.Humor;
 import com.acolhe.app.model.Playlist;
 import com.acolhe.app.model.Respiracao;
 import com.acolhe.app.model.Satisfacao;
 import com.acolhe.app.model.Usuario;
 import com.github.islamkhsh.CardSliderViewPager;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,9 +40,13 @@ import java.util.ArrayList;
 
 public class Home extends Fragment {
 
+    private DatabaseReference db;
+    private Frase frase;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.db = ConfigFirebase.getFirebaseDatabase();
     }
 
     @Override
@@ -64,7 +72,9 @@ public class Home extends Fragment {
         user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JULY.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.BEM));
         user.getHistoricoHumor().add(new Humor(LocalDate.now(), Satisfacao.BEM));
 
-        fraseDoDia.setText(getFraseDoDia());
+        setFrase();
+        setFraseDoDia(fraseDoDia);
+
         int max = user.getHistoricoHumor().size();
         Humor ultimoHumor = user.getHistoricoHumor().get(max - 1);
         mesHumor.setText(ultimoHumor.getDataAvaliacao().getMonth().toString().substring(0, 3));
@@ -93,10 +103,10 @@ public class Home extends Fragment {
         switch (humor.getNivelSatisfacao()) {
             case MUITO_TRISTE:
                 carinhaHumor.setImageResource(R.drawable.nadabem);
-            break;
+                break;
             case TRISTE:
                 carinhaHumor.setImageResource(R.drawable.triste);
-            break;
+                break;
             case NORMAL:
                 carinhaHumor.setImageResource(R.drawable.normal);
                 break;
@@ -110,8 +120,25 @@ public class Home extends Fragment {
         }
     }
 
-    private String getFraseDoDia(){
-        return "Frase bonita do dia de hoje, bem legal";
+    private void setFraseDoDia(TextView fraseDoDia){
+        Query fraseQuery = db.child("frases").limitToFirst(1);
+        fraseQuery.get().addOnCompleteListener(task -> {
+            if(!task.isSuccessful()) {
+                Log.d("firebase", "Error getting data", task.getException());
+            }else {
+                try {
+                    this.frase = task.getResult().getValue(Frase.class);
+                    this.frase.wait();
+                    fraseDoDia.setText(this.frase.getFrase());
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
+    public void setFrase() {
+        this.db.child("frases").push().setValue(new Frase("Frase bonita do dia de hoje, bem legal", LocalDate.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(getResources().getConfiguration().getLocales().get(0)))));
     }
 
     private static void sliderClinicas(View view) {

@@ -47,10 +47,10 @@
             android:name="com.acolhe.app.PlaylistActivity"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.MainActivity"
+            android:name="com.acolhe.app.PaginaInicialActivity"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.PaginaInicialActivity"
+            android:name="com.acolhe.app.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
