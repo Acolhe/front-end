@@ -5,97 +5,66 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Usuario {
-    private String nome;
-    private int saldo;
-    private int ofensiva;
-    private String email;
-    private int codSkin;
-    private LocalDateTime dataCadastro;
-    private LocalDate ultimoAcesso;
-    private boolean premium;
-    private ArrayList<Humor> historicoHumor;
+    private static String nome;
+    private static int saldo;
+    private static int ofensiva;
+    private static String email;
+    private static int codSkin;
+    private static LocalDateTime dataCadastro;
+    private static LocalDate ultimoAcesso;
+    private static boolean premium;
+    private static ArrayList<Humor> historicoHumor;
 
     public Usuario(String nome, int saldo, int ofensiva, String email, int codSkin, LocalDateTime dataCadastro, LocalDate ultimoAcesso, boolean premium, ArrayList<Humor> historicoHumor) {
-        this.nome = nome;
-        this.saldo = saldo;
-        this.ofensiva = ofensiva;
-        this.email = email;
-        this.codSkin = codSkin;
-        this.dataCadastro = dataCadastro;
-        this.ultimoAcesso = ultimoAcesso;
-        this.premium = premium;
-        this.historicoHumor = historicoHumor;
+        Usuario.nome = nome;
+        Usuario.saldo = saldo;
+        Usuario.ofensiva = ofensiva;
+        Usuario.email = email;
+        Usuario.codSkin = codSkin;
+        Usuario.dataCadastro = dataCadastro;
+        Usuario.ultimoAcesso = ultimoAcesso;
+        Usuario.premium = premium;
+        Usuario.historicoHumor = historicoHumor;
     }
 
-    public String getNome() {
+    public static String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getSaldo() {
+    public static int getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
-        this.saldo = saldo;
+    public static void updateSaldo(int novoSaldo) {
+        saldo += novoSaldo;
     }
 
-    public int getOfensiva() {
+    public static int getOfensiva() {
         return ofensiva;
     }
 
-    public void setOfensiva(int ofensiva) {
-        this.ofensiva = ofensiva;
-    }
-
-    public String getEmail() {
+    public static String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getCodSkin() {
+    public static int getCodSkin() {
         return codSkin;
     }
 
-    public void setCodSkin(int codSkin) {
-        this.codSkin = codSkin;
-    }
-
-    public LocalDateTime getDataCadastro() {
+    public static LocalDateTime getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(LocalDateTime dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
-    public LocalDate getUltimoAcesso() {
+    public static LocalDate getUltimoAcesso() {
         return ultimoAcesso;
     }
 
-    public void setUltimoAcesso(LocalDate ultimoAcesso) {
-        this.ultimoAcesso = ultimoAcesso;
-    }
-
-    public boolean isPremium() {
+    public static boolean isPremium() {
         return premium;
     }
 
-    public void setPremium(boolean premium) {
-        this.premium = premium;
-    }
-
-    public ArrayList<Humor> getHistoricoHumor() {
+    public static ArrayList<Humor> getHistoricoHumor() {
         return historicoHumor;
     }
 
-    public void setHistoricoHumor(ArrayList<Humor> historicoHumor) {
-        this.historicoHumor = historicoHumor;
-    }
 }

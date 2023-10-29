@@ -59,7 +59,7 @@ public class Home extends Fragment {
         TextView humor = view.findViewById(R.id.humorDiario_home);
         ImageView carinhaHumor = view.findViewById(R.id.carinhaHumor_home);
 
-        Usuario user = new Usuario("Rafael",
+        new Usuario("Rafael",
                 40,
                 2,
                 "rafael.ferraz@picpay.com",
@@ -69,14 +69,13 @@ public class Home extends Fragment {
                 true,
                 new ArrayList<Humor>());
 
-        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JULY.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.BEM));
-        user.getHistoricoHumor().add(new Humor(LocalDate.now(), Satisfacao.BEM));
+        Usuario.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JULY.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.BEM));
+        Usuario.getHistoricoHumor().add(new Humor(LocalDate.now(), Satisfacao.BEM));
 
-        setFrase();
         setFraseDoDia(fraseDoDia);
 
-        int max = user.getHistoricoHumor().size();
-        Humor ultimoHumor = user.getHistoricoHumor().get(max - 1);
+        int max = Usuario.getHistoricoHumor().size();
+        Humor ultimoHumor = Usuario.getHistoricoHumor().get(max - 1);
         mesHumor.setText(ultimoHumor.getDataAvaliacao().getMonth().toString().substring(0, 3));
         diaHumor.setText(ultimoHumor.getDataAvaliacao().getDayOfMonth() + "");
         humor.setText(ultimoHumor.getNivelSatisfacao().toString());
@@ -135,10 +134,6 @@ public class Home extends Fragment {
                 }
             }
         });
-    }
-
-    public void setFrase() {
-        this.db.child("frases").push().setValue(new Frase("Frase bonita do dia de hoje, bem legal", LocalDate.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(getResources().getConfiguration().getLocales().get(0)))));
     }
 
     private static void sliderClinicas(View view) {

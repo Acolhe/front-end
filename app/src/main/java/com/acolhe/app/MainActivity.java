@@ -155,16 +155,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void abreFragmento(Class target){
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if (target == Home.class) {
-            findViewById(R.id.header).setVisibility(View.GONE);
-            Bundle extras = new Bundle();
-            extras.putString("teste", "testezinho");
-            Home home = new Home();
-            home.setArguments(extras);
-            fragmentManager.beginTransaction().replace(R.id.fragment, home).setReorderingAllowed(true).addToBackStack("name").commit();
-        }else {
-            findViewById(R.id.header).setVisibility(View.VISIBLE);
-            fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
-        }
+        fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }
 }
