@@ -2,8 +2,10 @@ package com.acolhe.app.model;
 
 import androidx.annotation.NonNull;
 
-public enum Satisfacao {
-    MUITO_TRISTE("Muito triste"),
+import java.io.Serializable;
+
+public enum Satisfacao implements Serializable {
+    MUITO_TRISTE("Nada bem"),
     TRISTE("Triste"),
     NORMAL("Normal"),
     BEM("Bem"),
