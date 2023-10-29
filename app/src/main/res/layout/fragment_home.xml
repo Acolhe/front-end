@@ -102,7 +102,6 @@
                             android:text="Ver tudo"
                             android:textAlignment="textEnd"
                             android:textColor="#B3004C6D"
-                            android:textSize="11sp"
                             tools:ignore="RtlCompat" />
 
                         <ImageView
@@ -182,6 +181,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -209,7 +209,6 @@
                             android:text="Ver tudo"
                             android:textAlignment="textEnd"
                             android:textColor="#B3004C6D"
-                            android:textSize="11sp"
                             tools:ignore="RtlCompat" />
 
                         <ImageView
@@ -238,7 +237,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -261,7 +259,6 @@
                             android:text="Ver tudo"
                             android:textAlignment="textEnd"
                             android:textColor="#B3004C6D"
-                            android:textSize="11sp"
                             tools:ignore="RtlCompat" />
 
                         <ImageView
@@ -278,7 +275,7 @@
                         android:id="@+id/home_viewPager2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="11dp"
+                        android:layout_marginTop="10dp"
                         app:cardSlider_otherPagesWidth="50dp"
                         app:cardSlider_pageMargin="0dp" />
                 </LinearLayout>

@@ -27,6 +27,9 @@ import com.github.islamkhsh.CardSliderViewPager;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.MonthDay;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
@@ -58,13 +61,14 @@ public class Home extends Fragment {
                 true,
                 new ArrayList<Humor>());
 
-        user.getHistoricoHumor().add(new Humor(LocalDate.now(), Satisfacao.NORMAL));
+        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JULY.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.BEM));
+        user.getHistoricoHumor().add(new Humor(LocalDate.now(), Satisfacao.BEM));
 
         fraseDoDia.setText(getFraseDoDia());
         int max = user.getHistoricoHumor().size();
         Humor ultimoHumor = user.getHistoricoHumor().get(max - 1);
-        mesHumor.setText(ultimoHumor.getDataAvaliacao().getMonthValue());
-        diaHumor.setText(ultimoHumor.getDataAvaliacao().getDayOfMonth());
+        mesHumor.setText(ultimoHumor.getDataAvaliacao().getMonth().toString().substring(0, 3));
+        diaHumor.setText(ultimoHumor.getDataAvaliacao().getDayOfMonth() + "");
         humor.setText(ultimoHumor.getNivelSatisfacao().toString());
         setCarinha(carinhaHumor, ultimoHumor);
 
@@ -143,7 +147,7 @@ public class Home extends Fragment {
         ArrayList<Respiracao> respiracao2 = new ArrayList<Respiracao>();
         Playlist playlist1 = new Playlist("Respire Fundo", "Exercícios de respiração", R.drawable.background_playlist_1, false, null);
         Playlist playlist2 = new Playlist("Sons da natureza", "Durma melhor com a natureza", R.drawable.background_playlist_3, false, null);
-        respiracao.add(new Respiracao("Relaxamento", "Acalme sua mente e alivie o estresse", "Expiração prolongada (4 - 6)", 0));
+        respiracao.add(new Respiracao("Relaxamento", "Acalme sua mente e alivie o estresse", "Expiração prolongada (4 - 6)", R.raw.atencao_plena));
         respiracao.add(new Respiracao("Aliviando o estresse", "Alivie o estresse", "Inspire pela esquerda (5 min)", 1));
         respiracao2.add(new Respiracao("Relaxar: Som do Mar","Relaxe ouvindo sons do mar", "Inspire profundamente", 2));
         respiracao2.add(new Respiracao("Titulo da respiracao","Descricao completa da respiracao", "Técnica descritiva da respiracao", 3));
