@@ -86,15 +86,15 @@ public class Home extends Fragment {
                 true,
                 new ArrayList<Humor>());
 
-        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JANUARY.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.TRISTE));
+        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JANUARY.getValue(), 1), Satisfacao.MUITO_BEM));
         user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.FEBRUARY.getValue(), 25), Satisfacao.BEM));
-        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.MARCH.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.NORMAL));
-        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.APRIL.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.MUITO_BEM));
-        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.MAY.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.MUITO_TRISTE));
-        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JUNE.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.NORMAL));
-        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JULY.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.TRISTE));
-        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.AUGUST.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.NORMAL));
-        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.SEPTEMBER.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.BEM));
+        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.MARCH.getValue(), 3), Satisfacao.NORMAL));
+        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.APRIL.getValue(), 1), Satisfacao.MUITO_BEM));
+        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.MAY.getValue(), 10), Satisfacao.MUITO_TRISTE));
+        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JUNE.getValue(), 25), Satisfacao.NORMAL));
+        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JULY.getValue(), 10), Satisfacao.TRISTE));
+        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.AUGUST.getValue(), 5), Satisfacao.NORMAL));
+        user.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.SEPTEMBER.getValue(), 30), Satisfacao.BEM));
         user.getHistoricoHumor().add(new Humor(LocalDate.now(), Satisfacao.MUITO_TRISTE));
         return user;
     }
