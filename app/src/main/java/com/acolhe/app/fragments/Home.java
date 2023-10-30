@@ -26,6 +26,7 @@ import com.acolhe.app.model.Respiracao;
 import com.acolhe.app.model.Satisfacao;
 import com.acolhe.app.model.Usuario;
 import com.github.islamkhsh.CardSliderViewPager;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 
@@ -46,7 +47,7 @@ public class Home extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.db = ConfigFirebase.getFirebaseDatabase();
+        this.db = ConfigFirebase.getFirebaseDatabase().child("frases");
     }
 
     @Override
@@ -58,16 +59,6 @@ public class Home extends Fragment {
         TextView diaHumor = view.findViewById(R.id.diaHumor_home);
         TextView humor = view.findViewById(R.id.humorDiario_home);
         ImageView carinhaHumor = view.findViewById(R.id.carinhaHumor_home);
-
-        new Usuario("Rafael",
-                40,
-                2,
-                "rafael.ferraz@picpay.com",
-                1,
-                LocalDateTime.now(),
-                LocalDate.now(),
-                true,
-                new ArrayList<Humor>());
 
         Usuario.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JULY.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.BEM));
         Usuario.getHistoricoHumor().add(new Humor(LocalDate.now(), Satisfacao.BEM));
@@ -120,20 +111,21 @@ public class Home extends Fragment {
     }
 
     private void setFraseDoDia(TextView fraseDoDia){
-        Query fraseQuery = db.child("frases").limitToFirst(1);
+        Query fraseQuery = db.limitToFirst(1);
         fraseQuery.get().addOnCompleteListener(task -> {
             if(!task.isSuccessful()) {
                 Log.d("firebase", "Error getting data", task.getException());
             }else {
-                try {
-                    this.frase = task.getResult().getValue(Frase.class);
-                    this.frase.wait();
-                    fraseDoDia.setText(this.frase.getFrase());
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                for (DataSnapshot snp : task.getResult().getChildren()) {
+                    this.frase = snp.getValue(Frase.class);
                 }
+                fraseDoDia.setText(this.frase.getFrase());
             }
         });
+    }
+
+    private void pushFrase(String frase) {
+        this.db.push().setValue(new Frase(frase, LocalDate.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))));
     }
 
     private static void sliderClinicas(View view) {

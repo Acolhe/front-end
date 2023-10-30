@@ -26,15 +26,19 @@ import com.google.firebase.database.Query;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Missoes extends Fragment {
 
     private DatabaseReference db;
+    private List<Missao> missoes = new ArrayList<>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.db = ConfigFirebase.getFirebaseDatabase();
+        this.db = ConfigFirebase.getFirebaseDatabase().child("missoes");
+//        setMisssao(2);
     }
 
     @Override
@@ -42,11 +46,7 @@ public class Missoes extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_missoes, container, false);
-        setMisssao(2);
         preencheMissao(view);
-
-        validaCheckbox(view.findViewById(R.id.chckBxCheckBox1), 0);
-        validaCheckbox(view.findViewById(R.id.chckBxCheckBox2), 1);
 
         return view;
     }
@@ -57,17 +57,11 @@ public class Missoes extends Fragment {
         TextView txtVwDescricao1 = view.findViewById(R.id.txtVwDescricao1);
         TextView txtVwDescricao2 = view.findViewById(R.id.txtVwDescricao2);
 
-        ArrayList<Missao> ms2 = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            ms2.add(new Missao("Missao Legal " + (i + 1), "Missao bacana para ser concluida", (int) (Math.random() * 100), false));
-        }
-
-        Query q = db.child("missoes").limitToFirst(2);
+        Query q = db.limitToFirst(2);
         q.get().addOnCompleteListener(task -> {
             if(!task.isSuccessful()) {
                 Log.d("firebase", "Error getting data", task.getException());
             }else {
-                List<Missao> missoes = new ArrayList<>();
                 for (DataSnapshot snp : task.getResult().getChildren()) {
                     Missao missao = snp.getValue(Missao.class);
                     missoes.add(missao);
@@ -77,6 +71,8 @@ public class Missoes extends Fragment {
                 txtVwNmMissao2.setText(missoes.get(1).getNome() + "");
                 txtVwDescricao2.setText(missoes.get(1).getDescricao() + "");
 
+                validaCheckbox(view.findViewById(R.id.chckBxCheckBox1), 0);
+                validaCheckbox(view.findViewById(R.id.chckBxCheckBox2), 1);
             }
         });
 
@@ -88,16 +84,37 @@ public class Missoes extends Fragment {
             ms2.add(new Missao("Missao Legal " + (i+1), "Missao bacana para ser concluida", (int) (Math.random() * 100), false));
         }
         for (Missao ms: ms2) {
-            this.db.child("missoes").push().setValue(ms);
+            this.db.push().setValue(ms);
         }
     }
 
-    private void validaCheckbox(CheckBox checkBox, int missao){
+    private void validaCheckbox(CheckBox checkBox, int i) {
+        if(missoes.get(i).isConcluida()){
+            checkBox.setChecked(true);
+            checkBox.setClickable(false);
+            return;
+        }
         checkBox.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (checkBox.isChecked()){
+            if (checkBox.isChecked()) {
+                Usuario.updateSaldo(missoes.get(i).getValor());
+                this.db.limitToFirst(2).get().addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.d("firebase", "Error getting data", task.getException());
+                    } else {
+                        for (DataSnapshot snp : task.getResult().getChildren()) {
+                            Missao missao = snp.getValue(Missao.class);
+                            if (missao.equals(missoes.get(i))) {
+                                Map<String, Object> update = new HashMap<>();
+                                update.put("concluida", true);
+                                this.db.child(snp.getKey()).updateChildren(update);
+                                missoes.get(i).setConcluida(true);
+                                break;
+                            }
+                        }
+                    }
+                });
                 checkBox.setClickable(false);
             }
         });
     }
-
 }

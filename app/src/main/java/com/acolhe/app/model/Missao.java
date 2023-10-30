@@ -1,5 +1,7 @@
 package com.acolhe.app.model;
 
+import java.util.Objects;
+
 public class Missao {
     private String nome;
     private String descricao;
@@ -46,6 +48,19 @@ public class Missao {
 
     public void setConcluida(boolean concluida) {
         isConcluida = concluida;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Missao missao = (Missao) o;
+        return valor == missao.valor && isConcluida == missao.isConcluida && Objects.equals(nome, missao.nome) && Objects.equals(descricao, missao.descricao);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, descricao, valor, isConcluida);
     }
 }
 
