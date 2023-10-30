@@ -22,4 +22,10 @@ public interface Methods {
     @PUT("acolhe/usuario/assinarPlano/{id}")
     Call<StringModel> becomePremium(@Path("id") Integer id);
 
+    @PUT("acolhe/usuario/alterarCadastro/{id}")
+    Call<StringModel> updateName(@Path("id") Integer id, @Body String name);
+
+    @GET("acolhe/clinicas/todas")
+    Call<ClinicaModel> getAllClinicas();
+
 }

@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     private int id;
 
+    private String nome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         int saldo = intent.getIntExtra("saldo", 0);
         int ofensiva = intent.getIntExtra("ofensiva", 0);
+        nome = intent.getStringExtra("nome");
         id = intent.getIntExtra("id", 0);
 
         String stringSaldo = String.valueOf(saldo);
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PaginaProfileActivity.class);
+                intent.putExtra("id", id);
+                intent.putExtra("nome", nome);
                 startActivity(intent);
             }
         });

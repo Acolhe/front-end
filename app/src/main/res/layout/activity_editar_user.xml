@@ -164,7 +164,7 @@
                 android:ems="10"
                 android:fontFamily="@font/paytone_one"
                 android:gravity="center"
-                android:hint="UserTeste"
+                android:hint="Novo Nome"
                 android:inputType="textPersonName"
                 android:textColor="#487B91"
                 android:textColorHint="#544D568C"
@@ -193,7 +193,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:clickable="true"
                     android:fontFamily="@font/paytone_one"
+                    android:onClick="salvarNovoNome"
                     android:text="Salvar"
                     app:backgroundTint="@color/primary_color" />
 

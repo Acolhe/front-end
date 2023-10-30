@@ -46,6 +46,8 @@ public class PaginaInicialActivity extends AppCompatActivity {
 
     int id;
 
+    String nome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +120,7 @@ private View CreatePopUpWindow() {
                 saldo = response.body().getSaldo();
                 ofensiva = response.body().getDiasConsecutivos();
                 id = response.body().getId();
+                nome = response.body().getNome();
 
                 auth = ConfigFirebase.getFirebaseAuth();
                 auth.signInWithEmailAndPassword(emailString, senhaString).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -128,6 +131,7 @@ private View CreatePopUpWindow() {
                             intent.putExtra("saldo", saldo);
                             intent.putExtra("ofensiva", ofensiva);
                             intent.putExtra("id", id);
+                            intent.putExtra("nome", nome);
                             startActivity(intent);
                         } else {
                             String msg = "";

@@ -13,6 +13,8 @@ import com.acolhe.acolhe_api.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class PaginaProfileActivity extends AppCompatActivity {
+
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,14 @@ public class PaginaProfileActivity extends AppCompatActivity {
         TextView textEditarperfil = findViewById(R.id.textEditarperfil);
         ImageView fotoperfil = findViewById(R.id.fotoperfil);
         TextView textDesconectar = findViewById(R.id.cliqueDesconectar);
+
+        Intent intent = getIntent();
+
+        String nome = intent.getStringExtra("nome");
+        id = intent.getIntExtra("id", 0);
+        TextView nomeUsuario = findViewById(R.id.textView8);
+        System.out.println(nome);
+        nomeUsuario.setText(nome);
         setinhaVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,6 +46,7 @@ public class PaginaProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PaginaEditarUser.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -61,6 +72,7 @@ public class PaginaProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PaginaAcolhePlus.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -69,6 +81,7 @@ public class PaginaProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PaginaAcolhePlus.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
