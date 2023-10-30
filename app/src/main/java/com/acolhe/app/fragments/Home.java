@@ -2,15 +2,14 @@ package com.acolhe.app.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.acolhe.acolhe_api.R;
 import com.acolhe.app.ClinicasActivity;
@@ -31,7 +30,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.MonthDay;
 import java.time.Year;
@@ -110,12 +108,12 @@ public class Home extends Fragment {
         }
     }
 
-    private void setFraseDoDia(TextView fraseDoDia){
+    private void setFraseDoDia(TextView fraseDoDia) {
         Query fraseQuery = db.limitToFirst(1);
         fraseQuery.get().addOnCompleteListener(task -> {
-            if(!task.isSuccessful()) {
+            if (!task.isSuccessful()) {
                 Log.d("firebase", "Error getting data", task.getException());
-            }else {
+            } else {
                 for (DataSnapshot snp : task.getResult().getChildren()) {
                     this.frase = snp.getValue(Frase.class);
                 }
@@ -163,8 +161,8 @@ public class Home extends Fragment {
         Playlist playlist2 = new Playlist("Sons da natureza", "Durma melhor com a natureza", R.drawable.background_playlist_3, false, null);
         respiracao.add(new Respiracao("Relaxamento", "Acalme sua mente e alivie o estresse", "Expiração prolongada (4 - 6)", R.raw.atencao_plena));
         respiracao.add(new Respiracao("Aliviando o estresse", "Alivie o estresse", "Inspire pela esquerda (5 min)", 1));
-        respiracao2.add(new Respiracao("Relaxar: Som do Mar","Relaxe ouvindo sons do mar", "Inspire profundamente", 2));
-        respiracao2.add(new Respiracao("Titulo da respiracao","Descricao completa da respiracao", "Técnica descritiva da respiracao", 3));
+        respiracao2.add(new Respiracao("Relaxar: Som do Mar", "Relaxe ouvindo sons do mar", "Inspire profundamente", 2));
+        respiracao2.add(new Respiracao("Titulo da respiracao", "Descricao completa da respiracao", "Técnica descritiva da respiracao", 3));
 
         playlist1.setRespiracoes(respiracao);
         playlist2.setRespiracoes(respiracao2);

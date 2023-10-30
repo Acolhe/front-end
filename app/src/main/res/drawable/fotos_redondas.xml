@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#004C6D" /> <!-- Cor de preenchimento de fundo -->
+    <corners android:radius="2000dp" /> <!-- Raio dos cantos para criar a borda arredondada -->
+</shape>

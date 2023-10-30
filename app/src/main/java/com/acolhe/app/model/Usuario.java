@@ -1,10 +1,11 @@
 package com.acolhe.app.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
-public class Usuario {
+public class Usuario implements Serializable {
     private static String nome;
     private static int saldo;
     private static int ofensiva;
@@ -13,9 +14,9 @@ public class Usuario {
     private static LocalDateTime dataCadastro;
     private static LocalDate ultimoAcesso;
     private static boolean premium;
-    private static ArrayList<Humor> historicoHumor;
+    private static List<Humor> historicoHumor;
 
-    public Usuario(String nome, int saldo, int ofensiva, String email, int codSkin, LocalDateTime dataCadastro, LocalDate ultimoAcesso, boolean premium, ArrayList<Humor> historicoHumor) {
+    public Usuario(String nome, int saldo, int ofensiva, String email, int codSkin, LocalDateTime dataCadastro, LocalDate ultimoAcesso, boolean premium, List<Humor> historicoHumor) {
         Usuario.nome = nome;
         Usuario.saldo = saldo;
         Usuario.ofensiva = ofensiva;
@@ -63,8 +64,15 @@ public class Usuario {
         return premium;
     }
 
-    public static ArrayList<Humor> getHistoricoHumor() {
+    public static void setPremium(boolean premium) {
+        Usuario.premium = premium;
+    }
+
+    public static List<Humor> getHistoricoHumor() {
         return historicoHumor;
     }
 
+    public static void setHistoricoHumor(List<Humor> historicoHumor) {
+        Usuario.historicoHumor = historicoHumor;
+    }
 }

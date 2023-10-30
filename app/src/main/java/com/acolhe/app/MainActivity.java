@@ -24,7 +24,6 @@ import com.acolhe.app.fragments.Store;
 import com.acolhe.app.fragments.Videos;
 import com.acolhe.app.model.Humor;
 import com.acolhe.app.model.Usuario;
-import com.github.islamkhsh.CardSliderViewPager;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -40,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView saldoLayout;
     private TextView ofensivaLayout;
     private Handler handler = new Handler();
+
+    private int id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,18 +61,21 @@ public class MainActivity extends AppCompatActivity {
                 new ArrayList<Humor>());
 
         ofensivaLayout.setText(Usuario.getOfensiva() + "");
-
+        getBundles();
         adicionarEventosClickCabecalho();
         adicionaEventosCLickRodape();
         saldoEventListener();
     }
-
 
     private void saldoEventListener() {
         saldoLayout.setText(Usuario.getSaldo() + "");
         handler.postDelayed(this::saldoEventListener, 1000); // Atualize a cada 1 segundo
     }
 
+    private void getBundles() {
+        Intent intent = getIntent();
+        id = intent.getIntExtra("id", 0);
+    }
     private void adicionarEventosClickCabecalho() {
         LinearLayout btnPerfil = findViewById(R.id.lnrLytVoltar);
         LinearLayout btnOfensiva = findViewById(R.id.lnrLytOfensiva);
@@ -103,13 +108,17 @@ public class MainActivity extends AppCompatActivity {
         btnAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+
+                startActivity(intent);
             }
         });
         imageAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PaginaAcolhePlus.class));
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
     }
