@@ -32,7 +32,6 @@ public class VideoActivity extends AppCompatActivity {
 
         Bundle enveloper = getIntent().getExtras();
         String link = enveloper.getString("url");
-
         videoView.setMediaController(new MediaController(this));
         videoView.setVideoURI(Uri.parse(link));
         videoView.start();

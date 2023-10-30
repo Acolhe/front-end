@@ -1,7 +1,6 @@
 package com.acolhe.app.adapters;
 
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +9,18 @@ import android.widget.ImageView;
 
 
 import com.acolhe.acolhe_api.R;
+import com.bumptech.glide.Glide;
 
 public class VideoAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
     private String[] links;
-    private int[] imagensVideos;
+    private String[] thumbs;
 
-    public VideoAdapter(Context context, String[] links, int[] imagensVideos) {
+    public VideoAdapter(Context context, String[] links, String[] thumbs) {
         this.context = context;
         this.links = links;
-        this.imagensVideos = imagensVideos;
+        this.thumbs = thumbs;
         this.inflater = (LayoutInflater.from(context));
     }
 
@@ -44,7 +44,7 @@ public class VideoAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.adapter_video, null);
 
         ImageView thumbnail = view.findViewById(R.id.imgVwVideo);
-        thumbnail.setImageResource(imagensVideos[i]);
+        Glide.with(view).load(thumbs[i]).centerCrop().into(thumbnail);
 
         return view;
     }
