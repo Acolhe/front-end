@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.acolhe.acolhe_api.R;
 import com.acolhe.app.Retrofit.Methods;
@@ -19,10 +21,6 @@ import com.acolhe.app.fragments.Missoes;
 import com.acolhe.app.fragments.Perfil;
 import com.acolhe.app.fragments.Store;
 import com.acolhe.app.fragments.Videos;
-import com.google.android.gms.common.util.JsonUtils;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,25 +30,47 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    private int id;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+//        getBundles();
         adicionarEventosClickCabecalho();
         adicionaEventosCLickRodape();
     }
 
+    private void getBundles() {
+        Intent intent = getIntent();
+
+        int saldo = intent.getIntExtra("saldo", 0);
+        int ofensiva = intent.getIntExtra("ofensiva", 0);
+        id = intent.getIntExtra("id", 0);
+
+        String stringSaldo = String.valueOf(saldo);
+        String stirngofensiva = String.valueOf(ofensiva);
+
+        TextView ofensivaLayout = findViewById(R.id.valorOfensiva);
+        ofensivaLayout.setText(stirngofensiva);
+
+        TextView saldoLayout = findViewById(R.id.valorSaldo);
+        saldoLayout.setText(stringSaldo);
+    }
     private void adicionarEventosClickCabecalho() {
         LinearLayout btnPerfil = findViewById(R.id.lnrLytVoltar);
         LinearLayout btnOfensiva = findViewById(R.id.lnrLytOfensiva);
         LinearLayout btnMedalha = findViewById(R.id.lnrLytMedalha);
         LinearLayout btnAcolhePlus = findViewById(R.id.lnrLytAcolhePlus);
+        ImageView imageAcolhePlus = findViewById(R.id.imgVwAcolhePlus);
 
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                abreFragmento(Perfil.class);
+                Intent intent = new Intent(getApplicationContext(), PaginaProfileActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -71,11 +91,25 @@ public class MainActivity extends AppCompatActivity {
         btnAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+
+                startActivity(intent);
+            }
+        });
+
+        imageAcolhePlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PaginaAcolhePlus.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
     }
-
+    private void updatePageName(String pageName) {
+        TextView textView = findViewById(R.id.txtVwNomePagina);
+        textView.setText(pageName);
+    }
     private void adicionaEventosCLickRodape() {
         LinearLayout btnHome = findViewById(R.id.lnrLytHome);
         LinearLayout btnVideos = findViewById(R.id.lnrLytConteudo);
@@ -83,9 +117,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout btnMissoes = findViewById(R.id.lnrLytMissao);
         LinearLayout btnStore = findViewById(R.id.lnrLytLoja);
 
-        btnVideos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnVideos.setOnClickListener(view -> {
                 abreFragmento(Videos.class);
                 Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
                 Call<Model> call = methods.getAllData();
@@ -93,12 +125,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Model> call, Response<Model> response) {
                         Log.e(TAG, "onResponse: code: " + response.code());
-
                         String data = response.body().getMessage();
-
                         Log.e(TAG, "onResponse: emails: " + data);
-
-
                     }
 
                     @Override
@@ -108,35 +136,27 @@ public class MainActivity extends AppCompatActivity {
                 });
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, Videos.class, null).setReorderingAllowed(true).addToBackStack("name").commit();
-            }
-        });
+                updatePageName(getString(R.string.page_name_videos));
+            });
 
-        btnCvv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnCvv.setOnClickListener(view ->{
                 abreFragmento(Cvv.class);
-            }
+                updatePageName(getString(R.string.page_name_cvv));
         });
 
-        btnMissoes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnMissoes.setOnClickListener(view -> {
                 abreFragmento(Missoes.class);
-            }
+                updatePageName(getString(R.string.page_name_missoes));
         });
 
-        btnStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnStore.setOnClickListener(view -> {
                 abreFragmento(Store.class);
-            }
+                updatePageName(getString(R.string.page_name_store));
         });
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnHome.setOnClickListener(view -> {
                 abreFragmento(Home.class);
-            }
+                updatePageName(getString(R.string.page_name_home));
         });
     }
 

@@ -7,7 +7,6 @@
     android:contentDescription="@string/CanecaAcolhe"
     tools:context="com.acolhe.app.fragments.Store">
 
-    <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

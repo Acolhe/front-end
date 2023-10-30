@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_linear"
+    android:background="@color/medium_blue"
     tools:context="com.acolhe.app.PaginaAcolhePlus">
 
     <ScrollView
@@ -107,7 +107,9 @@
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/primary_color"
+            android:clickable="true"
             android:fontFamily="@font/paytone_one"
+            android:onClick="salvar"
             android:text="@string/assineja"
             android:textColor="@color/white"
             android:textSize="22sp"

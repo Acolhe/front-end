@@ -24,8 +24,22 @@
     <string name="Email">Email</string>
     <string name="Senha">Senha</string>
     <string name="Entrar">Entrar</string>
+    <string name="nomeUsuario">UserTeste</string>
     <string name="naoTemLogin">Não tem cadastro? Clique Aqui</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="eiNome">👋 Ei {{nome}}!</string>
+    <string name="ComoEstaSeSentindo">Como você esta se sentindo hoje?</string>
+    <string name="Confirma">Confirmar</string>
+    <string name="Normal">Normal</string>
+    <string name="EstouBem">Estou bem!</string>
+    <string name="NaoBem">Não me sinto nada bem</string>
+    <string name="Triste">Estou meio triste</string>
+    <string name="MuitoBem">Me sinto muito bem!</string>
+
+    <string name="semInternet">Você está sem internet!</string>
+    <string name="semInternetDesc">Esteja conecta na internet para entrar no app!</string>
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="descricaoImagemPerfil">Logo de Perfil</string>
@@ -45,9 +59,10 @@
     <string name="nomeMissao1">nmMissao</string>
     <string name="descricaoMissao1">descricao</string>
     <string name="nomeMissao2">nmMissao</string>
+    <string name="perfil">Perfil</string>
+    <string name="editar">Editar</string>
     <string name="descricaoMissao2">descricao</string>
     <string name="descricaoImgPersonagens">Personagens Acolhe</string>
-
     <string name="tituloClinicas">Clínicas de Suporte</string>
     <string name="subtituloClinicas">Aqui temos as melhores recomendações clínicas de São Paulo!</string>
     <string name="nomeClinica">nmClinica</string>
@@ -57,7 +72,7 @@
     <string name="sgEstadoClinica">SP</string>
 
     <string name="tituloDescricaoClinicas">Descrição: </string>
-    <string name="conteudoDescricaoClinicas">WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</string>
+    <string name="conteudoDescricaoClinicas">wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</string>
     <string name="tituloContatoClinicas">Contatos: </string>
 
     <string name="telefone">Telefone: </string>
@@ -66,6 +81,12 @@
     <string name="emailDefault">email.empresa@email.com</string>
 
     <string name="nomePaginaClinica">Clinicas</string>
+
+    <string name="page_name_home">Home</string>
+    <string name="page_name_videos">Vídeos</string>
+    <string name="page_name_cvv">CVV</string>
+    <string name="page_name_missoes">Missões</string>
+    <string name="page_name_store">Store</string>
 
     <string name="tituloConteudos">Vídeos\nde Apoio</string>
     <string name="subtituloConteudos">Assista vídeos selcionados pelos nossos especialistas!</string>

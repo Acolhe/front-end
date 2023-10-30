@@ -46,20 +46,17 @@ public class MeditacaoHome extends AppCompatActivity {
         ArrayList<Playlist> playlists2 = new ArrayList<Playlist>();
         ArrayList<Respiracao> respiracao = new ArrayList<Respiracao>();
         ArrayList<Respiracao> respiracao2 = new ArrayList<Respiracao>();
-        Playlist playlist1 = new Playlist("Title one", "Descricao", R.drawable.background_playlist_1, false, null);
-        Playlist playlist2 = new Playlist("Titulo dois", "Descricao", R.drawable.background_playlist_2, true, null);
-        Playlist playlist3 = new Playlist("Title one", "Descricao", R.drawable.background_playlist_3, false, null);
-        Playlist playlist4 = new Playlist("Titulo dois", "Descricao", R.drawable.background_playlist_4, true, null);
-        respiracao.add(new Respiracao(playlist1.getTitulo(), "Descricao completa da respiracao", "Técnica descritiva da respiracao", 0));
-        respiracao.add(new Respiracao(playlist2.getTitulo(), "Descricao completa da respiracao", "Técnica descritiva da respiracao", 1));
-        respiracao2.add(new Respiracao(playlist3.getTitulo(), "Descricao completa da respiracao", "Técnica descritiva da respiracao", 2));
-        respiracao2.add(new Respiracao(playlist4.getTitulo(), "Descricao completa da respiracao", "Técnica descritiva da respiracao", 3));
+        Playlist playlist1 = new Playlist("Respire Fundo", "Exercícios de respiração", R.drawable.background_playlist_1, false, null);
+        Playlist playlist2 = new Playlist("Acalmando a  ansiedade", "Exercícios de respiração", R.drawable.background_playlist_2, true, null);
+        Playlist playlist3 = new Playlist("Sons da natureza", "Durma melhor com a natureza", R.drawable.background_playlist_3, false, null);
+        Playlist playlist4 = new Playlist("Sons de chuva", "Durma melhor com sons de chuva", R.drawable.background_playlist_4, true, null);
+        respiracao.add(new Respiracao("Relaxamento", "Acalme sua mente e alivie o estresse", "Expiração prolongada (4 - 6)", R.raw.atencao_plena));
+        respiracao.add(new Respiracao("Aliviando o estresse", "Alivie o estresse", "Inspire pela esquerda (5 min)", 1));
+        respiracao2.add(new Respiracao("Relaxar: Som do Mar","Relaxe ouvindo sons do mar", "Inspire profundamente", 2));
+        respiracao2.add(new Respiracao("Titulo da respiracao","Descricao completa da respiracao", "Técnica descritiva da respiracao", 3));
 
         playlist1.setRespiracoes(respiracao);
-        playlist2.setRespiracoes(respiracao);
         playlist3.setRespiracoes(respiracao2);
-        playlist4.setRespiracoes(respiracao2);
-
         playlists.add(playlist1);
         playlists.add(playlist2);
         playlists2.add(playlist3);
