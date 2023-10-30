@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        getBundles();
+//        getBundles();
         adicionarEventosClickCabecalho();
         adicionaEventosCLickRodape();
     }
@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         TextView saldoLayout = findViewById(R.id.valorSaldo);
         saldoLayout.setText(stringSaldo);
     }
-
     private void adicionarEventosClickCabecalho() {
         LinearLayout btnPerfil = findViewById(R.id.lnrLytVoltar);
         LinearLayout btnOfensiva = findViewById(R.id.lnrLytOfensiva);
@@ -111,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.txtVwNomePagina);
         textView.setText(pageName);
     }
-
-
     private void adicionaEventosCLickRodape() {
         LinearLayout btnHome = findViewById(R.id.lnrLytHome);
         LinearLayout btnVideos = findViewById(R.id.lnrLytConteudo);
@@ -163,14 +160,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void abreFragmento(Class target){
+        FragmentManager fragmentManager = getSupportFragmentManager();
         if (target == Home.class) {
             findViewById(R.id.header).setVisibility(View.GONE);
+            Bundle extras = new Bundle();
+            extras.putString("teste", "testezinho");
+            Home home = new Home();
+            home.setArguments(extras);
+            fragmentManager.beginTransaction().replace(R.id.fragment, home).setReorderingAllowed(true).addToBackStack("name").commit();
         }else {
             findViewById(R.id.header).setVisibility(View.VISIBLE);
+            fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
         }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }
 }

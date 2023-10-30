@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.ClinicasActivity;
 import com.acolhe.app.PaginaAcolhePlus;
 import com.acolhe.app.PlaylistActivity;
 import com.acolhe.app.model.Clinica;
@@ -44,12 +45,14 @@ public class ClinicaSliderAdapter extends CardSliderAdapter<ClinicaSliderAdapter
 
     @Override
     public void bindVH(@NonNull ClinicaViewHolder clinicaViewHolder, int position) {
-
+        clinicaViewHolder.onClick.setOnClickListener(view -> view.getContext().startActivity(new Intent(view.getContext(), ClinicasActivity.class)));
     }
 
     class ClinicaViewHolder extends RecyclerView.ViewHolder {
+        LinearLayout onClick;
         public ClinicaViewHolder(View view){
             super(view);
+            this.onClick = view.findViewById(R.id.onClickLinearLayout_home);
         }
     }
 }
