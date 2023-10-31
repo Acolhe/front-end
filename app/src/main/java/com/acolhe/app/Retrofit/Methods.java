@@ -28,4 +28,7 @@ public interface Methods {
     @GET("acolhe/clinicas/todas")
     Call<ClinicaModel> getAllClinicas();
 
+    @POST("acolhe/humor/inserirHumor/{id}")
+    Call<StringModel> addHumor(@Path("id") int id, @Body HumorDiario humorDiario);
+
 }

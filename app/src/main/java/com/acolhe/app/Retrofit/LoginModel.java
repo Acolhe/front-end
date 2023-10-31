@@ -100,6 +100,19 @@ public class LoginModel {
     }
 
 
+    public LoginModel(String dataultimologin, int saldo, String email, String senha,Boolean premium, int id, int diasConsecutivos, Integer codSkinPrincipal, String dataCadastro, String nome) {
+        this.dataultimologin = dataultimologin;
+        this.saldo = saldo;
+        this.email = email;
+        this.senha = senha;
+        this.premium = premium;
+        this.id = id;
+        this.diasConsecutivos = diasConsecutivos;
+        this.codSkinPrincipal = codSkinPrincipal;
+        this.dataCadastro = dataCadastro;
+        this.nome = nome;
+    }
+
     @Override
     public String toString() {
         return "LoginModel{" +

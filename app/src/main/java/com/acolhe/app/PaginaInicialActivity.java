@@ -127,7 +127,7 @@ private View CreatePopUpWindow() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Intent intent = new Intent(PaginaInicialActivity.this, MainActivity.class);
+                            Intent intent = new Intent(PaginaInicialActivity.this, HumorDiario.class);
                             intent.putExtra("saldo", saldo);
                             intent.putExtra("ofensiva", ofensiva);
                             intent.putExtra("id", id);
