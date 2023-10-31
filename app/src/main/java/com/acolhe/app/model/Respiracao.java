@@ -1,15 +1,16 @@
 package com.acolhe.app.model;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 
 public class Respiracao implements Serializable {
     private String titulo;
     private String descricao;
     private String tecnica;
+    private String arquivo;
 
-    private int arquivo;
-
-    public Respiracao(String titulo, String descricao, String tecnica, int arquivo) {
+    public Respiracao(String titulo, String descricao, String tecnica, String arquivo) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.tecnica = tecnica;
@@ -40,11 +41,11 @@ public class Respiracao implements Serializable {
         this.tecnica = tecnica;
     }
 
-    public int getArquivo() {
-        return arquivo;
+    public Uri getArquivo() {
+        return Uri.parse(arquivo);
     }
 
-    public void setArquivo(int arquivo) {
+    public void setArquivo(String arquivo) {
         this.arquivo = arquivo;
     }
 }
