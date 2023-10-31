@@ -11,8 +11,6 @@ import com.acolhe.acolhe_api.R;
 public class ClinicaAdapter extends BaseAdapter {
 
     Context context;
-    String[] dados1;
-    int[] dados2;
     LayoutInflater inflater;
 
     public ClinicaAdapter(Context context){
