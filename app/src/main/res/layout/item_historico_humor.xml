@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/historicoHumor_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bordaarredondadahome"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/bordaarredondadacinza"
+            android:orientation="vertical"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp">
+
+            <TextView
+                android:id="@+id/mesHumor_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/paytone_one"
+                android:text="SEP"
+                android:textAlignment="center"
+                android:textColor="#B9B6B2"
+                android:textFontWeight="900"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/diaHumor_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/paytone_one"
+                android:text="11"
+                android:textAlignment="center"
+                android:textColor="#5E4635"
+                android:textFontWeight="900"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/humorDiario_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/paytone_one"
+            android:text="{{Humor do dia}}"
+            android:textColor="#5E4635"
+            android:textFontWeight="900"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/carinhaHumor_item"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:src="@drawable/big_smiley" />
+
+    </LinearLayout>
+</LinearLayout>
