@@ -4,7 +4,7 @@ public class LoginModel {
 
     String dataultimologin;
     int saldo;
-    String email, senha,data_cadastro;
+    String email, senha, data_cadastro;
     Boolean premium;
     int id;
     int diasConsecutivos;

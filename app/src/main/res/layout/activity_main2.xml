@@ -12,6 +12,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment"
         android:name="com.acolhe.app.fragments.Home"
+        android:paddingVertical="68dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,7 +124,6 @@
         android:minHeight="68dp"
         android:baselineAligned="false"
         android:orientation="horizontal"
-        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

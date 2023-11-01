@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -21,6 +22,12 @@ import com.acolhe.app.fragments.Missoes;
 import com.acolhe.app.fragments.Perfil;
 import com.acolhe.app.fragments.Store;
 import com.acolhe.app.fragments.Videos;
+import com.acolhe.app.model.Humor;
+import com.acolhe.app.model.Usuario;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +36,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private TextView saldoLayout;
+    private TextView ofensivaLayout;
+    private Handler handler = new Handler();
 
     private int id;
 
@@ -39,30 +49,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        saldoLayout = findViewById(R.id.valorSaldo);
+        ofensivaLayout = findViewById(R.id.valorOfensiva);
 
+        new Usuario("Rafael",
+                40,
+                2,
+                "rafael.ferraz@picpay.com",
+                1,
+                LocalDateTime.now(),
+                LocalDate.now(),
+                true,
+                new ArrayList<Humor>());
+
+        ofensivaLayout.setText(Usuario.getOfensiva() + "");
         getBundles();
         adicionarEventosClickCabecalho();
         adicionaEventosCLickRodape();
+        saldoEventListener();
+    }
+
+    private void saldoEventListener() {
+        saldoLayout.setText(Usuario.getSaldo() + "");
+        handler.postDelayed(this::saldoEventListener, 1000); // Atualize a cada 1 segundo
     }
 
     private void getBundles() {
         Intent intent = getIntent();
-
-        int saldo = intent.getIntExtra("saldo", 0);
-        int ofensiva = intent.getIntExtra("ofensiva", 0);
-        nome = intent.getStringExtra("nome");
         id = intent.getIntExtra("id", 0);
-
-        String stringSaldo = String.valueOf(saldo);
-        String stirngofensiva = String.valueOf(ofensiva);
-
-        TextView ofensivaLayout = findViewById(R.id.valorOfensiva);
-        ofensivaLayout.setText(stirngofensiva);
-
-        TextView saldoLayout = findViewById(R.id.valorSaldo);
-        saldoLayout.setText(stringSaldo);
     }
-
     private void adicionarEventosClickCabecalho() {
         LinearLayout btnPerfil = findViewById(R.id.lnrLytVoltar);
         LinearLayout btnOfensiva = findViewById(R.id.lnrLytOfensiva);
@@ -75,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PaginaProfileActivity.class);
                 intent.putExtra("id", id);
-                intent.putExtra("nome", nome);
                 startActivity(intent);
             }
         });
@@ -102,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         imageAcolhePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.txtVwNomePagina);
         textView.setText(pageName);
     }
-
-
     private void adicionaEventosCLickRodape() {
         LinearLayout btnHome = findViewById(R.id.lnrLytHome);
         LinearLayout btnVideos = findViewById(R.id.lnrLytConteudo);
@@ -168,13 +179,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void abreFragmento(Class target){
-        if (target == Home.class) {
-            findViewById(R.id.header).setVisibility(View.GONE);
-        }else {
-            findViewById(R.id.header).setVisibility(View.VISIBLE);
-        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment, target, null).setReorderingAllowed(true).addToBackStack("name").commit();
     }

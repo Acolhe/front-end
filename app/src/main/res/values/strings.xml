@@ -88,4 +88,8 @@
     <string name="page_name_missoes">Missões</string>
     <string name="page_name_store">Store</string>
 
+    <string name="tituloConteudos">Vídeos\nde Apoio</string>
+    <string name="subtituloConteudos">Assista vídeos selcionados pelos nossos especialistas!</string>
+
+    <string name="nomePaginaVideos">Vídeo</string>
 </resources>
