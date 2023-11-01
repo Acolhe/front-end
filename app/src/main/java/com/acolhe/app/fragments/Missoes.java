@@ -38,7 +38,6 @@ public class Missoes extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.db = ConfigFirebase.getFirebaseDatabase().child("missoes");
-//        setMisssao(2);
     }
 
     @Override
@@ -47,7 +46,6 @@ public class Missoes extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_missoes, container, false);
         preencheMissao(view);
-
         return view;
     }
 
@@ -64,6 +62,7 @@ public class Missoes extends Fragment {
             }else {
                 for (DataSnapshot snp : task.getResult().getChildren()) {
                     Missao missao = snp.getValue(Missao.class);
+                    missao.setKey(snp.getKey());
                     missoes.add(missao);
                 }
                 txtVwNmMissao1.setText(missoes.get(0).getNome() + "");
@@ -81,7 +80,7 @@ public class Missoes extends Fragment {
     private void setMisssao(int quantidade){
         ArrayList<Missao> ms2 = new ArrayList<>();
         for (int i = 0; i < quantidade; i++) {
-            ms2.add(new Missao("Missao Legal " + (i+1), "Missao bacana para ser concluida", (int) (Math.random() * 100), false));
+            ms2.add(new Missao("Missao Legal " + (i+1), "","Missao bacana para ser concluida", (int) (Math.random() * 100)));
         }
         for (Missao ms: ms2) {
             this.db.push().setValue(ms);
@@ -89,30 +88,15 @@ public class Missoes extends Fragment {
     }
 
     private void validaCheckbox(CheckBox checkBox, int i) {
-        if(missoes.get(i).isConcluida()){
-            checkBox.setChecked(true);
+        if(missoes.get(i).getUsuarios().contains(Usuario.getId())){
             checkBox.setClickable(false);
-            return;
+            checkBox.setChecked(true);
         }
         checkBox.setOnCheckedChangeListener((compoundButton, b) -> {
             if (checkBox.isChecked()) {
                 Usuario.updateSaldo(missoes.get(i).getValor());
-                this.db.limitToFirst(2).get().addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.d("firebase", "Error getting data", task.getException());
-                    } else {
-                        for (DataSnapshot snp : task.getResult().getChildren()) {
-                            Missao missao = snp.getValue(Missao.class);
-                            if (missao.equals(missoes.get(i))) {
-                                Map<String, Object> update = new HashMap<>();
-                                update.put("concluida", true);
-                                this.db.child(snp.getKey()).updateChildren(update);
-                                missoes.get(i).setConcluida(true);
-                                break;
-                            }
-                        }
-                    }
-                });
+                missoes.get(i).add(Usuario.getId());
+                this.db.child(missoes.get(i).getKey()).setValue(missoes.get(i));
                 checkBox.setClickable(false);
             }
         });

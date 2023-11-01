@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
         saldoLayout = findViewById(R.id.valorSaldo);
         ofensivaLayout = findViewById(R.id.valorOfensiva);
 
-        new Usuario("Rafael",
+        new Usuario(
+                1,
+                "Rafael",
                 40,
                 2,
                 "rafael.ferraz@picpay.com",
