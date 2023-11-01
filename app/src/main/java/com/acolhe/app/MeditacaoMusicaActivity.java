@@ -46,21 +46,6 @@ public class MeditacaoMusicaActivity extends AppCompatActivity {
                     if (fromUser) {
                         media.seekTo(progress);
                     }
-                    long milliseconds = media.getCurrentPosition();
-                    int seconds = (int) (milliseconds / 1000);
-                    int minutes = seconds / 60;
-                    seconds = seconds % 60;
-
-                    String time = String.format("%d:%02d", minutes, seconds);
-                    startCounter.setText(time);
-
-                    milliseconds = media.getDuration() - media.getCurrentPosition();
-                    seconds = (int) (milliseconds / 1000);
-                    minutes = seconds / 60;
-                    seconds = seconds % 60;
-
-                    time = String.format("-%d:%02d", minutes, seconds);
-                    endCounter.setText(time);
                 }
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
@@ -70,6 +55,7 @@ public class MeditacaoMusicaActivity extends AppCompatActivity {
                 }
             });
         }
+        update();
         ImageView sair = findViewById(R.id.exit_button_msc);
         sair.setOnClickListener(view -> {
             if(media.isPlaying()) {
@@ -81,7 +67,6 @@ public class MeditacaoMusicaActivity extends AppCompatActivity {
         media.setOnCompletionListener(mediaPlayer -> {
             player.setImageResource(R.drawable.music_play);
         });
-        update();
 
     }
 
@@ -97,7 +82,22 @@ public class MeditacaoMusicaActivity extends AppCompatActivity {
 
     private void update() {
         seekBar.setProgress(media.getCurrentPosition());
-        handler.postDelayed(this::update, 1000); // Atualize a cada 1 segundo
+        long milliseconds = media.getCurrentPosition();
+        int seconds = (int) (milliseconds / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+
+        String time = String.format("%d:%02d", minutes, seconds);
+        startCounter.setText(time);
+
+        milliseconds = media.getDuration() - media.getCurrentPosition();
+        seconds = (int) (milliseconds / 1000);
+        minutes = seconds / 60;
+        seconds = seconds % 60;
+
+        time = String.format("-%d:%02d", minutes, seconds);
+        endCounter.setText(time);
+        handler.postDelayed(this::update, 1000);
     }
 
     @Override
