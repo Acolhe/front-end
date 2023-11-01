@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     private int id;
 
+    private String nome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PaginaProfileActivity.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

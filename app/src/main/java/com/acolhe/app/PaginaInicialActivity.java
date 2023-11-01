@@ -46,6 +46,8 @@ public class PaginaInicialActivity extends AppCompatActivity {
 
     int id;
 
+    String nome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,16 +120,18 @@ private View CreatePopUpWindow() {
                 saldo = response.body().getSaldo();
                 ofensiva = response.body().getDiasConsecutivos();
                 id = response.body().getId();
+                nome = response.body().getNome();
 
                 auth = ConfigFirebase.getFirebaseAuth();
                 auth.signInWithEmailAndPassword(emailString, senhaString).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Intent intent = new Intent(PaginaInicialActivity.this, MainActivity.class);
+                            Intent intent = new Intent(PaginaInicialActivity.this, HumorDiario.class);
                             intent.putExtra("saldo", saldo);
                             intent.putExtra("ofensiva", ofensiva);
                             intent.putExtra("id", id);
+                            intent.putExtra("nome", nome);
                             startActivity(intent);
                         } else {
                             String msg = "";
