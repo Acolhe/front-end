@@ -1,22 +1,25 @@
 package com.acolhe.app.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 public class Missao {
     private String nome;
+    private String key;
     private String descricao;
     private int valor;
-    private boolean isConcluida;
+    private List<Integer> usuarios = new ArrayList<>();
 
-    public Missao() {
-    }
-
-    public Missao(String nome, String descricao, int valor, boolean isConcluida) {
+    public Missao(String nome, String key, String descricao, int valor) {
         this.nome = nome;
+        this.key = key;
         this.descricao = descricao;
         this.valor = valor;
-        this.isConcluida = isConcluida;
     }
+
+    public Missao(){}
 
     public String getNome() {
         return nome;
@@ -24,6 +27,14 @@ public class Missao {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getDescricao() {
@@ -42,12 +53,12 @@ public class Missao {
         this.valor = valor;
     }
 
-    public boolean isConcluida() {
-        return isConcluida;
+    public List<Integer> getUsuarios() {
+        return Collections.unmodifiableList(usuarios);
     }
 
-    public void setConcluida(boolean concluida) {
-        isConcluida = concluida;
+    public void add(Integer usr) {
+        usuarios.add(usr);
     }
 
     @Override
@@ -55,12 +66,12 @@ public class Missao {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Missao missao = (Missao) o;
-        return valor == missao.valor && isConcluida == missao.isConcluida && Objects.equals(nome, missao.nome) && Objects.equals(descricao, missao.descricao);
+        return valor == missao.valor && Objects.equals(nome, missao.nome) && Objects.equals(descricao, missao.descricao);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, descricao, valor, isConcluida);
+        return Objects.hash(nome, descricao, valor);
     }
 }
 
