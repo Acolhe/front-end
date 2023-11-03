@@ -10,14 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.acolhe.acolhe_api.R;
-import com.acolhe.app.model.Humor;
+import com.acolhe.app.model.HumorDTO;
 
 import java.util.List;
 
 public class HistoricoHumorAdapter extends RecyclerView.Adapter<HistoricoHumorAdapter.HistoricoViewHolder>{
-    private final List<Humor> historico;
+    private final List<HumorDTO> historico;
 
-    public HistoricoHumorAdapter(List<Humor> historico) {
+    public HistoricoHumorAdapter(List<HumorDTO> historico) {
         this.historico = historico;
     }
 
@@ -34,10 +34,10 @@ public class HistoricoHumorAdapter extends RecyclerView.Adapter<HistoricoHumorAd
 
     @Override
     public void onBindViewHolder(@NonNull HistoricoViewHolder h, int position) {
-        Humor atual = historico.get(position);
+        HumorDTO atual = historico.get(position);
         h.humor.setText(atual.getNivelSatisfacao().toString());
-        h.diaHumor.setText(atual.getDataAvaliacao().getDayOfMonth() + "");
-        h.mesHumor.setText(atual.getDataAvaliacao().getMonth().toString().substring(0, 3));
+        h.diaHumor.setText(atual.getData().getDayOfMonth() + "");
+        h.mesHumor.setText(atual.getData().getMonth().toString().substring(0, 3));
         h.carinhaHumor.setImageResource(atual.getRes());
     }
 

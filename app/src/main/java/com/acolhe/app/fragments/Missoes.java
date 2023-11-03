@@ -2,7 +2,6 @@ package com.acolhe.app.fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -11,24 +10,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.Retrofit.Methods;
+import com.acolhe.app.Retrofit.RetrofitClient;
+import com.acolhe.app.Retrofit.StringModel;
 import com.acolhe.app.config.ConfigFirebase;
-import com.acolhe.app.model.Frase;
 import com.acolhe.app.model.Missao;
 import com.acolhe.app.model.Usuario;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.acolhe.app.model.UsuarioDTO;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Missoes extends Fragment {
 
@@ -88,15 +89,32 @@ public class Missoes extends Fragment {
     }
 
     private void validaCheckbox(CheckBox checkBox, int i) {
-        if(missoes.get(i).getUsuarios().contains(Usuario.getId())){
+        if(missoes.get(i).getUsuarios().contains(UsuarioDTO.getId())){
             checkBox.setClickable(false);
             checkBox.setChecked(true);
         }
         checkBox.setOnCheckedChangeListener((compoundButton, b) -> {
             if (checkBox.isChecked()) {
-                Usuario.updateSaldo(missoes.get(i).getValor());
-                missoes.get(i).add(Usuario.getId());
+                UsuarioDTO.updateSaldo(missoes.get(i).getValor());
+                Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
+
+                methods.aumentarSaldo(UsuarioDTO.getId(), UsuarioDTO.getSaldo()).enqueue(new Callback<StringModel>() {
+                    @Override
+                    public void onResponse(Call<StringModel> call, Response<StringModel> response) {
+                        System.out.println(response.body().getMessage());
+                        Toast toast = Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                    @Override
+                    public void onFailure(Call<StringModel> call, Throwable t) {
+                        Toast toast = Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                });
+
+                missoes.get(i).add(UsuarioDTO.getId());
                 this.db.child(missoes.get(i).getKey()).setValue(missoes.get(i));
+
                 checkBox.setClickable(false);
             }
         });

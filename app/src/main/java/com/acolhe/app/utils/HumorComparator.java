@@ -1,8 +1,5 @@
 package com.acolhe.app.utils;
 
-import com.acolhe.app.model.Humor;
-
-import java.time.LocalDate;
 import java.util.Comparator;
 
 public class HumorComparator implements Comparator<Humor> {

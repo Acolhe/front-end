@@ -1,100 +1,146 @@
 package com.acolhe.app.model;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
-public class Usuario implements Serializable {
-    private static Integer id;
-    private static String nome;
-    private static int saldo;
-    private static int ofensiva;
-    private static String email;
-    private static int codSkin;
-    private static LocalDateTime dataCadastro;
-    private static LocalDate ultimoAcesso;
-    private static boolean premium;
-    private static List<Humor> historicoHumor;
+public class Usuario {
 
-    public Usuario(Integer id, String nome, int saldo, int ofensiva, String email, int codSkin, LocalDateTime dataCadastro, LocalDate ultimoAcesso, boolean premium, List<Humor> historicoHumor) {
-        Usuario.id = id;
-        Usuario.nome = nome;
-        Usuario.saldo = saldo;
-        Usuario.ofensiva = ofensiva;
-        Usuario.email = email;
-        Usuario.codSkin = codSkin;
-        Usuario.dataCadastro = dataCadastro;
-        Usuario.ultimoAcesso = ultimoAcesso;
-        Usuario.premium = premium;
-        Usuario.historicoHumor = historicoHumor;
+    private String dataultimologin;
+    private int saldo;
+    private String email, senha, data_cadastro;
+    private Boolean premium;
+    private int id;
+    private int diasConsecutivos;
+    private Integer codSkinPrincipal;
+    private String dataCadastro, nome;
+    private List<Humor> historicoHumor;
+
+    public Usuario(String dataultimologin, int saldo, String email, String senha, String data_cadastro, Boolean premium, int id, int diasConsecutivos, Integer codSkinPrincipal, String dataCadastro, String nome, List<Humor> historicoHumor) {
+        this.dataultimologin = dataultimologin;
+        this.saldo = saldo;
+        this.email = email;
+        this.senha = senha;
+        this.data_cadastro = data_cadastro;
+        this.premium = premium;
+        this.id = id;
+        this.diasConsecutivos = diasConsecutivos;
+        this.codSkinPrincipal = codSkinPrincipal;
+        this.dataCadastro = dataCadastro;
+        this.nome = nome;
+        this.historicoHumor = historicoHumor;
     }
 
-    public static Integer getId(){
-        return Usuario.id;
-    }
-    public static void setId(Integer id) {
-        Usuario.id = id;
-    }
-    public static String getNome() {
-        return Usuario.nome;
+    public String getDataultimologin() {
+        return dataultimologin;
     }
 
-    public static int getSaldo() {
+    public void setDataultimologin(String dataultimologin) {
+        this.dataultimologin = dataultimologin;
+    }
+
+    public int getSaldo() {
         return saldo;
     }
 
-    public static void updateSaldo(int novoSaldo) {
-        saldo += novoSaldo;
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
     }
 
-    public static int getOfensiva() {
-        return ofensiva;
-    }
-
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public static int getCodSkin() {
-        return codSkin;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public static LocalDateTime getDataCadastro() {
-        return dataCadastro;
+    public String getSenha() {
+        return senha;
     }
 
-    public static LocalDate getUltimoAcesso() {
-        return ultimoAcesso;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public static boolean isPremium() {
+    public String getData_cadastro() {
+        return data_cadastro;
+    }
+
+    public void setData_cadastro(String data_cadastro) {
+        this.data_cadastro = data_cadastro;
+    }
+
+    public Boolean getPremium() {
         return premium;
     }
 
-    public static void setPremium(boolean premium) {
-        Usuario.premium = premium;
+    public void setPremium(Boolean premium) {
+        this.premium = premium;
     }
 
-    public static List<Humor> getHistoricoHumor() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getDiasConsecutivos() {
+        return diasConsecutivos;
+    }
+
+    public void setDiasConsecutivos(int diasConsecutivos) {
+        this.diasConsecutivos = diasConsecutivos;
+    }
+
+    public Integer getCodSkinPrincipal() {
+        return codSkinPrincipal;
+    }
+
+    public void setCodSkinPrincipal(Integer codSkinPrincipal) {
+        this.codSkinPrincipal = codSkinPrincipal;
+    }
+
+    public String getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(String dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Humor> getHistoricoHumor() {
         return historicoHumor;
     }
 
-    public static void setHistoricoHumor(List<Humor> historicoHumor) {
-        Usuario.historicoHumor = historicoHumor;
+    public void setHistoricoHumor(List<Humor> historicoHumor) {
+        this.historicoHumor = historicoHumor;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
-        return saldo == usuario.saldo && ofensiva == usuario.ofensiva && codSkin == usuario.codSkin && premium == usuario.premium && Objects.equals(nome, usuario.nome) && Objects.equals(email, usuario.email) && Objects.equals(dataCadastro, usuario.dataCadastro) && Objects.equals(ultimoAcesso, usuario.ultimoAcesso) && Objects.equals(historicoHumor, usuario.historicoHumor);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome, saldo, ofensiva, email, codSkin, dataCadastro, ultimoAcesso, premium, historicoHumor);
+    public String toString() {
+        return "Usuario{" +
+                "dataultimologin='" + dataultimologin + '\'' +
+                ", saldo=" + saldo +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", data_cadastro='" + data_cadastro + '\'' +
+                ", premium=" + premium +
+                ", id=" + id +
+                ", diasConsecutivos=" + diasConsecutivos +
+                ", codSkinPrincipal=" + codSkinPrincipal +
+                ", dataCadastro='" + dataCadastro + '\'' +
+                ", nome='" + nome + '\'' +
+                ", historicoHumor=" + historicoHumor +
+                '}';
     }
 }

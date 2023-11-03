@@ -3,9 +3,10 @@ package com.acolhe.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.TimeZone;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,16 +14,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.acolhe.acolhe_api.R;
-import com.acolhe.app.Retrofit.LoginModel;
+import com.acolhe.app.model.Humor;
 import com.acolhe.app.Retrofit.Methods;
 import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.Retrofit.StringModel;
+import com.acolhe.app.model.HumorDTO;
+import com.acolhe.app.model.UsuarioDTO;
 import com.acolhe.app.utils.verifyInternet;
 
 import retrofit2.Call;
@@ -33,8 +34,6 @@ public class HumorDiario extends AppCompatActivity {
 
     private int nivelSatisfacao;
 
-    private int id;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +42,6 @@ public class HumorDiario extends AppCompatActivity {
             Intent intent = new Intent(this, SemInternet.class);
             startActivity(intent);
         }
-        Intent intent = getIntent();
-        id = intent.getIntExtra("id", 0);
     }
 
 
@@ -99,12 +96,11 @@ public class HumorDiario extends AppCompatActivity {
         nivelSatisfacao = 5;
     }
 
-public void fecharHumor(View view) {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-    String dataAtual = dateFormat.format(new Date());
-    Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
-        methods.addHumor(id, new com.acolhe.app.Retrofit.HumorDiario(dataAtual, nivelSatisfacao, "comentario")).enqueue(new Callback<StringModel>() {
+    public void fecharHumor(View view) {
+        Humor humor = new Humor(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nivelSatisfacao, "comentario");
+        Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
+        UsuarioDTO.getHistoricoHumor().add(new HumorDTO(humor));
+        methods.addHumor(UsuarioDTO.getId(), humor).enqueue(new Callback<StringModel>() {
             @Override
             public void onResponse(Call<StringModel> call, Response<StringModel> response) {
                 System.out.println(response.body().getMessage());

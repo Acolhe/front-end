@@ -1,5 +1,8 @@
 package com.acolhe.app.Retrofit;
 
+import com.acolhe.app.model.Humor;
+import com.acolhe.app.model.Usuario;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -17,7 +20,7 @@ public interface Methods {
 
 
     @GET("acolhe/usuario/byEmailSenha/{email}/{senha}")
-    Call<LoginModel> loginUser(@Path("email") String email, @Path("senha") String senha);
+    Call<Usuario> loginUser(@Path("email") String email, @Path("senha") String senha);
 
     @PUT("acolhe/usuario/assinarPlano/{id}")
     Call<StringModel> becomePremium(@Path("id") Integer id);
@@ -29,6 +32,8 @@ public interface Methods {
     Call<ClinicaModel> getAllClinicas();
 
     @POST("acolhe/humor/inserirHumor/{id}")
-    Call<StringModel> addHumor(@Path("id") int id, @Body HumorDiario humorDiario);
+    Call<StringModel> addHumor(@Path("id") int id, @Body Humor humor);
 
+    @PUT("acolhe/usuario/aumentarSaldo/{id}/{valor}")
+    Call<StringModel> aumentarSaldo(@Path("id") int id, @Path("valor") int saldo);
 }
