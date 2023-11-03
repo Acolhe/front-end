@@ -50,10 +50,10 @@
             android:name="com.acolhe.app.PaginaCadastroActivity"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.PlaylistActivity"
+            android:name="com.acolhe.app.PaginaInicialActivity"
             android:exported="false" />
         <activity
-            android:name="com.acolhe.app.PaginaInicialActivity"
+            android:name="com.acolhe.app.PlaylistActivity"
             android:exported="false" />
         <activity
             android:name="com.acolhe.app.MainActivity"
