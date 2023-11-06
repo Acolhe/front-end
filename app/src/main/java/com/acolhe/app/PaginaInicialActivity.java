@@ -28,6 +28,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -129,7 +131,16 @@ private View CreatePopUpWindow() {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             new UsuarioDTO(response.body());
-                            startActivity(new Intent(PaginaInicialActivity.this, HumorDiario.class));
+                            Toast.makeText(PaginaInicialActivity.this, String.valueOf(LocalDate.from(UsuarioDTO.getUltimoAcesso())) + " + " + String.valueOf(LocalDate.now()), Toast.LENGTH_SHORT).show();
+
+                            LocalDate ultimoAcesso = LocalDate.from(UsuarioDTO.getUltimoAcesso());
+                            LocalDate dataAtual = LocalDate.now();
+
+                            if (ultimoAcesso.isEqual(dataAtual)) {
+                                startActivity(new Intent(PaginaInicialActivity.this, MainActivity.class));
+                            } else {
+                                startActivity(new Intent(PaginaInicialActivity.this, HumorDiario.class));
+                            }
                         } else {
                             String msg;
                             try {

@@ -42,6 +42,9 @@ public class HumorDiario extends AppCompatActivity {
             Intent intent = new Intent(this, SemInternet.class);
             startActivity(intent);
         }
+        nivelSatisfacao = 3;
+        TextView texto_humor = findViewById(R.id.humor);
+        texto_humor.setText("Normal");
     }
 
 
