@@ -3,6 +3,7 @@ package com.acolhe.app.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,7 +18,7 @@ public class UsuarioDTO implements Serializable {
     private static String email;
     private static int codSkin;
     private static LocalDateTime dataCadastro;
-    private static LocalDate ultimoAcesso;
+    private static LocalDateTime ultimoAcesso;
     private static boolean premium;
     private static List<HumorDTO> historicoHumor = new ArrayList<>();
 
@@ -27,11 +28,14 @@ public class UsuarioDTO implements Serializable {
         UsuarioDTO.saldo = user.getSaldo();
         UsuarioDTO.ofensiva = user.getDiasConsecutivos();
         UsuarioDTO.email = user.getEmail();
-        UsuarioDTO.codSkin = user.getCodSkinPrincipal();
-        UsuarioDTO.dataCadastro = LocalDateTime.parse(user.getDataCadastro());
-        UsuarioDTO.ultimoAcesso = LocalDate.parse(user.getDataultimologin());
+        UsuarioDTO.codSkin = 0;
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+        UsuarioDTO.dataCadastro = LocalDateTime.parse(user.getData_cadastro(), formatter2);
+        UsuarioDTO.ultimoAcesso = LocalDateTime.parse(user.getDataultimologin(), formatter2);
         UsuarioDTO.premium = user.getPremium();
-        user.getHistoricoHumor().forEach(UsuarioDTO::addHistorico);
+        if(user.getHistoricoHumor() != null) {
+            user.getHistoricoHumor().forEach(UsuarioDTO::addHistorico);
+        }
     }
 
     private static void addHistorico(Humor humor) {
@@ -72,7 +76,7 @@ public class UsuarioDTO implements Serializable {
         return dataCadastro;
     }
 
-    public static LocalDate getUltimoAcesso() {
+    public static LocalDateTime getUltimoAcesso() {
         return ultimoAcesso;
     }
 
