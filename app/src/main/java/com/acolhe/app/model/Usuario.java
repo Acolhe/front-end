@@ -12,7 +12,7 @@ public class Usuario {
     private int id;
     private int diasConsecutivos;
     private Integer codSkinPrincipal;
-    private String dataCadastro, nome;
+    private String nome;
     private List<Humor> historicoHumor;
 
     public Usuario(String dataultimologin, int saldo, String email, String senha, String data_cadastro, Boolean premium, int id, int diasConsecutivos, Integer codSkinPrincipal, String dataCadastro, String nome, List<Humor> historicoHumor) {
@@ -25,7 +25,6 @@ public class Usuario {
         this.id = id;
         this.diasConsecutivos = diasConsecutivos;
         this.codSkinPrincipal = codSkinPrincipal;
-        this.dataCadastro = dataCadastro;
         this.nome = nome;
         this.historicoHumor = historicoHumor;
     }
@@ -102,14 +101,6 @@ public class Usuario {
         this.codSkinPrincipal = codSkinPrincipal;
     }
 
-    public String getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(String dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -138,7 +129,6 @@ public class Usuario {
                 ", id=" + id +
                 ", diasConsecutivos=" + diasConsecutivos +
                 ", codSkinPrincipal=" + codSkinPrincipal +
-                ", dataCadastro='" + dataCadastro + '\'' +
                 ", nome='" + nome + '\'' +
                 ", historicoHumor=" + historicoHumor +
                 '}';
