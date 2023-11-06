@@ -19,20 +19,16 @@ import com.acolhe.app.adapters.PlaylistSliderAdapter;
 import com.acolhe.app.config.ConfigFirebase;
 import com.acolhe.app.model.Clinica;
 import com.acolhe.app.model.Frase;
-import com.acolhe.app.model.Humor;
+import com.acolhe.app.model.HumorDTO;
 import com.acolhe.app.model.Playlist;
 import com.acolhe.app.model.Respiracao;
-import com.acolhe.app.model.Satisfacao;
-import com.acolhe.app.model.Usuario;
+import com.acolhe.app.model.UsuarioDTO;
 import com.github.islamkhsh.CardSliderViewPager;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.MonthDay;
-import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
@@ -58,15 +54,12 @@ public class Home extends Fragment {
         TextView humor = view.findViewById(R.id.humorDiario_home);
         ImageView carinhaHumor = view.findViewById(R.id.carinhaHumor_home);
 
-        Usuario.getHistoricoHumor().add(new Humor(LocalDate.of(Year.now().getValue(), Month.JULY.getValue(), MonthDay.now().getDayOfMonth()), Satisfacao.BEM));
-        Usuario.getHistoricoHumor().add(new Humor(LocalDate.now(), Satisfacao.BEM));
-
         setFraseDoDia(fraseDoDia);
 
-        int max = Usuario.getHistoricoHumor().size();
-        Humor ultimoHumor = Usuario.getHistoricoHumor().get(max - 1);
-        mesHumor.setText(ultimoHumor.getDataAvaliacao().getMonth().toString().substring(0, 3));
-        diaHumor.setText(ultimoHumor.getDataAvaliacao().getDayOfMonth() + "");
+        int max = UsuarioDTO.getHistoricoHumor().size();
+        HumorDTO ultimoHumor = UsuarioDTO.getHistoricoHumor().get(max - 1);
+        mesHumor.setText(ultimoHumor.getData().getMonth().toString().substring(0, 3));
+        diaHumor.setText(ultimoHumor.getData().getDayOfMonth() + "");
         humor.setText(ultimoHumor.getNivelSatisfacao().toString());
         setCarinha(carinhaHumor, ultimoHumor);
 
@@ -87,7 +80,7 @@ public class Home extends Fragment {
 
     }
 
-    private void setCarinha(ImageView carinhaHumor, Humor humor) {
+    private void setCarinha(ImageView carinhaHumor, HumorDTO humor) {
         switch (humor.getNivelSatisfacao()) {
             case MUITO_TRISTE:
                 carinhaHumor.setImageResource(R.drawable.nadabem);

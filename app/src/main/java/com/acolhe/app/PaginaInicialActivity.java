@@ -17,17 +17,18 @@ import android.widget.Toast;
 
 
 import com.acolhe.acolhe_api.R;
-import com.acolhe.app.Retrofit.LoginModel;
+import com.acolhe.app.model.Usuario;
 import com.acolhe.app.Retrofit.Methods;
 import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.config.ConfigFirebase;
+import com.acolhe.app.model.UsuarioDTO;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -113,9 +114,9 @@ private View CreatePopUpWindow() {
 
         Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
 
-        methods.loginUser(emailString, senhaString).enqueue(new Callback<LoginModel>() {
+        methods.loginUser(emailString, senhaString).enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 System.out.println("Usuario Logado");
                 saldo = response.body().getSaldo();
                 ofensiva = response.body().getDiasConsecutivos();
@@ -127,14 +128,10 @@ private View CreatePopUpWindow() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Intent intent = new Intent(PaginaInicialActivity.this, HumorDiario.class);
-                            intent.putExtra("saldo", saldo);
-                            intent.putExtra("ofensiva", ofensiva);
-                            intent.putExtra("id", id);
-                            intent.putExtra("nome", nome);
-                            startActivity(intent);
+                            new UsuarioDTO(response.body());
+                            startActivity(new Intent(PaginaInicialActivity.this, HumorDiario.class));
                         } else {
-                            String msg = "";
+                            String msg;
                             try {
                                 throw task.getException();
                             } catch ( FirebaseAuthInvalidCredentialsException  e){
@@ -150,7 +147,7 @@ private View CreatePopUpWindow() {
             }
 
             @Override
-            public void onFailure(Call<LoginModel> call, Throwable t) {
+            public void onFailure(Call<Usuario> call, Throwable t) {
                 Toast.makeText(PaginaInicialActivity.this, "Erro ao logar usuário", Toast.LENGTH_SHORT).show();
             }
         });

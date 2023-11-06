@@ -1,16 +1,15 @@
 package com.acolhe.app.utils;
 
-import com.acolhe.app.model.Humor;
+import com.acolhe.app.model.HumorDTO;
 
-import java.time.LocalDate;
 import java.util.Comparator;
 
-public class HumorComparator implements Comparator<Humor> {
+public class HumorComparator implements Comparator<HumorDTO> {
     @Override
-    public int compare(Humor humor, Humor t1) {
-        if(humor.getDataAvaliacao().isAfter(t1.getDataAvaliacao())) {
+    public int compare(HumorDTO humor, HumorDTO t1) {
+        if(humor.getData().isAfter(t1.getData())) {
             return -1;
-        } else if (humor.getDataAvaliacao().isEqual(t1.getDataAvaliacao())) {
+        } else if (humor.getData().isEqual(t1.getData())) {
             return 0;
         }else {
             return 1;
