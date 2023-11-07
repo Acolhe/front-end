@@ -1,32 +1,31 @@
 package com.acolhe.app.model;
 
-import java.util.Collection;
 import java.util.List;
 
 public class Usuario {
 
+    private int codUsuario;
     private String dataultimologin;
     private int saldo;
-    private String email, senha, data_cadastro;
+    private String email, senha, datacadastro;
     private Boolean premium;
-    private int id;
-    private int diasConsecutivos;
+    private int diasconsecutivos;
     private Integer codSkinPrincipal;
     private String nome;
-    private List<Humor> historicoHumor;
+    private List<Humor> humores;
 
-    public Usuario(String dataultimologin, int saldo, String email, String senha, String data_cadastro, Boolean premium, int id, int diasConsecutivos, Integer codSkinPrincipal, String dataCadastro, String nome, List<Humor> historicoHumor) {
+    public Usuario(String dataultimologin, int saldo, String email, String senha, String datacadastro, Boolean premium, int codUsuario, int diasconsecutivos, Integer codSkinPrincipal, String dataCadastro, String nome, List<Humor> humores) {
         this.dataultimologin = dataultimologin;
         this.saldo = saldo;
         this.email = email;
         this.senha = senha;
-        this.data_cadastro = data_cadastro;
+        this.datacadastro = datacadastro;
         this.premium = premium;
-        this.id = id;
-        this.diasConsecutivos = diasConsecutivos;
+        this.codUsuario = codUsuario;
+        this.diasconsecutivos = diasconsecutivos;
         this.codSkinPrincipal = codSkinPrincipal;
         this.nome = nome;
-        this.historicoHumor = historicoHumor;
+        this.humores = humores;
     }
 
     public String getDataultimologin() {
@@ -61,12 +60,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getData_cadastro() {
-        return data_cadastro;
+    public String getDatacadastro() {
+        return datacadastro;
     }
 
-    public void setData_cadastro(String data_cadastro) {
-        this.data_cadastro = data_cadastro;
+    public void setDatacadastro(String datacadastro) {
+        this.datacadastro = datacadastro;
     }
 
     public Boolean getPremium() {
@@ -77,20 +76,20 @@ public class Usuario {
         this.premium = premium;
     }
 
-    public int getId() {
-        return id;
+    public int getCodUsuario() {
+        return codUsuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCodUsuario(int codUsuario) {
+        this.codUsuario = codUsuario;
     }
 
-    public int getDiasConsecutivos() {
-        return diasConsecutivos;
+    public int getDiasconsecutivos() {
+        return diasconsecutivos;
     }
 
-    public void setDiasConsecutivos(int diasConsecutivos) {
-        this.diasConsecutivos = diasConsecutivos;
+    public void setDiasconsecutivos(int diasconsecutivos) {
+        this.diasconsecutivos = diasconsecutivos;
     }
 
     public Integer getCodSkinPrincipal() {
@@ -109,12 +108,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public List<Humor> getHistoricoHumor() {
-        return historicoHumor;
+    public List<Humor> getHumores() {
+        return humores;
     }
 
-    public void setHistoricoHumor(List<Humor> historicoHumor) {
-        this.historicoHumor = historicoHumor;
+    public void setHumores(List<Humor> humores) {
+        this.humores = humores;
     }
 
     @Override
@@ -124,13 +123,13 @@ public class Usuario {
                 ", saldo=" + saldo +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
-                ", data_cadastro='" + data_cadastro + '\'' +
+                ", data_cadastro='" + datacadastro + '\'' +
                 ", premium=" + premium +
-                ", id=" + id +
-                ", diasConsecutivos=" + diasConsecutivos +
+                ", id=" + codUsuario +
+                ", diasConsecutivos=" + diasconsecutivos +
                 ", codSkinPrincipal=" + codSkinPrincipal +
                 ", nome='" + nome + '\'' +
-                ", historicoHumor=" + historicoHumor +
+                ", historicoHumor=" + humores +
                 '}';
     }
 }

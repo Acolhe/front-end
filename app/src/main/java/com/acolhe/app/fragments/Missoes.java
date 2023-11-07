@@ -101,9 +101,6 @@ public class Missoes extends Fragment {
                 methods.aumentarSaldo(UsuarioDTO.getId(), UsuarioDTO.getSaldo()).enqueue(new Callback<StringModel>() {
                     @Override
                     public void onResponse(Call<StringModel> call, Response<StringModel> response) {
-                        System.out.println(response.body().getMessage());
-                        Toast toast = Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT);
-                        toast.show();
                     }
                     @Override
                     public void onFailure(Call<StringModel> call, Throwable t) {

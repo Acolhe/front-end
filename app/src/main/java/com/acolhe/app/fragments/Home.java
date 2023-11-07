@@ -18,6 +18,7 @@ import com.acolhe.app.adapters.ClinicaSliderAdapter;
 import com.acolhe.app.adapters.PlaylistSliderAdapter;
 import com.acolhe.app.config.ConfigFirebase;
 import com.acolhe.app.model.Clinica;
+import com.acolhe.app.model.ClinicasDTO;
 import com.acolhe.app.model.Frase;
 import com.acolhe.app.model.HumorDTO;
 import com.acolhe.app.model.Playlist;
@@ -64,7 +65,7 @@ public class Home extends Fragment {
         setCarinha(carinhaHumor, ultimoHumor);
 
         sliderRespiracao(view);
-        sliderClinicas(view);
+//        sliderClinicas(view);
 
         setOnClickListeners(view);
         return view;
@@ -120,30 +121,14 @@ public class Home extends Fragment {
     }
 
     private static void sliderClinicas(View view) {
-        ArrayList<Clinica> clinicas = new ArrayList<>();
-        clinicas.add(new Clinica("Nome clinica um",
-                "email@email.com",
-                "11 95871-7152",
-                "Descricao",
-                "imagem.com",
-                "Bairro legal",
-                "São Paulo",
-                "São Paulo",
-                "SP",
-                true));
-        clinicas.add(new Clinica("Nome clinica dois",
-                "email@email.com",
-                "11 95871-7152",
-                "Descricao",
-                "imagem.com",
-                "Bairro legal",
-                "São Paulo",
-                "São Paulo",
-                "SP",
-                true));
-
-        CardSliderViewPager cardSliderViewPager = (CardSliderViewPager) view.findViewById(R.id.home_viewPager);
-        cardSliderViewPager.setAdapter(new ClinicaSliderAdapter(clinicas));
+        ArrayList<Clinica> patrocinadas = new ArrayList<>();
+        ClinicasDTO.getClinicas().forEach((clinica) -> {
+            if(clinica.isPatrocinada() && patrocinadas.size() < 2) {
+                patrocinadas.add(clinica);
+            }
+        });
+        CardSliderViewPager cardSliderViewPager = view.findViewById(R.id.home_viewPager);
+        cardSliderViewPager.setAdapter(new ClinicaSliderAdapter(patrocinadas));
     }
 
     private void sliderRespiracao(View view) {

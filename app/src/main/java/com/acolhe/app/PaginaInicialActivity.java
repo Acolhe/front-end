@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.model.Clinica;
+import com.acolhe.app.model.ClinicasDTO;
 import com.acolhe.app.model.Usuario;
 import com.acolhe.app.Retrofit.Methods;
 import com.acolhe.app.Retrofit.RetrofitClient;
@@ -28,7 +30,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,51 +40,61 @@ public class PaginaInicialActivity extends AppCompatActivity {
 
     ConstraintLayout layout;
     FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
-    EditText email;
     private View popupView;
-    EditText senha;
-    int saldo;
+    Methods methods;
 
-    int ofensiva;
-
-    int id;
-
-    String nome;
+    public static Intent bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         layout = findViewById(R.id.linearLayout);
-
-
+        methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
+        bundle = new Intent(PaginaInicialActivity.this, MainActivity.class);
+        getClinicas();
     }
 
-private View CreatePopUpWindow() {
-    LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-    popupView = inflater.inflate(R.layout.mainpopup, null);
+    private void getClinicas(){
+        methods.getAllClinicas().enqueue(new Callback<List<Clinica>>() {
+            @Override
+            public void onResponse(Call<List<Clinica>> call, Response<List<Clinica>> response) {
+                new ClinicasDTO(response.body());
+            }
 
-    int width = ViewGroup.LayoutParams.MATCH_PARENT;
-    int height = ViewGroup.LayoutParams.MATCH_PARENT;
-    boolean focusable = true;
-    PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-    layout.post(new Runnable() {
-        @Override
-        public void run() {
-            popupWindow.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
-        }
-    });
+            @Override
+            public void onFailure(Call<List<Clinica>> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(PaginaInicialActivity.this, "Internal Server Error, can't load clinicas ", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
-    popupView.setOnTouchListener(new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            popupWindow.dismiss();
-            return true;
-        }
-    });
+    private View CreatePopUpWindow() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        popupView = inflater.inflate(R.layout.mainpopup, null);
 
-    return popupView;
-}
+        int width = ViewGroup.LayoutParams.MATCH_PARENT;
+        int height = ViewGroup.LayoutParams.MATCH_PARENT;
+        boolean focusable = true;
+        PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        layout.post(new Runnable() {
+            @Override
+            public void run() {
+                popupWindow.showAtLocation(layout, Gravity.BOTTOM, 0, 0);
+            }
+        });
+
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+
+        return popupView;
+    }
 
 
 
@@ -111,25 +123,19 @@ private View CreatePopUpWindow() {
         String emailString = emailPopup.getText().toString();
         String senhaString = senhaPopup.getText().toString();
 
-
-        Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
-
         methods.loginUser(emailString, senhaString).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 System.out.println("Usuario Logado");
-                saldo = response.body().getSaldo();
-                ofensiva = response.body().getDiasConsecutivos();
-                id = response.body().getId();
-                nome = response.body().getNome();
-
                 auth = ConfigFirebase.getFirebaseAuth();
                 auth.signInWithEmailAndPassword(emailString, senhaString).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             new UsuarioDTO(response.body());
-                            startActivity(new Intent(PaginaInicialActivity.this, HumorDiario.class));
+                            System.out.println("Usuario sem ser DTOOOOOO:"+ response.body());
+                            System.out.println("clinicas = " + ClinicasDTO.getClinicas());
+                            startActivity(PaginaInicialActivity.bundle);
                         } else {
                             String msg;
                             try {

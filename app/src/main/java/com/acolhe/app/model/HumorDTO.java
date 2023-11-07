@@ -8,7 +8,7 @@ public class HumorDTO {
     private LocalDate data;
     private Satisfacao nivelSatisfacao;
     private String comentario;
-    private Integer res;
+    private Integer imagem;
 
     public HumorDTO(Humor humor) {
         this.data = LocalDate.parse(humor.getData());
@@ -19,12 +19,12 @@ public class HumorDTO {
     public HumorDTO() {
     }
 
-    public Integer getRes() {
-        return res;
+    public Integer getImagem() {
+        return imagem;
     }
 
-    public void setRes(Integer res) {
-        this.res = res;
+    public void setImagem(Integer imagem) {
+        this.imagem = imagem;
     }
 
     public LocalDate getData() {
@@ -43,23 +43,23 @@ public class HumorDTO {
         switch (nivelSatisfacao){
             case 1:
                 this.nivelSatisfacao = Satisfacao.MUITO_TRISTE;
-                setRes(R.drawable.nadabem);
+                setImagem(R.drawable.nadabem);
                 break;
             case 2:
                 this.nivelSatisfacao = Satisfacao.TRISTE;
-                setRes(R.drawable.triste);
+                setImagem(R.drawable.triste);
                 break;
             case 3:
                 this.nivelSatisfacao = Satisfacao.NORMAL;
-                setRes(R.drawable.normal);
+                setImagem(R.drawable.normal);
                 break;
             case 4:
                 this.nivelSatisfacao = Satisfacao.BEM;
-                setRes(R.drawable.bem);
+                setImagem(R.drawable.bem);
                 break;
             case 5:
                 this.nivelSatisfacao = Satisfacao.MUITO_BEM;
-                setRes(R.drawable.muitobem);
+                setImagem(R.drawable.muitobem);
                 break;
         }
     }

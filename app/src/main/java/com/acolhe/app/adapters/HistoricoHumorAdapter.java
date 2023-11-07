@@ -38,7 +38,7 @@ public class HistoricoHumorAdapter extends RecyclerView.Adapter<HistoricoHumorAd
         h.humor.setText(atual.getNivelSatisfacao().toString());
         h.diaHumor.setText(atual.getData().getDayOfMonth() + "");
         h.mesHumor.setText(atual.getData().getMonth().toString().substring(0, 3));
-        h.carinhaHumor.setImageResource(atual.getRes());
+        h.carinhaHumor.setImageResource(atual.getImagem());
     }
 
     class HistoricoViewHolder extends RecyclerView.ViewHolder{

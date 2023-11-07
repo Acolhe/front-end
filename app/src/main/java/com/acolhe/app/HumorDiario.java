@@ -23,6 +23,7 @@ import com.acolhe.app.Retrofit.Methods;
 import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.Retrofit.StringModel;
 import com.acolhe.app.model.HumorDTO;
+import com.acolhe.app.model.Usuario;
 import com.acolhe.app.model.UsuarioDTO;
 import com.acolhe.app.utils.verifyInternet;
 
@@ -38,6 +39,7 @@ public class HumorDiario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_humor_diario);
+        System.out.println("USUARIO DTOOOOOO: "+ UsuarioDTO.string());
         if (!verifyInternet.isNetworkAvailable(this)) {
             Intent intent = new Intent(this, SemInternet.class);
             startActivity(intent);
@@ -97,15 +99,15 @@ public class HumorDiario extends AppCompatActivity {
     }
 
     public void fecharHumor(View view) {
-        Humor humor = new Humor(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nivelSatisfacao, "comentario");
+        Humor humor = new Humor(UsuarioDTO.getId(), LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nivelSatisfacao, "comentario");
         Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
         UsuarioDTO.getHistoricoHumor().add(new HumorDTO(humor));
+
+        System.out.println(UsuarioDTO.getId() + "idddddddd");
+        System.out.println(humor);
         methods.addHumor(UsuarioDTO.getId(), humor).enqueue(new Callback<StringModel>() {
             @Override
             public void onResponse(Call<StringModel> call, Response<StringModel> response) {
-                System.out.println(response.body().getMessage());
-                Toast toast = Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT);
-                toast.show();
             }
 
             @Override
@@ -115,8 +117,7 @@ public class HumorDiario extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(HumorDiario.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }
 
