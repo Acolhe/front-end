@@ -88,6 +88,9 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                 if (senha.isEmpty()) {
                     senhaTextInputLayout.setError("Esse campo é obrigatório");
                     camposVazios = true;
+                } else if (senha.length() < 6) {
+                    senhaTextInputLayout.setError("Senha deve ter ao menos 6 caracteres");
+                    camposVazios = true;
                 } else {
                     senhaTextInputLayout.setError(null);
                 }
