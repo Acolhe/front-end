@@ -34,7 +34,7 @@ public class UsuarioDTO implements Serializable {
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         UsuarioDTO.dataCadastro = LocalDate.parse(user.getDatacadastro(), formatter);
         UsuarioDTO.ultimoAcesso = LocalDateTime.parse(user.getDataultimologin(), formatter2);
-//        UsuarioDTO.premium = user.get();
+        UsuarioDTO.premium = user.isPremium();
         if(user.getHumores() != null) {
             if(!user.getHumores().isEmpty()) {
                 user.getHumores().forEach(UsuarioDTO::addHistorico);

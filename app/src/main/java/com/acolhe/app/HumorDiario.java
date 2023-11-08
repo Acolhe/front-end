@@ -41,11 +41,15 @@ public class HumorDiario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_humor_diario);
-        System.out.println("USUARIO DTOOOOOO: "+ UsuarioDTO.string());
         if (!verifyInternet.isNetworkAvailable(this)) {
             Intent intent = new Intent(this, SemInternet.class);
             startActivity(intent);
         }
+        nivelSatisfacao = 3;
+        TextView texto_humor = findViewById(R.id.humor);
+        TextView olaUser = findViewById(R.id.olaUser);
+        olaUser.setText(String.format("\uD83D\uDC4B Ei %s!", UsuarioDTO.getNome()));
+        texto_humor.setText("Normal");
     }
 
 
