@@ -2,9 +2,11 @@ package com.acolhe.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -24,6 +26,8 @@ public class ClinicasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinicas);
+        ImageView imageAcolhePlus = findViewById(R.id.imgVwAcolhePlus);
+        imageAcolhePlus.setOnClickListener(view -> startActivity(new Intent(ClinicasActivity.this, PaginaAcolhePlus.class)));
 
         getClinicas();
         iniciarLista();
