@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/acolhe_flower" />
+
+        <TextView
+            android:id="@+id/tituloResp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/paytone_one"
+            android:text="{Título da respiracao}"
+            android:textAlignment="center"
+            android:textColor="@color/secondary_color"
+            android:textFontWeight="900"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/descricaoResp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/paytone_one"
+            android:text="{Descricao}"
+            android:textAlignment="center"
+            android:textColor="@color/secondary_color"
+            android:textFontWeight="900"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/paytone_one"
+            android:text="Técnica:"
+            android:textAlignment="center"
+            android:textColor="@color/secondary_color"
+            android:textFontWeight="900"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tecnicaResp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/paytone_one"
+            android:text="{Técnica específica detalhada}"
+            android:textColor="@color/secondary_color"
+            android:textFontWeight="900"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
