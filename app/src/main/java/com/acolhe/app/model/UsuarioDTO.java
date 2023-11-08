@@ -1,5 +1,7 @@
 package com.acolhe.app.model;
 
+import com.acolhe.app.Retrofit.ResponseModel;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,11 +20,12 @@ public class UsuarioDTO implements Serializable {
     private static LocalDate dataCadastro;
     private static LocalDateTime ultimoAcesso;
     private static boolean premium;
-    private static List<HumorDTO> historicoHumor = new ArrayList<>();
+    private static List<HumorDTO> historicoHumor;
 
     public UsuarioDTO(Usuario user) {
+        UsuarioDTO.historicoHumor = new ArrayList<>();
         UsuarioDTO.id = user.getCodUsuario();
-        UsuarioDTO.nome = user.getNome();
+        UsuarioDTO.nome = user.getNomeUsuario();
         UsuarioDTO.saldo = user.getSaldo();
         UsuarioDTO.ofensiva = user.getDiasconsecutivos();
         UsuarioDTO.email = user.getEmail();
@@ -31,7 +34,7 @@ public class UsuarioDTO implements Serializable {
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
         UsuarioDTO.dataCadastro = LocalDate.parse(user.getDatacadastro(), formatter);
         UsuarioDTO.ultimoAcesso = LocalDateTime.parse(user.getDataultimologin(), formatter2);
-        UsuarioDTO.premium = user.getPremium();
+//        UsuarioDTO.premium = user.get();
         if(user.getHumores() != null) {
             if(!user.getHumores().isEmpty()) {
                 user.getHumores().forEach(UsuarioDTO::addHistorico);

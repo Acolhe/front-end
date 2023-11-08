@@ -7,12 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.acolhe.acolhe_api.R;
 import com.acolhe.app.ClinicasActivity;
+import com.acolhe.app.HistoricoHumorActivity;
 import com.acolhe.app.MeditacaoHome;
 import com.acolhe.app.adapters.ClinicaSliderAdapter;
 import com.acolhe.app.adapters.PlaylistSliderAdapter;
@@ -57,6 +59,8 @@ public class Home extends Fragment {
 
         setFraseDoDia(fraseDoDia);
 
+        System.out.println("HUMOR COMO ESTA CHEGANDO NA HOME: " + UsuarioDTO.getHistoricoHumor());
+
         int max = UsuarioDTO.getHistoricoHumor().size();
         HumorDTO ultimoHumor = UsuarioDTO.getHistoricoHumor().get(max - 1);
         mesHumor.setText(ultimoHumor.getData().getMonth().toString().substring(0, 3));
@@ -72,13 +76,16 @@ public class Home extends Fragment {
     }
 
     private void setOnClickListeners(View rootView) {
-        TextView verTudoClinicasTxtVw = rootView.findViewById(R.id.txtVwVerTudo_clinicas), verTudoMedTxtVw = rootView.findViewById(R.id.txtVwVerTudo_meditacao);
-        ImageView verTudoClinicasImgVw = rootView.findViewById(R.id.imageVerTudo_clinicas), verTudoMedImgVw = rootView.findViewById(R.id.imageViewVerTudo_meditacao);
+        TextView verTudoClinicasTxtVw = rootView.findViewById(R.id.txtVwVerTudo_clinicas), verTudoMedTxtVw = rootView.findViewById(R.id.txtVwVerTudo_meditacao), verTudoHumorTxtVw = rootView.findViewById(R.id.txtVwVerTudoHumor_home);
+        ImageView verTudoClinicasImgVw = rootView.findViewById(R.id.imageVerTudo_clinicas), verTudoMedImgVw = rootView.findViewById(R.id.imageViewVerTudo_meditacao), verTudoHumorImgVw = rootView.findViewById(R.id.imgVwVerTudoHumor_home);
+        LinearLayout historico = rootView.findViewById(R.id.historicoHumor_home);
         verTudoMedImgVw.setOnClickListener(view -> startActivity(new Intent(getContext(), MeditacaoHome.class)));
         verTudoMedTxtVw.setOnClickListener((view) -> startActivity(new Intent(getContext(), MeditacaoHome.class)));
         verTudoClinicasImgVw.setOnClickListener((view) -> startActivity(new Intent(getContext(), ClinicasActivity.class)));
         verTudoClinicasTxtVw.setOnClickListener((view) -> startActivity(new Intent(getContext(), ClinicasActivity.class)));
-
+        verTudoHumorTxtVw.setOnClickListener((view) -> startActivity(new Intent(getContext(), HistoricoHumorActivity.class)));
+        verTudoHumorImgVw.setOnClickListener((view) -> startActivity(new Intent(getContext(), HistoricoHumorActivity.class)));
+        historico.setOnClickListener((view) -> startActivity(new Intent(getContext(), HistoricoHumorActivity.class)));
     }
 
     private void setCarinha(ImageView carinhaHumor, HumorDTO humor) {

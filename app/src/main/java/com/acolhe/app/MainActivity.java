@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.acolhe.acolhe_api.R;
 import com.acolhe.app.Retrofit.Methods;
+import com.acolhe.app.Retrofit.ResponseModel;
 import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.fragments.Cvv;
 import com.acolhe.app.fragments.Home;
@@ -43,10 +44,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
+
         saldoLayout = findViewById(R.id.valorSaldo);
         ofensivaLayout = findViewById(R.id.valorOfensiva);
 
-        methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
         ofensivaLayout.setText(UsuarioDTO.getOfensiva() + "");
         adicionarEventosClickCabecalho();
         adicionaEventosCLickRodape();

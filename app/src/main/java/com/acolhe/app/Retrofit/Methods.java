@@ -33,8 +33,11 @@ public interface Methods {
     @GET("acolhe/clinicas/todas")
     Call<List<Clinica>> getAllClinicas();
 
+    @GET("acolhe/usuario/{id}")
+    Call<ResponseModel> getUsuario(@Path("id") Integer id);
+
     @POST("acolhe/humor/inserirHumor/{id}")
-    Call<StringModel> addHumor(@Path("id") int id, @Body Humor humor);
+    Call<ResponseModel> addHumor(@Path("id") int id, @Body Humor humor);
 
     @PUT("acolhe/usuario/aumentarSaldo/{id}/{valor}")
     Call<StringModel> aumentarSaldo(@Path("id") int id, @Path("valor") int saldo);

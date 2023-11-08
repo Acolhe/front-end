@@ -1,10 +1,10 @@
 package com.acolhe.app.model;
 
 public class Humor {
-    private Integer codUsuario;
-    private Integer codhumor;
+    private int codUsuario;
+    private int codhumor;
     private String data;
-    private Integer nivelSatisfacao;
+    private int nivelSatisfacao;
     private String comentario;
 
     public Humor() {

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.TimeZone;
@@ -18,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.acolhe.acolhe_api.R;
+import com.acolhe.app.Retrofit.ResponseModel;
 import com.acolhe.app.model.Humor;
 import com.acolhe.app.Retrofit.Methods;
 import com.acolhe.app.Retrofit.RetrofitClient;
@@ -101,20 +103,26 @@ public class HumorDiario extends AppCompatActivity {
     public void fecharHumor(View view) {
         Humor humor = new Humor(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nivelSatisfacao, "comentario");
         Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
-        methods.addHumor(UsuarioDTO.getId(), humor).enqueue(new Callback<StringModel>() {
+
+        methods.addHumor(UsuarioDTO.getId(), humor).enqueue(new Callback<ResponseModel>() {
             @Override
-            public void onResponse(Call<StringModel> call, Response<StringModel> response) {
-                System.out.println(response.body() + "Teste teste teste");
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if(response.isSuccessful()) {
+                    if (response.body().getData() != null) {
+                        new UsuarioDTO(response.body().getData());
+                    }else {
+                        Toast.makeText(HumorDiario.this, "Humor já registrado hoje", Toast.LENGTH_SHORT).show();
+                    }
+                    startActivity(new Intent(HumorDiario.this, MainActivity.class));
+                }
             }
 
             @Override
-            public void onFailure(Call<StringModel> call, Throwable t) {
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
                 Toast toast = Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT);
                 toast.show();
             }
         });
-
-        startActivity(new Intent(HumorDiario.this, MainActivity.class));
     }
 }
 
