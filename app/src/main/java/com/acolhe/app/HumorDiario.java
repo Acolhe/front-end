@@ -99,15 +99,12 @@ public class HumorDiario extends AppCompatActivity {
     }
 
     public void fecharHumor(View view) {
-        Humor humor = new Humor(UsuarioDTO.getId(), LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nivelSatisfacao, "comentario");
+        Humor humor = new Humor(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nivelSatisfacao, "comentario");
         Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
-        UsuarioDTO.getHistoricoHumor().add(new HumorDTO(humor));
-
-        System.out.println(UsuarioDTO.getId() + "idddddddd");
-        System.out.println(humor);
         methods.addHumor(UsuarioDTO.getId(), humor).enqueue(new Callback<StringModel>() {
             @Override
             public void onResponse(Call<StringModel> call, Response<StringModel> response) {
+                System.out.println(response.body() + "Teste teste teste");
             }
 
             @Override
@@ -117,7 +114,7 @@ public class HumorDiario extends AppCompatActivity {
             }
         });
 
-        finish();
+        startActivity(new Intent(HumorDiario.this, MainActivity.class));
     }
 }
 

@@ -51,7 +51,7 @@ public class PaginaInicialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         layout = findViewById(R.id.linearLayout);
         methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
-        bundle = new Intent(PaginaInicialActivity.this, MainActivity.class);
+        bundle = new Intent(PaginaInicialActivity.this, HumorDiario.class);
         getClinicas();
     }
 

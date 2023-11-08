@@ -10,6 +10,12 @@ public class Humor {
     public Humor() {
     }
 
+    public Humor(String data, Integer nivelSatisfacao, String comentario) {
+        this.data = data;
+        this.nivelSatisfacao = nivelSatisfacao;
+        this.comentario = comentario;
+    }
+
     public Humor(Integer codUsuario, String data, Integer nivelSatisfacao, String comentario) {
         this.codUsuario = codUsuario;
         this.data = data;

@@ -33,7 +33,9 @@ public class UsuarioDTO implements Serializable {
         UsuarioDTO.ultimoAcesso = LocalDateTime.parse(user.getDataultimologin(), formatter2);
         UsuarioDTO.premium = user.getPremium();
         if(user.getHumores() != null) {
-            user.getHumores().forEach(UsuarioDTO::addHistorico);
+            if(!user.getHumores().isEmpty()) {
+                user.getHumores().forEach(UsuarioDTO::addHistorico);
+            }
         }
     }
 

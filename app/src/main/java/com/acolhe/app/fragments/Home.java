@@ -65,7 +65,7 @@ public class Home extends Fragment {
         setCarinha(carinhaHumor, ultimoHumor);
 
         sliderRespiracao(view);
-//        sliderClinicas(view);
+        sliderClinicas(view);
 
         setOnClickListeners(view);
         return view;
@@ -122,6 +122,7 @@ public class Home extends Fragment {
 
     private static void sliderClinicas(View view) {
         ArrayList<Clinica> patrocinadas = new ArrayList<>();
+        System.out.println(ClinicasDTO.getClinicas());
         ClinicasDTO.getClinicas().forEach((clinica) -> {
             if(clinica.isPatrocinada() && patrocinadas.size() < 2) {
                 patrocinadas.add(clinica);

@@ -43,17 +43,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        if(UsuarioDTO.getHistoricoHumor().size() == 0) {
-            startActivity(new Intent(this, HumorDiario.class));
-        }
-
-        System.out.println(UsuarioDTO.string());
-
-//        int max = UsuarioDTO.getHistoricoHumor().size() - 1;
-//        if (UsuarioDTO.getHistoricoHumor().get(max).getData().equals(LocalDate.now())) {
-//            startActivity(new Intent(this, HumorDiario.class));
-//        }
-
         saldoLayout = findViewById(R.id.valorSaldo);
         ofensivaLayout = findViewById(R.id.valorOfensiva);
 
