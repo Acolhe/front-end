@@ -22,7 +22,8 @@
             android:text="@string/tituloMissoesDiaria"
             android:textColor="@color/secondary_color"
             android:textSize="48sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/paytone_one"
+            android:textFontWeight="900"
             app:lineHeight="45sp" />
 
         <TextView

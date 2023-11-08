@@ -105,7 +105,7 @@ public class HumorDiario extends AppCompatActivity {
     }
 
     public void fecharHumor(View view) {
-        Humor humor = new Humor(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), nivelSatisfacao, "comentario");
+        Humor humor = new Humor(LocalDate.now().minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd").withLocale(getResources().getConfiguration().getLocales().get(0))), nivelSatisfacao, "comentario");
         Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
 
         methods.addHumor(UsuarioDTO.getId(), humor).enqueue(new Callback<ResponseModel>() {

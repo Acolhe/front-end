@@ -181,7 +181,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/olhinho"
-            android:backgroundTint="#00000000"
+            app:backgroundTint="@color/primary_color"
             android:drawableTint="#000000"
             android:foregroundTint="#000000"
             android:tint="@android:color/black"
