@@ -1,40 +1,44 @@
 package com.acolhe.app.model;
 
+import com.acolhe.app.Retrofit.ResponseModel;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class UsuarioDTO implements Serializable {
-    private static Integer id;
+    private static int id;
     private static String nome;
     private static int saldo;
     private static int ofensiva;
     private static String email;
     private static int codSkin;
-    private static LocalDateTime dataCadastro;
+    private static LocalDate dataCadastro;
     private static LocalDateTime ultimoAcesso;
     private static boolean premium;
-    private static List<HumorDTO> historicoHumor = new ArrayList<>();
+    private static List<HumorDTO> historicoHumor;
 
     public UsuarioDTO(Usuario user) {
-        UsuarioDTO.id = user.getId();
-        UsuarioDTO.nome = user.getNome();
+        UsuarioDTO.historicoHumor = new ArrayList<>();
+        UsuarioDTO.id = user.getCodUsuario();
+        UsuarioDTO.nome = user.getNomeUsuario();
         UsuarioDTO.saldo = user.getSaldo();
-        UsuarioDTO.ofensiva = user.getDiasConsecutivos();
+        UsuarioDTO.ofensiva = user.getDiasconsecutivos();
         UsuarioDTO.email = user.getEmail();
         UsuarioDTO.codSkin = 0;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-        UsuarioDTO.dataCadastro = LocalDateTime.parse(user.getData_cadastro(), formatter2);
+        UsuarioDTO.dataCadastro = LocalDate.parse(user.getDatacadastro(), formatter);
         UsuarioDTO.ultimoAcesso = LocalDateTime.parse(user.getDataultimologin(), formatter2);
-        UsuarioDTO.premium = user.getPremium();
-        if(user.getHistoricoHumor() != null) {
-            user.getHistoricoHumor().forEach(UsuarioDTO::addHistorico);
+        UsuarioDTO.premium = user.isPremium();
+        if(user.getHumores() != null) {
+            if(!user.getHumores().isEmpty()) {
+                user.getHumores().forEach(UsuarioDTO::addHistorico);
+            }
         }
     }
 
@@ -42,10 +46,10 @@ public class UsuarioDTO implements Serializable {
         UsuarioDTO.historicoHumor.add(new HumorDTO(humor));
     }
 
-    public static Integer getId(){
+    public static int getId(){
         return UsuarioDTO.id;
     }
-    public static void setId(Integer id) {
+    public static void setId(int id) {
         UsuarioDTO.id = id;
     }
     public static String getNome() {
@@ -72,7 +76,7 @@ public class UsuarioDTO implements Serializable {
         return codSkin;
     }
 
-    public static LocalDateTime getDataCadastro() {
+    public static LocalDate getDataCadastro() {
         return dataCadastro;
     }
 
@@ -103,5 +107,20 @@ public class UsuarioDTO implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(nome, saldo, ofensiva, email, codSkin, dataCadastro, ultimoAcesso, premium, historicoHumor);
+    }
+
+    public static String string() {
+        return "UsuarioDTO{" +
+                "id=" + UsuarioDTO.id +
+                ", nome='" + UsuarioDTO.nome + '\'' +
+                ", saldo=" + UsuarioDTO.saldo +
+                ", ofensiva=" + UsuarioDTO.ofensiva +
+                ", email='" + UsuarioDTO.email + '\'' +
+                ", codSkin=" + UsuarioDTO.codSkin +
+                ", dataCadastro=" + UsuarioDTO.dataCadastro +
+                ", ultimoAcesso=" + UsuarioDTO.ultimoAcesso +
+                ", premium=" + UsuarioDTO.premium +
+                ", historicoHumor=" + UsuarioDTO.historicoHumor +
+                '}';
     }
 }

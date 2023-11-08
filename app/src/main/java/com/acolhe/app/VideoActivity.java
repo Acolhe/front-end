@@ -20,12 +20,7 @@ public class VideoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video);
 
         LinearLayout voltar = findViewById(R.id.lnrLytVoltar);
-        voltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        voltar.setOnClickListener((view) -> finish());
 
         VideoView videoView = findViewById(R.id.vdVwVideo);
 

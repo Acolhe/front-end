@@ -1,36 +1,51 @@
 package com.acolhe.app.model;
 
 public class Clinica {
-    private String nome;
+    private int codClinica;
+    private String nmClinica;
     private String email;
     private String telefone;
     private String descricao;
     private String imagem;
     private String bairro;
     private String cidade;
-    private String estado;
-    private String uf;
+    private String nmEstado;
+    private String sgEstado;
     private boolean patrocinada;
+    private Integer nivelSatisfacao;
 
-    public Clinica(String nome, String email, String telefone, String descricao, String imagem, String bairro, String cidade, String estado, String uf, boolean patrocinada) {
-        this.nome = nome;
+    public Clinica() {
+    }
+
+    public Clinica(int codClinica, String nmClinica, String email, String telefone, String descricao, String imagem, String bairro, String cidade, String nmEstado, String sgEstado, boolean patrocinada, Integer nivelSatisfacao) {
+        this.codClinica = codClinica;
+        this.nmClinica = nmClinica;
         this.email = email;
         this.telefone = telefone;
         this.descricao = descricao;
         this.imagem = imagem;
         this.bairro = bairro;
         this.cidade = cidade;
-        this.estado = estado;
-        this.uf = uf;
+        this.nmEstado = nmEstado;
+        this.sgEstado = sgEstado;
         this.patrocinada = patrocinada;
+        this.nivelSatisfacao = nivelSatisfacao;
     }
 
-    public String getNome() {
-        return nome;
+    public int getCodClinica() {
+        return codClinica;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCodClinica(int codClinica) {
+        this.codClinica = codClinica;
+    }
+
+    public String getNmClinica() {
+        return nmClinica;
+    }
+
+    public void setNmClinica(String nmClinica) {
+        this.nmClinica = nmClinica;
     }
 
     public String getEmail() {
@@ -81,20 +96,20 @@ public class Clinica {
         this.cidade = cidade;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getNmEstado() {
+        return nmEstado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setNmEstado(String nmEstado) {
+        this.nmEstado = nmEstado;
     }
 
-    public String getUf() {
-        return uf;
+    public String getSgEstado() {
+        return sgEstado;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
+    public void setSgEstado(String sgEstado) {
+        this.sgEstado = sgEstado;
     }
 
     public boolean isPatrocinada() {
@@ -103,5 +118,13 @@ public class Clinica {
 
     public void setPatrocinada(boolean patrocinada) {
         this.patrocinada = patrocinada;
+    }
+
+    public Integer getNivelSatisfacao() {
+        return nivelSatisfacao;
+    }
+
+    public void setNivelSatisfacao(Integer nivelSatisfacao) {
+        this.nivelSatisfacao = nivelSatisfacao;
     }
 }

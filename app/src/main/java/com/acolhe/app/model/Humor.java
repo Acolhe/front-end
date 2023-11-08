@@ -1,9 +1,14 @@
 package com.acolhe.app.model;
 
 public class Humor {
+    private int codUsuario;
+    private int codhumor;
     private String data;
-    private Integer nivelSatisfacao;
+    private int nivelSatisfacao;
     private String comentario;
+
+    public Humor() {
+    }
 
     public Humor(String data, Integer nivelSatisfacao, String comentario) {
         this.data = data;
@@ -11,8 +16,27 @@ public class Humor {
         this.comentario = comentario;
     }
 
-    public Humor(){
+    public Humor(Integer codUsuario, String data, Integer nivelSatisfacao, String comentario) {
+        this.codUsuario = codUsuario;
+        this.data = data;
+        this.nivelSatisfacao = nivelSatisfacao;
+        this.comentario = comentario;
+    }
 
+    public Integer getCodUsuario() {
+        return codUsuario;
+    }
+
+    public void setCodUsuario(Integer codUsuario) {
+        this.codUsuario = codUsuario;
+    }
+
+    public Integer getCodhumor() {
+        return codhumor;
+    }
+
+    public void setCodhumor(Integer codhumor) {
+        this.codhumor = codhumor;
     }
 
     public String getData() {

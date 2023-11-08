@@ -1,40 +1,49 @@
 package com.acolhe.app.model;
 
-import java.util.Collection;
 import java.util.List;
 
 public class Usuario {
 
-    private String dataultimologin;
+    private int codUsuario;
+    private String nomeUsuario;
     private int saldo;
-    private String email, senha, data_cadastro;
-    private Boolean premium;
-    private int id;
-    private int diasConsecutivos;
-    private Integer codSkinPrincipal;
-    private String nome;
-    private List<Humor> historicoHumor;
+    private boolean premium;
+    private String senha;
+    private String dataultimologin;
+    private String email;
+    private int diasconsecutivos;
+    private String datacadastro;
+    private List<Humor> humores;
 
-    public Usuario(String dataultimologin, int saldo, String email, String senha, String data_cadastro, Boolean premium, int id, int diasConsecutivos, Integer codSkinPrincipal, String dataCadastro, String nome, List<Humor> historicoHumor) {
-        this.dataultimologin = dataultimologin;
+    public Usuario(int codUsuario, String nomeUsuario, int saldo, boolean premium, String senha, String dataultimologin, String email, int diasconsecutivos, String datacadastro) {
+        this.codUsuario = codUsuario;
+        this.nomeUsuario = nomeUsuario;
         this.saldo = saldo;
-        this.email = email;
-        this.senha = senha;
-        this.data_cadastro = data_cadastro;
         this.premium = premium;
-        this.id = id;
-        this.diasConsecutivos = diasConsecutivos;
-        this.codSkinPrincipal = codSkinPrincipal;
-        this.nome = nome;
-        this.historicoHumor = historicoHumor;
-    }
-
-    public String getDataultimologin() {
-        return dataultimologin;
-    }
-
-    public void setDataultimologin(String dataultimologin) {
+        this.senha = senha;
         this.dataultimologin = dataultimologin;
+        this.email = email;
+        this.diasconsecutivos = diasconsecutivos;
+        this.datacadastro = datacadastro;
+    }
+
+    public Usuario() {
+    }
+
+    public int getCodUsuario() {
+        return codUsuario;
+    }
+
+    public void setCodUsuario(int codUsuario) {
+        this.codUsuario = codUsuario;
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
 
     public int getSaldo() {
@@ -45,12 +54,12 @@ public class Usuario {
         this.saldo = saldo;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean isPremium() {
+        return premium;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPremium(boolean premium) {
+        this.premium = premium;
     }
 
     public String getSenha() {
@@ -61,76 +70,43 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getData_cadastro() {
-        return data_cadastro;
+    public String getDataultimologin() {
+        return dataultimologin;
     }
 
-    public void setData_cadastro(String data_cadastro) {
-        this.data_cadastro = data_cadastro;
+    public void setDataultimologin(String dataultimologin) {
+        this.dataultimologin = dataultimologin;
     }
 
-    public Boolean getPremium() {
-        return premium;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPremium(Boolean premium) {
-        this.premium = premium;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getId() {
-        return id;
+    public int getDiasconsecutivos() {
+        return diasconsecutivos;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDiasconsecutivos(int diasconsecutivos) {
+        this.diasconsecutivos = diasconsecutivos;
     }
 
-    public int getDiasConsecutivos() {
-        return diasConsecutivos;
+    public String getDatacadastro() {
+        return datacadastro;
     }
 
-    public void setDiasConsecutivos(int diasConsecutivos) {
-        this.diasConsecutivos = diasConsecutivos;
+    public void setDatacadastro(String datacadastro) {
+        this.datacadastro = datacadastro;
     }
 
-    public Integer getCodSkinPrincipal() {
-        return codSkinPrincipal;
+    public List<Humor> getHumores() {
+        return humores;
     }
 
-    public void setCodSkinPrincipal(Integer codSkinPrincipal) {
-        this.codSkinPrincipal = codSkinPrincipal;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Humor> getHistoricoHumor() {
-        return historicoHumor;
-    }
-
-    public void setHistoricoHumor(List<Humor> historicoHumor) {
-        this.historicoHumor = historicoHumor;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "dataultimologin='" + dataultimologin + '\'' +
-                ", saldo=" + saldo +
-                ", email='" + email + '\'' +
-                ", senha='" + senha + '\'' +
-                ", data_cadastro='" + data_cadastro + '\'' +
-                ", premium=" + premium +
-                ", id=" + id +
-                ", diasConsecutivos=" + diasConsecutivos +
-                ", codSkinPrincipal=" + codSkinPrincipal +
-                ", nome='" + nome + '\'' +
-                ", historicoHumor=" + historicoHumor +
-                '}';
+    public void setHumores(List<Humor> humores) {
+        this.humores = humores;
     }
 }

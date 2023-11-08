@@ -15,6 +15,7 @@ import com.acolhe.app.Retrofit.Methods;
 import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.Retrofit.StringModel;
 import com.acolhe.app.adapters.ItemAdapter;
+import com.acolhe.app.model.UsuarioDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +26,8 @@ import retrofit2.Response;
 
 public class PaginaAcolhePlus extends AppCompatActivity {
 
-    private int id;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Intent intent = getIntent();
-        id = intent.getIntExtra("id", 0);
-        String teste = intent.getStringExtra("teste");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acolhe_plus);
 
@@ -56,7 +51,7 @@ public class PaginaAcolhePlus extends AppCompatActivity {
 
     public void salvar(View view){
         Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
-        methods.becomePremium(id).enqueue(new Callback<StringModel>() {
+        methods.becomePremium(UsuarioDTO.getId()).enqueue(new Callback<StringModel>() {
             @Override
             public void onResponse(Call<StringModel> call, Response<StringModel> response) {
                 System.out.println(response.body());
