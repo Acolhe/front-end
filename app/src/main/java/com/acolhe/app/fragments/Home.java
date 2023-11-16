@@ -35,6 +35,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends Fragment {
 
@@ -72,7 +73,23 @@ public class Home extends Fragment {
         sliderClinicas(view);
 
         setOnClickListeners(view);
+
+//        int maxHumor = 0;
+//        List<HumorDTO> historicoHumor = UsuarioDTO.getHistoricoHumor();
+//        if (historicoHumor != null && !historicoHumor.isEmpty()) {
+//            maxHumor = historicoHumor.size();
+//            HumorDTO ultimoHumor = historicoHumor.get(maxHumor - 1);
+//            mesHumor.setText(ultimoHumor.getData().getMonth().toString().substring(0, 3));
+//            diaHumor.setText(String.valueOf(ultimoHumor.getData().getDayOfMonth()));
+//            humor.setText(ultimoHumor.getNivelSatisfacao().toString());
+//            setCarinha(carinhaHumor, ultimoHumor);
+//        } else {
+//            Log.e("HomeFragment", "Lista de histórico de humor nula ou vazia");
+//            // Aqui você pode definir valores padrão ou tratamento adicional, caso a lista seja nula ou vazia
+//        }
+
         return view;
+
     }
 
     private void setOnClickListeners(View rootView) {
@@ -129,15 +146,23 @@ public class Home extends Fragment {
 
     private static void sliderClinicas(View view) {
         ArrayList<Clinica> patrocinadas = new ArrayList<>();
-        System.out.println(ClinicasDTO.getClinicas());
-        ClinicasDTO.getClinicas().forEach((clinica) -> {
-            if(clinica.isPatrocinada() && patrocinadas.size() < 2) {
-                patrocinadas.add(clinica);
+        List<Clinica> clinicas = ClinicasDTO.getClinicas();
+
+        if (clinicas != null) {
+            for (Clinica clinica : clinicas) {
+                if (clinica.isPatrocinada() && patrocinadas.size() < 2) {
+                    patrocinadas.add(clinica);
+                }
             }
-        });
+        } else {
+            // Trate o caso em que a lista de clínicas é nula ou vazia, se necessário
+            Log.e("HomeFragment", "Lista de clínicas nula ou vazia");
+        }
+
         CardSliderViewPager cardSliderViewPager = view.findViewById(R.id.home_viewPager);
         cardSliderViewPager.setAdapter(new ClinicaSliderAdapter(patrocinadas));
     }
+
 
     private void sliderRespiracao(View view) {
         ArrayList<Playlist> playlists = new ArrayList<Playlist>();
