@@ -61,6 +61,7 @@ public class MeditacaoMusicaActivity extends AppCompatActivity {
             if(media.isPlaying()) {
                 media.stop();
             }
+            handler.removeCallbacksAndMessages(null);
             finish();
         });
         player.setOnClickListener(view -> play());
