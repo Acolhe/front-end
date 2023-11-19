@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_colorInicial"
+    tools:context="com.acolhe.app.PaginaInicialActivity">
+
+    <ImageView
+        android:id="@+id/imgVwLogo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/imagemDescriptionLogo"
+        android:src="@drawable/imagem"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgVwLogo"
+        app:layout_constraintVertical_bias="0.37">
+
+        <Button
+            android:id="@+id/btnCadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary_color"
+            android:fontFamily="@font/paytone_one"
+            android:onClick="abrirCadastro"
+            android:paddingStart="45dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="45dp"
+            android:paddingBottom="10dp"
+            android:text="@string/buttonCadastrarText"
+            android:textAllCaps="false"
+            android:textColor="@color/text_color"
+            android:textSize="27sp"
+            app:cornerRadius="36dp" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41dp"
+            android:backgroundTint="#07384D"
+            android:fontFamily="@font/paytone_one"
+            android:onClick="abrirLogin"
+            android:paddingStart="45dp"
+            android:paddingEnd="45dp"
+            android:paddingBottom="10dp"
+            android:text="@string/buttonLoginText"
+            android:textAllCaps="false"
+            android:textColor="@color/text_color"
+            android:textSize="27sp"
+            app:cornerRadius="36dp"
+            app:strokeColor="@color/primary_color"
+            app:strokeWidth="2dp" />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

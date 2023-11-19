@@ -1,0 +1,170 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical"
+    tools:context="com.acolhe.app.fragments.Missoes">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtVwTituloMissoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tituloMissoesDiaria"
+            android:textColor="@color/secondary_color"
+            android:textSize="48sp"
+            android:fontFamily="@font/paytone_one"
+            android:textFontWeight="900"
+            app:lineHeight="45sp" />
+
+        <TextView
+            android:id="@+id/txtVwSubtituloMissoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="18dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/subtituloMissoesDiaria"
+            android:textColor="@color/background_colorInicial"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/lnrLytMissoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="220dp"
+            android:background="@drawable/bordaarredondadamissoes"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:id="@+id/lnrLytMissao1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:gravity="top|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtVwNmMissao1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="2dp"
+                        android:text="@string/nomeMissao1"
+                        android:textColor="@color/text_color"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtVwDescricao1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/descricaoMissao1"
+                        android:textColor="@color/text_color"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.75"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/chckBxCheckBox1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:scaleX="3.25"
+                        android:scaleY="3.25" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnrLytMissao2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordaarredondadamissoes"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:gravity="top|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtVwNmMissao2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="2dp"
+                        android:text="@string/nomeMissao1"
+                        android:textColor="@color/text_color"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtVwDescricao2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/descricaoMissao1"
+                        android:textColor="@color/text_color"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.75"
+                    android:gravity="top|center_vertical"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/chckBxCheckBox2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:scaleX="3.25"
+                        android:scaleY="3.25" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgVwPersonagens"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="30dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/descricaoImgPersonagens"
+            android:src="@drawable/personagens" />
+    </LinearLayout>
+</FrameLayout>

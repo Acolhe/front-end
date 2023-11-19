@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">Acolhe</string>
+
+    <string name="login">Login</string>
+    <string name="cadastro">Cadastre-se</string>
+    <string name="imagemDescriptionLogo">ImagemLogo</string>
+    <string name="buttonLoginText">Login</string>
+    <string name="buttonCadastrarText">Cadastre-se</string>
+    <string name="store">Store</string>
+    <string name="valorDefaultOfensiva">21</string>
+
+    <string name="ajuda">Ajuda</string>
+    <string name="naoObrigado">Não, obrigado</string>
+    <string name="assineja">Assine já!</string>
+    <string name="canceleAssinaturaTitulo">Cancele a qualquer momento</string>
+    <string name="canceleAssinatura">Cancele sua assinatura a qualquer momento - sem taxas nem penalidades</string>
+    <string name="acolhe_plus">Seja Acolhe +\nAssine por apenas R$14,99 por mês\nSe ajude cada vez MAIS</string>
+    <string name="acolheStore">ACOLHE\nSTORE</string>
+    <string name="AdquiraProdutosAcolhe">Adquira já os diversos produtos\nacolhe!</string>
+    <string name="CamisetaAcolhe">Camiseta Acolhe</string>
+    <string name="SkinDeVerao">Skin de Verão</string>
+    <string name="CanecaAcolhe">Caneca Acolhe</string>
+    <string name="Login">Login</string>
+    <string name="Email">Email</string>
+    <string name="Senha">Senha</string>
+    <string name="Entrar">Entrar</string>
+    <string name="nomeUsuario">UserTeste</string>
+    <string name="naoTemLogin">Não tem cadastro? Clique Aqui</string>
+
+    <string name="termos_1">Termos e Condições</string>
+    <string name="termos_2">Bem-vindo aos Termos e Condições do nosso aplicativo Acolhe.</string>
+    <string name="termos_3">Acolhe é um aplicativo que visa ajudar as pessoas a controlar seu humor diário, ansiedade, depressão e outras condições relacionadas ao bem-estar emocional.</string>
+    <string name="termos_4">Ao utilizar nosso aplicativo, você concorda com os seguintes termos:</string>
+    <string name="termos_5">1. Uso do Aplicativo</string>
+    <string name="termos_6">O uso deste aplicativo está sujeito a condições de uso. Você concorda em usar este aplicativo por sua própria conta e risco.</string>
+    <string name="termos_7">2. Responsabilidades</string>
+    <string name="termos_8">Nós nos esforçamos para fornecer informações precisas, mas não garantimos a precisão, integridade ou adequação das informações fornecidas pelo aplicativo. Você é responsável por suas ações ao utilizar este aplicativo.</string>
+    <string name="termos_9">3. Privacidade</string>
+    <string name="termos_10">Nós respeitamos a privacidade dos nossos usuários. As informações fornecidas por você serão tratadas de acordo com nossa política de privacidade.</string>
+    <string name="termos_11">Este é um resumo geral dos nossos Termos e Condições. Ao utilizar o aplicativo Acolhe, você concorda com estes termos. Se você não concorda, por favor, não utilize o aplicativo.</string>
+    <string name="termos_12">Última atualização: 15/11/2023</string>
+
+    <string name="eiNome">👋 Ei {{nome}}!</string>
+    <string name="ComoEstaSeSentindo">Como você esta se sentindo hoje?</string>
+    <string name="Confirma">Confirmar</string>
+    <string name="Normal">Normal</string>
+    <string name="EstouBem">Estou bem!</string>
+    <string name="NaoBem">Não me sinto nada bem</string>
+    <string name="Triste">Estou meio triste</string>
+    <string name="MuitoBem">Me sinto muito bem!</string>
+
+    <string name="semInternet">Você está sem internet!</string>
+    <string name="semInternetDesc">Esteja conecta na internet para entrar no app!</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="descricaoImagemPerfil">Logo de Perfil</string>
+    <string name="descricaoImagemOfensiva">Pequeno logo do Acolhe</string>
+    <string name="descricaoImagemMedalha">Medalhão Acolhe</string>
+    <string name="descricaoImagemAcolhePlus">Logo Acolhe Plus</string>
+
+    <string name="descricaoImagemHome">Ícone Casa simples</string>
+    <string name="descricaoImagemConteudo">Ícone de play de vídeos</string>
+    <string name="descricaoImagemCvv">Logo Acolhe</string>
+    <string name="descricaoImagemMissoes">Ícone de tarefas</string>
+    <string name="descricaoImagemLoja">Ícone de Bolsa</string>
+
+
+    <string name="tituloMissoesDiaria">Missões\nDiárias</string>
+    <string name="subtituloMissoesDiaria">Complete as suas missões diárias e ganhe recompensas!</string>
+    <string name="nomeMissao1">nmMissao</string>
+    <string name="descricaoMissao1">descricao</string>
+    <string name="nomeMissao2">nmMissao</string>
+    <string name="perfil">Perfil</string>
+    <string name="editar">Editar</string>
+    <string name="descricaoMissao2">descricao</string>
+    <string name="descricaoImgPersonagens">Personagens Acolhe</string>
+    <string name="tituloClinicas">Clínicas de Suporte</string>
+    <string name="subtituloClinicas">Aqui temos as melhores recomendações clínicas de São Paulo!</string>
+    <string name="nomeClinica">nmClinica</string>
+    <string name="localClinica">Bairro, Cidade - SP</string>
+    <string name="bairroClinica">Bairro</string>
+    <string name="cidadeClinica">Cidade</string>
+    <string name="sgEstadoClinica">SP</string>
+
+    <string name="tituloDescricaoClinicas">Descrição: </string>
+    <string name="conteudoDescricaoClinicas">wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</string>
+    <string name="tituloContatoClinicas">Contatos: </string>
+
+    <string name="telefone">Telefone: </string>
+    <string name="telefoneDefault">(11) 95555-8888</string>
+    <string name="email">Email: </string>
+    <string name="emailDefault">email.empresa@email.com</string>
+
+    <string name="nomePaginaClinica">Clinicas</string>
+
+    <string name="page_name_home">Home</string>
+    <string name="page_name_videos">Vídeos</string>
+    <string name="page_name_cvv">CVV</string>
+    <string name="page_name_missoes">Missões</string>
+    <string name="page_name_store">Store</string>
+
+    <string name="tituloConteudos">Vídeos\nde Apoio</string>
+    <string name="subtituloConteudos">Assista vídeos selcionados pelos nossos especialistas!</string>
+
+    <string name="nomePaginaVideos">Vídeo</string>
+</resources>
