@@ -1,6 +1,7 @@
 package com.acolhe.app;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -87,5 +88,22 @@ public class PaginaProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        LinearLayout ajudaClick = findViewById(R.id.ajudaClick);
+        ajudaClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = "suporteacolheapp@gmail.com";
+                String mensagem = "Olá,\n\nEstou precisando de assistência. Por favor, me ajude.";
+
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:" + email));
+                emailIntent.putExtra(Intent.EXTRA_TEXT, mensagem);
+
+                startActivity(Intent.createChooser(emailIntent, "Enviar e-mail via:"));
+            }
+        });
+
+
     }
 }

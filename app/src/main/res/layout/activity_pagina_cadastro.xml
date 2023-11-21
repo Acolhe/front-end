@@ -34,7 +34,7 @@
                 android:layout_marginStart="15dp"
                 android:backgroundTint="@color/medium_blue"
                 android:onClick="voltarCadastro"
-                android:src="@drawable/setabranca"
+                android:src="@drawable/leftarrow"
                 android:text="aaaaaa" />
 
             <TextView
@@ -68,9 +68,9 @@
 
         <ImageView
             android:layout_width="30dp"
-            android:layout_height="25dp"
+            android:layout_height="28dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/icone_pessoa" />
+            android:src="@drawable/user_cadastro" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nomeTextInputLayout"
@@ -110,7 +110,7 @@
             android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/icone_email" />
+            android:src="@drawable/mail" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailTextInputLayout"
@@ -150,7 +150,7 @@
             android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/icone_senha" />
+            android:src="@drawable/secret" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/senhaTextInputLayout"

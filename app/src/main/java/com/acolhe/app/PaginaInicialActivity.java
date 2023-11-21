@@ -6,12 +6,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
@@ -42,6 +45,7 @@ public class PaginaInicialActivity extends AppCompatActivity {
     FirebaseAuth auth = ConfigFirebase.getFirebaseAuth();
     private View popupView;
     Methods methods;
+    private boolean senhaVisivel = false;
 
     public static Intent bundle;
 
@@ -49,6 +53,7 @@ public class PaginaInicialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         layout = findViewById(R.id.linearLayout);
         methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
         bundle = new Intent(PaginaInicialActivity.this, HumorDiario.class);
@@ -123,6 +128,7 @@ public class PaginaInicialActivity extends AppCompatActivity {
         String emailString = emailPopup.getText().toString();
         String senhaString = senhaPopup.getText().toString();
 
+
         methods.loginUser(emailString, senhaString).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
@@ -157,8 +163,26 @@ public class PaginaInicialActivity extends AppCompatActivity {
                 Toast.makeText(PaginaInicialActivity.this, "Erro ao logar usuário", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
+    public void togglePasswordVisibility(View view) {
+        EditText senhaPopup = popupView.findViewById(R.id.senhainput);
+        Button eyeButton = popupView.findViewById(R.id.visualizarSenhaButton2);
+
+        if (!senhaVisivel) {
+            // Se a senha não estiver visível, torná-la visível
+            senhaPopup.setTransformationMethod(null); // Mostrar texto sem ocultação
+            eyeButton.setBackgroundResource(R.drawable.olhinho); // Definir o botão com o ícone do olho aberto
+            senhaVisivel = true;
+        } else {
+            // Se a senha estiver visível, ocultá-la novamente
+            senhaPopup.setTransformationMethod(new PasswordTransformationMethod()); // Ocultar texto
+            eyeButton.setBackgroundResource(R.drawable.eye); // Definir o botão com o ícone do olho fechado
+            senhaVisivel = false;
+        }
+
+        // Mover o cursor para o final do texto
+        senhaPopup.setSelection(senhaPopup.getText().length());
+    }
+
+
 }

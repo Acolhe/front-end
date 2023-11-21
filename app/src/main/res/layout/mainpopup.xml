@@ -152,6 +152,21 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/background_colorInicial"
                 android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/visualizarSenhaButton2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/eye"
+                android:drawableTint="#000000"
+                android:foregroundTint="#000000"
+                android:onClick="togglePasswordVisibility"
+                android:tint="@android:color/black"
+                app:backgroundTint="@color/primary_color"
+                app:iconTint="#000000" />
+
             <!--                style="@style/NoBorderEditText"-->
 
 

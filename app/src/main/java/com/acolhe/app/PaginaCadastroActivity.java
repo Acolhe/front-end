@@ -134,6 +134,7 @@ public class PaginaCadastroActivity extends AppCompatActivity {
         concordoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                abrirTermosECondicoes();
                 cadastrarButton.setEnabled(isChecked);
                 if (isChecked) {
                     cadastrarButton.setTextColor(Color.WHITE);
@@ -179,9 +180,11 @@ public class PaginaCadastroActivity extends AppCompatActivity {
         });
 
         concordoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 checkBoxMarcado = isChecked;
+                abrirTermosECondicoes();
                 atualizarBotaoCadastro();
             }
 
@@ -231,5 +234,10 @@ public class PaginaCadastroActivity extends AppCompatActivity {
                 System.out.println("Erro ao cadastrar usuario cadastrado no postgres");
             }
         });
+    }
+    private void abrirTermosECondicoes() {
+        Intent intent = new Intent(PaginaCadastroActivity.this, TermosActivity.class);
+        startActivity(intent);
+        // Certifique-se de substituir "NomeDaSuaActivityAtual" pelo nome da sua Activity atual
     }
 }
