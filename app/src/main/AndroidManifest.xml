@@ -20,6 +20,9 @@
             android:name="com.acolhe.app.VideoActivity"
             android:exported="false" />
         <activity
+            android:name="com.acolhe.app.TermosActivity"
+            android:exported="false" />
+        <activity
             android:name="com.acolhe.app.HistoricoHumorActivity"
             android:exported="false" />
         <activity
