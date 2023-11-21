@@ -106,4 +106,12 @@ public class PaginaProfileActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        nome = UsuarioDTO.getNome().replace("\"", "");
+        TextView nomeUsuario = findViewById(R.id.textView8);
+        nomeUsuario.setText(nome);
+    }
 }

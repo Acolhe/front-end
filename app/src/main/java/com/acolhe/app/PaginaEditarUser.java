@@ -71,6 +71,9 @@ public class PaginaEditarUser extends AppCompatActivity {
                     System.out.println(id);
                     System.out.println(novoNome.getText().toString());
                     System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+                    if(response.isSuccessful()) {
+                        UsuarioDTO.setNome(novoNome.getText().toString());
+                    }
                     Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT).show();
                 }
 
