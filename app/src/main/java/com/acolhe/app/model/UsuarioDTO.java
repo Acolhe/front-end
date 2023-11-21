@@ -55,7 +55,7 @@ public class UsuarioDTO implements Serializable {
     public static String getNome() {
         return UsuarioDTO.nome;
     }
-
+    public static void setNome( String novoNome){ UsuarioDTO.nome = novoNome; }
     public static int getSaldo() {
         return saldo;
     }

@@ -48,7 +48,7 @@ public class HumorDiario extends AppCompatActivity {
         nivelSatisfacao = 3;
         TextView texto_humor = findViewById(R.id.humor);
         TextView olaUser = findViewById(R.id.olaUser);
-        olaUser.setText(String.format("\uD83D\uDC4B Ei %s!", UsuarioDTO.getNome()));
+        olaUser.setText(String.format("\uD83D\uDC4B Ei %s!", UsuarioDTO.getNome().replace("\"", "")));
         texto_humor.setText("Normal");
     }
 

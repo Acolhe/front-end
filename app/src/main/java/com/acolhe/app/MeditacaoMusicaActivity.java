@@ -105,6 +105,7 @@ public class MeditacaoMusicaActivity extends AppCompatActivity {
         super.onDestroy();
         if (media != null) {
             media.release();
+            handler.removeCallbacksAndMessages(null);
         }
     }
 }

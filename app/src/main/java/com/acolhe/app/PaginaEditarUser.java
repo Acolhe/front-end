@@ -14,6 +14,7 @@ import com.acolhe.acolhe_api.R;
 import com.acolhe.app.Retrofit.Methods;
 import com.acolhe.app.Retrofit.RetrofitClient;
 import com.acolhe.app.Retrofit.StringModel;
+import com.acolhe.app.model.UsuarioDTO;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,9 +26,7 @@ public class PaginaEditarUser extends AppCompatActivity {
     EditText novoNome;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Intent intent = getIntent();
-
-        id = intent.getIntExtra("id", 0);
+        id = UsuarioDTO.getId();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_user);
         ImageView setinhaVoltar = findViewById(R.id.setinhavoltarmenuprincipal);
@@ -45,7 +44,6 @@ public class PaginaEditarUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PaginaAcolhePlus.class);
-                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -55,7 +53,6 @@ public class PaginaEditarUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PaginaAcolhePlus.class);
-                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -70,6 +67,13 @@ public class PaginaEditarUser extends AppCompatActivity {
             methods.updateName(id, novoNome.getText().toString()).enqueue(new Callback<StringModel>() {
                 @Override
                 public void onResponse(Call<StringModel> call, Response<StringModel> response) {
+                    System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+                    System.out.println(id);
+                    System.out.println(novoNome.getText().toString());
+                    System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+                    if(response.isSuccessful()) {
+                        UsuarioDTO.setNome(novoNome.getText().toString());
+                    }
                     Toast.makeText(getApplicationContext(), "Nome Alterado", Toast.LENGTH_SHORT).show();
                 }
 

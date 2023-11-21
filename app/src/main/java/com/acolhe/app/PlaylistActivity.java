@@ -23,6 +23,7 @@ public class PlaylistActivity extends AppCompatActivity {
 
     private CardSliderViewPager cardSliderViewPager;
     private Button comecar;
+    private List<Respiracao> respiracao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class PlaylistActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         TextView title = findViewById(R.id.tituloResp);
         if (extras != null) {
-            List<Respiracao> respiracao =  (List<Respiracao>) extras.getSerializable("respiracao");
+            this.respiracao = (List<Respiracao>) extras.getSerializable("respiracao");
             title.setText(extras.getString("titulo"));
             CardSliderViewPager cardSliderViewPager = (CardSliderViewPager) findViewById(R.id.viewPager2);
             cardSliderViewPager.setAdapter(new RespiracaoSliderAdapter(respiracao));
