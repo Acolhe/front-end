@@ -61,7 +61,6 @@ public class MeditacaoMusicaActivity extends AppCompatActivity {
             if(media.isPlaying()) {
                 media.stop();
             }
-            handler.removeCallbacksAndMessages(null);
             finish();
         });
         player.setOnClickListener(view -> play());
@@ -106,6 +105,7 @@ public class MeditacaoMusicaActivity extends AppCompatActivity {
         super.onDestroy();
         if (media != null) {
             media.release();
+            handler.removeCallbacksAndMessages(null);
         }
     }
 }
