@@ -164,8 +164,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/paytone_one"
                 android:text="@string/nomeUsuario"
-                android:textColor="#004C6D"
                 android:textSize="32sp" />
+
+            <!--                android:textColor="#004C6D"-->
         </LinearLayout>
 
         <LinearLayout
